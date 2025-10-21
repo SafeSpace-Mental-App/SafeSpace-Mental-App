@@ -1,0 +1,30 @@
+:root {
+  /* colors */
+  --text-primary: #222222;
+  --text-secondary: #777777;
+  --white: #ffffff;
+  --brand-color: #da42f3;
+  --secondary-brand-color: #4a1c12;
+  --background-secondary: #f5f7fa;
+  --border-primary: #ae34c2;
+
+  /* Font Families */
+  --font-primary: "Roboto", sans-serif;
+  --font-brand: "Varela Round", sans-serif;
+
+  /* Font Weight */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Font Sizes */
+  --text-body-sm: 12px;
+  --text-body-md: 14px;
+  --text-body-lg: 16px;
+  --text-body-xl: 18px;
+
+  /* Headings */
+  --text-heading-md: 16px;
+  --text-heading-lg: 18px;
+}
