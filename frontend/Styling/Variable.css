@@ -1,12 +1,14 @@
 :root {
   /* colors */
+
   --text-primary: #222222;
   --text-secondary: #777777;
-  --white: #ffffff;
-  --brand-color: #da42f3;
-  --secondary-brand-color: #4a1c12;
-  --background-secondary: #f5f7fa;
-  --border-primary: #ae34c2;
+  --text-on-color: #ffffff;
+  --brand-color: #3b82f6;
+  --brand-secondary: #173462;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --border-primary: #3b82f6;
 
   /* Font Families */
   --font-primary: "Roboto", sans-serif;

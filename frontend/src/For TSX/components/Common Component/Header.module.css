@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  width: 100%;
+  background-color: var(--white);
+  justify-content: space-between;
+  left: 0;
+  align-items: center;
+  z-index: 10;
+  top: 0;
+  position: fixed;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.icon {
+  font-size: var(--text-body-xl);
+  cursor: pointer;
+}
+.title {
+  font-size: var(--text-body-lg);
+  font-weight: var(--weight-semibold);
+  font-family: var(  --font-primary);
+}

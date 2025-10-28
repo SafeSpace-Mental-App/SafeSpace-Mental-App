@@ -1,5 +1,16 @@
+# dependencies and builds
 node_modules/
 dist/
-/build 
+build/
+
+# environment variables
 .env
-src/ForTesting.tsx/
+
+# specific files to ignore
+src/ForTesting.tsx
+src/ForPages/FeedPages.tsx
+src/ForPages/JournalPage.tsx
+src/ForPages/MoodPage.tsx
+src/ForPages/SupportPage.tsx
+src/For TSX/Common Component/Navbar.tsx
+src/For TSX/Common Component/Navbar.css
