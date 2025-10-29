@@ -4,6 +4,7 @@ import styles from "./Header.module.css";
 interface HeaderProp {
   title: string;
   onBack?: () => void;
+
 }
 const Header = ({ title, onBack }: HeaderProp) => {
   return (
