@@ -1,6 +1,5 @@
 @import "../Styling/Variable.css";
 
-/* Onboarding.css */
 :root{
   --onb-bg: var(--background-secondary);   
   --onb-card: var(--white);
@@ -34,6 +33,7 @@
 /* ROOT */
 .onb-root{
   position: relative;
+  z-index: 0;
   min-height: 100dvh;
   background: var(--onb-bg);
   color: var(--onb-text);
@@ -44,10 +44,11 @@
 
 .onb-skip{
   position: absolute; top: 12px; right: 12px;
+  z-index: 50;
   padding: 8px 12px; border-radius: 12px;
   background: var(--onb-card);
   border: 1px solid var(--onb-ring);
-  color: var(--onb-text);
+  color: var(--onb-muted);
   font-weight: var(--onb-w-semibold);
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
@@ -163,29 +164,22 @@
   .onb-text{ grid-column: 2; grid-row: 1; padding: 40px 48px; text-align: left; align-items: flex-start; }
 }
 
-
 /* GetStartedPage.css */
+
 .get-started {
-    display: flex;
-    flex-direction: column;
-    height: 100dvh; 
-    background: var(--background-secondary); 
-    color: var(--text-primary); 
+    display: grid;
+    grid-template-rows: 60% 40%;
+    height: 100dvh;
 }
 
 .image-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--white);
+    position: relative; overflow: hidden;
+    display: grid; place-items: center;
+    background: var(--onb-card);
 }
 
 .image-section img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    max-height: 70%;
+    width: 100%; height: 100%; display: block; object-fit: cover;
 }
 
 .button-section {
