@@ -3,12 +3,11 @@
 
   --text-primary: #222222;
   --text-secondary: #777777;
-  --text-on-color: #ffffff;
+  --white: #ffffff;
   --brand-color: #3b82f6;
   --brand-secondary: #173462;
-  --bg-primary: #ffffff;
   --bg-secondary: #f5f7fa;
-  --border-primary: #3b82f6;
+  --error: #ff0000;
 
   /* Font Families */
   --font-primary: "Roboto", sans-serif;
@@ -21,12 +20,13 @@
   --weight-semibold: 600;
 
   /* Font Sizes */
-  --text-body-sm: 12px;
-  --text-body-md: 14px;
-  --text-body-lg: 16px;
-  --text-body-xl: 18px;
+  --fontsize-sm: 12px;
+  --fontsize-md: 14px;
+  --fontsize-lg: 16px;
+  --fontsize-xl: 18px;
 
   /* Headings */
   --text-heading-md: 16px;
-  --text-heading-lg: 18px;
+  --text-heading-lg: 30px;
+  --border-radius: 5px;
 }
