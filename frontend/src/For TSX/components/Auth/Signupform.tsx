@@ -1,95 +1,7 @@
-// import React from "react";
-// import { FaArrowLeft, FaUserCircle } from "react-icons/fa";
-// import { FiLock, FiInfo } from "react-icons/fi";
-// import { IoIosArrowBack } from "react-icons/io";
-// import { Link } from "react-router-dom";
-
-// import styles from "./Signupform.module.css";
-// import InputField from "../ReusableField/InputField";
-// import DropdownField from "../ReusableField/Dropdownfield";
-// import DateInput from "../ReusableField/DateInput";
-// import Button from "../ReusableField/Button";
-// import TheFooter from "../ReusableField/TheFooter";
-// import SocialAuth from "../ReusableField/SocialAuth";
-
-// const Signupform = () => {
-//   return (
-//     <>
-//       <div className={styles.Signupconatiner}>
-//         <header className={styles.signuptop}>
-//           <IoIosArrowBack size={24} />
-//           <h1 className={styles.title}> Anonymous Thoughts 🌟</h1>
-//         </header>
-//         <p className={styles.subtitles}>
-//           Got something on your mind you need to get off anonymously? Create
-//           Your Account
-//         </p>
-//         <div>
-//           <form action="">
-//             <div className={styles.nameRow}>
-//               <InputField label="First Name" required />
-//               <InputField label="Last Name" required />
-//             </div>
-//             <InputField label="Email address" type="email" required />
-
-//             <DateInput label="Date of Birth" required />
-//             <DropdownField
-//               label="Gender"
-//               options={["Male", "Female", "Other"]}
-//               required
-//             />
-//             <DropdownField label="Country" api={true} required />
-
-//             <InputField label="Password" type="password" required />
-//             <InputField label="Confirm Password" type="password" required />
-//             <div className={styles.passwordHint}>
-//               <FiInfo className={styles.hintIcon} />
-//               <p className={styles.PasswordTextHint}>
-//                 Your password must be at least 8 characters long and include a
-//                 uppercase letter, a number, and a special character: !@#$
-//               </p>
-//             </div>
-//             <div className={styles.policyContainer}>
-//               <input
-//                 type="checkbox"
-//                 name="policy"
-//                 id="policy"
-//                 className={styles.PolicyBox}
-//               />
-//               <label htmlFor="policy" className={styles.policytext}>
-//                 By creating an account, you agree to
-//                 <span className={styles.span}>
-//                   {" "}
-//                   SafeSpace's Terms of Use
-//                 </span>{" "}
-//                 and
-//                 <span className={styles.span}> Privacy Policy</span>
-//               </label>
-//             </div>
-//             <Button text="Create Your Account " type="submit" />
-//           </form>
-//           <TheFooter />
-//           <SocialAuth />
-//           <div className={styles.buttomText}>
-//             <p>
-//               Already have an Account?
-//               <Link to="/signin">Sign in</Link>
-
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Signupform;
-
 // VALIDATE VERSION
 
-import React from "react";
-import { FaArrowLeft, FaUserCircle } from "react-icons/fa";
-import { FiLock, FiInfo } from "react-icons/fi";
+import { useState } from "react";
+import { FiInfo } from "react-icons/fi";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 
@@ -100,39 +12,62 @@ import DateInput from "../ReusableField/DateInput";
 import Button from "../ReusableField/Button";
 import TheFooter from "../ReusableField/TheFooter";
 import SocialAuth from "../ReusableField/SocialAuth";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../api/axiosInstance";
 
 // 👇🏽 React Hook Form import
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 
-type SignupFormInputs = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  dob: string;
-  gender: string;
-  country: string;
-  password: string;
-  confirmPassword: string;
-  policy: boolean;
-};
+// type SignupFormInputs = {
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   dob: string;
+//   gender: string;
+//   country: string;
+//   password: string;
+//   confirmPassword: string;
+//   policy: boolean;
+// };
 
 const Signupform = () => {
   // 👇🏽 Initialize the form
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit: SubmitHandler<any> = (data) => {
-    console.log("✅ Form submitted successfully:", data);
+  const navigate = useNavigate();
+
+  // HADLING SUBMIT
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    try {
+      console.log('submission successful', data)
+      setLoading(true);
+      const response = await axiosInstance.post("/signup", data);
+      console.log("✅ Signup successful:", response.data);
+      navigate("/verify-email", {
+        state: { email: data.email, username: data.username },
+      });
+    } catch (error: any) {
+      console.error("❌ Signup failed:", error.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const password = watch("password"); // 👈 watches the password field
 
   return (
     <>
       <div className={styles.Signupconatiner}>
         <header className={styles.signuptop}>
-          <IoIosArrowBack size={24} />
+        <IoIosArrowBack className={styles.backIcon} size={24} />
+
           <h1 className={styles.title}> Anonymous Thoughts 🌟</h1>
         </header>
         <p className={styles.subtitles}>
@@ -146,7 +81,7 @@ const Signupform = () => {
             <div className={styles.nameRow}>
               <InputField
                 label="First Name"
-                name="firstName"
+                name="firstname"
                 required
                 register={register}
               />
@@ -157,15 +92,30 @@ const Signupform = () => {
                 register={register}
               />
             </div>
-
             <InputField
-              label="Email address"
-              type="email"
-              name="email"
+              label="Anonymous username"
+              name="username"
               required
               register={register}
             />
-
+            <InputField
+              label="Email Address"
+              name="email"
+              type="email"
+              register={register}
+              required
+              error={errors.email}
+              validationRules={{
+                // required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Enter a valid email address",
+                },
+              }}
+            />
+            {errors.email && (
+              <p className={styles.errorText}>{errors.email.message}</p>
+            )}
             <DateInput
               label="Date of Birth"
               required
@@ -186,21 +136,58 @@ const Signupform = () => {
               register={register}
               name="country"
             />
+            <InputField
+              label="Phone Number"
+              type="tel"
+              name="phone"
+              register={register}
+              required
+              validationRules={{
+                pattern: {
+                  value: /^[0-9]{11}$/,
+                  message: "Please enter a valid 11-digit phone number",
+                },
+              }}
+            />
+            {errors.phone && (
+              <p className={styles.errorText}>{errors.phone.message}</p>
+            )}
 
             <InputField
               label="Password"
               type="password"
               name="password"
-              required
               register={register}
+              required
+              validationRules={{
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$]).{8,}$/,
+                  message:
+                    "Password must include uppercase, number, and special character (!@#$)",
+                },
+              }}
             />
+            {errors.password && (
+              <p className={styles.errorText}>{errors.password.message}</p>
+            )}
             <InputField
               label="Confirm Password"
               type="password"
               name="confirmPassword"
               required
-              register={register}
+              register={(name) =>
+                register(name, {
+                  validate: (value) =>
+                    value === password || "Passwords do not match",
+                })
+              }
             />
+            {/* Error message */}
+            {errors.confirmPassword && (
+              <p className={styles.errorText}>
+                {errors.confirmPassword.message}
+              </p>
+            )}
 
             <div className={styles.passwordHint}>
               <FiInfo className={styles.hintIcon} />
@@ -213,26 +200,31 @@ const Signupform = () => {
             <div className={styles.policyContainer}>
               <input
                 type="checkbox"
-                name="policy"
                 id="policy"
                 className={styles.PolicyBox}
                 {...register("policy", { required: true })}
               />
               <label htmlFor="policy" className={styles.policytext}>
                 By creating an account, you agree to
-                <span className={styles.span}>
+                <Link to={""} className={styles.span}>
                   {" "}
                   SafeSpace's Terms of Use
-                </span>{" "}
+                </Link>{" "}
                 and
-                <span className={styles.span}> Privacy Policy</span>
+                <Link to={""} className={styles.span}>
+                  {" "}
+                  Privacy Policy
+                </Link>
               </label>
               {errors.policy && (
                 <p className={styles.error}>You must agree before continuing</p>
               )}
             </div>
 
-            <Button text="Create Your Account " type="submit" />
+            <Button
+              text={loading ? "Creating Account..." : "Create Your Account"}
+              type="submit"
+            />
           </form>
 
           <TheFooter />

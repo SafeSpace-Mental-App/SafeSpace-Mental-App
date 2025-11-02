@@ -1,20 +1,25 @@
 import { useState, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import styles from "./DropdownField.module.css";
+import type { UseFormRegister, FieldValues } from "react-hook-form";
 
-interface DropdownFieldProps {
+interface DropdownFieldProps<T extends FieldValues> {
   label: string;
+  name: keyof T;
   options?: string[];
   required?: boolean;
   api?: boolean;
+  register: UseFormRegister<T>;
 }
 
-export default function DropdownField({
+export default function DropdownField<T extends FieldValues>({
   label,
+  name,
   options = [],
   required,
   api = false,
-}: DropdownFieldProps) {
+  register,
+}: DropdownFieldProps<T>) {
   const [apiOptions, setApiOptions] = useState<string[]>([]);
   const [selected, setSelected] = useState(false);
 
@@ -42,6 +47,7 @@ export default function DropdownField({
   return (
     <div className={styles.dropdownWrapper}>
       <select
+        {...register(name as any, { required })}
         className={styles.select}
         required={required}
         onChange={(e) => setSelected(e.target.value !== "")}

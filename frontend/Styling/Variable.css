@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
 :root {
   /* colors */
 
@@ -8,10 +11,13 @@
   --brand-secondary: #173462;
   --bg-secondary: #f5f7fa;
   --error: #ff0000;
+  --darkest-blue: #112749;
+  --Neutral:#24231E;
 
   /* Font Families */
   --font-primary: "Roboto", sans-serif;
   --font-brand: "Varela Round", sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
 
   /* Font Weight */
   --weight-light: 300;

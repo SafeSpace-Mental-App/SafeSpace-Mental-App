@@ -1,0 +1,82 @@
+.Signupconatiner {
+  width: 100%;
+  height: 100vh;
+
+  max-width: 400px; /* keeps layout centered on larger screens */
+  margin: 0 auto;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-brand);
+  /* font-size: var(--text-heading-lg); */
+  font-size: 25px;
+  margin-left: 25px;
+  color: var(--brand-color);
+  text-align: center;
+}
+.subtitles {
+  width: 100%;
+  display: block;
+  color: var(--text-secondary);
+  font-size: var(--fontsize-lg);
+  font-family: var(--font-primary);
+  justify-content: center;
+  margin: -1rem -0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+.buttomText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.2rem;
+  font-size: var(--fontsize-md);
+}
+
+.buttomText a {
+  color: var(--brand-color);
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+.buttomText > p {
+  color: var(--text-secondary);
+}
+.FogetPassword {
+  display: inline-block;
+  align-items: flex-end;
+  /* border: 2px solid red; */
+  color: var(--brand-color);
+  margin-left: 16rem;
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+
+.errorText {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+.backIcon {
+  position: absolute;
+  top: 0;
+  margin-top: 9rem;
+  margin-left: -20rem;
+
+  cursor: pointer;
+  margin-right: 10px; /* spacing */
+  transition: transform 0.2s ease;
+}
+
+.backIcon:hover {
+  transform: scale(1.1);
+}
