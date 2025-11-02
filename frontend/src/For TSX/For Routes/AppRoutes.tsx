@@ -4,9 +4,10 @@ import JournalPage from "../For pages/JournalPage";
 import MoodPage from "../For pages/MoodPage";
 import SupportPage from "../For pages/SupportPage";
 import Signupform from "../components/Auth/Signupform";
-import Signinform from "../components/Auth/Signinform";
+
 import VerifyEmail from "../components/Auth/VerifyEmail";
 import CongratulationPage from "../components/Auth/CongratulationPage";
+import AuthForm from "../components/Auth/AuthForm";
 
 const AppRoutes = () => {
   return (
@@ -16,9 +17,25 @@ const AppRoutes = () => {
       <Route path="/mood" element={<MoodPage />} />
       <Route path="/support" element={<SupportPage />} />
       <Route path="/signup" element={<Signupform />} />
-      <Route path="/signin" element={<Signinform />} />
-      <Route path="/verify-email" element={<VerifyEmail />} />
-      <Route path="/congratulationspage" element={<CongratulationPage />} />
+      {/* <Route path="/signin" element={<Signinform />} /> */}
+      <Route
+        path="/verify-email"
+        element={<VerifyEmail mode="verification" />}
+      />
+      <Route path="/verify-emailreset" element={<VerifyEmail mode="reset" />} />
+      <Route
+        path="/verificationSuccess"
+        element={<CongratulationPage mode="verification" />}
+      />
+      <Route
+        path="/resetSuccess"
+        element={<CongratulationPage mode="reset" />}
+      />
+      {/* ✅ Signin */}
+      <Route path="/signin" element={<AuthForm mode="signin" />} />
+
+      {/* ✅ Forgot Password */}
+      <Route path="/forgot" element={<AuthForm mode="forgot" />} />
     </Routes>
   );
 };

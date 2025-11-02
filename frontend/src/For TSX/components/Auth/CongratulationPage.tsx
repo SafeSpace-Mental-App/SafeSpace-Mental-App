@@ -1,10 +1,15 @@
 import Button from "../ReusableField/Button";
 import styles from "./CongtstulationPage.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
-const CongratulationPage = () => {
+
+interface CongratProps {
+  mode: "verification" | "reset";
+}
+
+const CongratulationPage = ({ mode }: CongratProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const username = location.state?.username || 'user';
+  const username = location.state?.username || "user";
 
   return (
     <>
@@ -18,19 +23,27 @@ const CongratulationPage = () => {
             />
           </div>
           <h2 className={styles.congratHeading}>
-            Congratulations, {username}! Verification Successful 🎉
+            {mode === "verification"
+              ? `Congratulations, ${username}! Verification Successful 🎉`
+              : `Congratulations, ${username}! Password Reset Successful 🎉`}
           </h2>
           <p className={styles.congratMessage}>
-            Your account has been created successfully. Welcome to your
-            SafeSpace - <br />
-            where your thoughts stay private and your data stays secure.
+            {mode === "verification"
+              ? " Your account has been created successfully. Welcome to yourSafeSpace -  \nwhere your thoughts stay private and your data stays secure."
+              : "Your new password has been updated successfully.\nWelcome back to your SafeSpace - where your thoughts stay private andyour data stays secure."}
           </p>
           <div>
             <Button
               className={styles.congratButton}
               text="Continue to Dashboard"
               type="button"
-              onClick={() => navigate("/signin")}
+              onClick={() => {
+                if (mode === "verification") {
+                  navigate("/signin");
+                } else {
+                  navigate("/feed");
+                }
+              }}
             />
           </div>
         </div>

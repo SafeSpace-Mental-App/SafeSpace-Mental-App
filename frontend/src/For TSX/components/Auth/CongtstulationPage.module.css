@@ -53,6 +53,7 @@
   /* border: 2px solid green; */
   padding: 0.5rem;
   margin: -10px;
+    white-space: pre-line;
 }
 .congratButton{
     width: 350px;

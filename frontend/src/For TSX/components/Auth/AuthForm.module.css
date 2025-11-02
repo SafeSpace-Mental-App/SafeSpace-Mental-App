@@ -80,3 +80,10 @@
 .backIcon:hover {
   transform: scale(1.1);
 }
+.Signupconatiner form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: -50px;
+ 
+}

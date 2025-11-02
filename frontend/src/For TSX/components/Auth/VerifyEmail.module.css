@@ -19,6 +19,8 @@
 }
 .textHeading {
   align-items: center;
+  /* border: 2px solid; */
+  text-align: center;
 }
 .subtitles {
   width: 100%;
@@ -27,9 +29,10 @@
   font-size: var(--fontsize-md);
   font-family: var(--font-primary);
   justify-content: center;
-  margin: -1rem -0.5rem;
+  margin: -0.5rem -0.5rem;
   padding: 0.5rem;
   text-align: center;
+  /* border: 2px solid red; */
 }
 
 .codeBox {

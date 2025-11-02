@@ -6,8 +6,10 @@ import styles from "./VerifyEmail.module.css";
 import Button from "../ReusableField/Button";
 import { useEffect, useState, useRef } from "react";
 import { IoMdClose } from "react-icons/io";
-
-const VerifyEmail = () => {
+interface verifyProps {
+  mode: "verification" | "reset";
+}
+const VerifyEmail = ({ mode }: verifyProps) => {
   const [seconds, setSeconds] = useState(60);
   const [canResend, setCanResend] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -85,14 +87,17 @@ const VerifyEmail = () => {
 
   return (
     <>
-      <div className={styles.closeIcon}>
-        <IoMdClose size={28} onClick={() => navigate("/signup")} />
-      </div>
-
       <div className={styles.Signupconatiner}>
+        <div className={styles.closeIcon}>
+          <IoMdClose size={28} onClick={() => navigate("/signup")} />
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.headingContainer}>
-            <h1 className={styles.textHeading}>Verify Your Account</h1>
+            <h1 className={styles.textHeading}>
+              {mode === "verification"
+                ? "Verify Your Account"
+                : "Check your email for a verification code"}
+            </h1>
           </div>
 
           <div className={styles.subtitles}>

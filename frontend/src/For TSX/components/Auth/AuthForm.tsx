@@ -1,0 +1,167 @@
+import React from "react";
+import { IoIosArrowBack } from "react-icons/io";
+import styles from "./AuthForm.module.css";
+import InputField from "../ReusableField/InputField";
+import Button from "../ReusableField/Button";
+import TheFooter from "../ReusableField/TheFooter";
+import SocialAuth from "../ReusableField/SocialAuth";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../../../api/axiosInstance";
+import { useForm } from "react-hook-form";
+import type { SubmitHandler } from "react-hook-form";
+
+interface AuthFormProps {
+  mode: "signin" | "forgot";
+}
+
+const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const navigate = useNavigate();
+
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    try {
+      if (mode === "signin") {
+        const response = await axiosInstance.post("/signin", {
+          phone: data.phone,
+          password: data.password,
+        });
+        console.log("✅ Login successful:", response.data);
+        navigate("/congratulations");
+      } else {
+        // Forgot password logic
+        const response = await axiosInstance.post("/forgot-password", {
+          email: data.email,
+        });
+        console.log("📩 Reset link sent:", response.data);
+        navigate("/verify-reset");
+      }
+    } catch (error: any) {
+      console.error(
+        `❌ ${mode === "signin" ? "Login" : "Password reset"} failed:`,
+        error.response?.data?.message || error.message
+      );
+    }
+  };
+  const password = watch("password");
+  return (
+    <>
+      <div className={styles.Signupconatiner}>
+        <IoIosArrowBack
+          className={styles.backIcon}
+          size={24}
+          onClick={() => navigate(-1)} // goes back one page
+          style={{ cursor: "pointer" }}
+        />
+
+        <div>
+          <h1 className={styles.title}>
+            {mode === "signin" ? "Welcome back! 😊" : "Create a New Password"}
+          </h1>
+          <p className={styles.subtitles}>
+            {mode === "signin"
+              ? "Let's get back into your safe space where you can breathe, reflect, and just be"
+              : "Let's get you back safely"}
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {mode === "signin" ? (
+            <>
+              <InputField
+                label="Phone Number"
+                type="tel"
+                name="phone"
+                register={register}
+                required
+                validationRules={{
+                  pattern: {
+                    value: /^[0-9]{11}$/,
+                    message: "Please enter a valid 11-digit phone number",
+                  },
+                }}
+              />
+              {errors.phone && (
+                <p className={styles.errorText}>{errors.phone.message}</p>
+              )}
+
+              <InputField
+                label="Password"
+                type="password"
+                name="password"
+                register={register}
+                required
+                validationRules={{
+                  pattern: {
+                    value: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$]).{8,}$/,
+                    message:
+                      "Password must include uppercase, number, and special character (!@#$)",
+                  },
+                }}
+              />
+              {errors.password && (
+                <p className={styles.errorText}>{errors.password.message}</p>
+              )}
+
+              <p>
+                <Link to="/forgot" className={styles.FogetPassword}>
+                  Forget password?
+                </Link>
+              </p>
+              <Button text="Sign in" type="submit" />
+              <div className={styles.buttomText}>
+                <p>
+                  Don’t have an Account? <Link to="/signup">Sign Up</Link>
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              <InputField
+                label="Password"
+                type="password"
+                name="password"
+                register={register}
+                required
+                validationRules={{
+                  pattern: {
+                    value: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$]).{8,}$/,
+                    message:
+                      "Password must include uppercase, number, and special character (!@#$)",
+                  },
+                }}
+              />
+              {errors.password && (
+                <p className={styles.errorText}>{errors.password.message}</p>
+              )}
+              <InputField
+                label="Confirm Password"
+                type="password"
+                name="confirmPassword"
+                required
+                register={(name) =>
+                  register(name, {
+                    validate: (value) =>
+                      value === password || "Passwords do not match",
+                  })
+                }
+              />
+
+              <Button text="Create New Password" type="submit" />
+            </>
+          )}
+
+          <TheFooter />
+          <SocialAuth />
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default AuthForm;
