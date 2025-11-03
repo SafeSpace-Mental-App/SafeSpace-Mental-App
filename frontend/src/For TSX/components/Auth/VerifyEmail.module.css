@@ -55,7 +55,7 @@
   background-color: pink;
   text-align: center;
   color: var(--text-primary);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.3s, transform 0.3s;
 }
 
 .closeIcon {
@@ -72,11 +72,12 @@
   color: var(--error);
 }
 
-.inputDesign:focus {
+/* .inputDesign:focus {
   border: 2px solid var(--brand-color);
-}
+} */
 .inputError {
-  border: 2px solid red;
+  border: 2px solid red !important;
+  animation: shake 0.3s ease-in-out;
 }
 
 .inputDesign:focus {
@@ -126,4 +127,11 @@ input:-webkit-autofill {
 .closeIcon:hover {
   transform: scale(1.1);
   color: var(--error);
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
 }
