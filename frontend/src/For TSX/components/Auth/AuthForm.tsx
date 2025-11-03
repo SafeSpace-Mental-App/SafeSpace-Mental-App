@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import styles from "./AuthForm.module.css";
 import InputField from "../ReusableField/InputField";
@@ -23,6 +23,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   } = useForm();
 
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false); // 👈 toggle for password visibility
 
   const onSubmit: SubmitHandler<any> = async (data) => {
     try {
@@ -48,14 +49,16 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
       );
     }
   };
+
   const password = watch("password");
+
   return (
     <>
       <div className={styles.Signupconatiner}>
         <IoIosArrowBack
           className={styles.backIcon}
           size={24}
-          onClick={() => navigate(-1)} // goes back one page
+          onClick={() => navigate(-1)}
           style={{ cursor: "pointer" }}
         />
 
@@ -92,7 +95,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
 
               <InputField
                 label="Password"
-                type="password"
+                type={showPassword ? "text" : "password"} // 👈 toggle visibility
                 name="password"
                 register={register}
                 required
@@ -108,11 +111,21 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
                 <p className={styles.errorText}>{errors.password.message}</p>
               )}
 
+              {/* ✅ Show Password toggle */}
+              <label className={styles.showPasswordLabel}>
+                <input
+                  type="checkbox"
+                  onChange={() => setShowPassword(!showPassword)}
+                />{" "}
+                Show Password
+              </label>
+
               <p>
                 <Link to="/forgot" className={styles.FogetPassword}>
                   Forget password?
                 </Link>
               </p>
+
               <Button text="Sign in" type="submit" />
               <div className={styles.buttomText}>
                 <p>
@@ -124,7 +137,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
             <>
               <InputField
                 label="Password"
-                type="password"
+                type={showPassword ? "text" : "password"} // 👈 toggle for new password too
                 name="password"
                 register={register}
                 required
@@ -139,9 +152,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
               {errors.password && (
                 <p className={styles.errorText}>{errors.password.message}</p>
               )}
+
               <InputField
                 label="Confirm Password"
-                type="password"
+                type={showPassword ? "text" : "password"} // 👈 toggle both
                 name="confirmPassword"
                 required
                 register={(name) =>
@@ -151,6 +165,15 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
                   })
                 }
               />
+
+              {/* ✅ Show Password toggle */}
+              <label className={styles.showPasswordLabel}>
+                <input
+                  type="checkbox"
+                  onChange={() => setShowPassword(!showPassword)}
+                />{" "}
+                Show Password
+              </label>
 
               <Button text="Create New Password" type="submit" />
             </>
