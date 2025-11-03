@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export default function GetStartedPage() {
     return(
         <div className="get-started">
@@ -11,8 +12,8 @@ export default function GetStartedPage() {
                 <h1>Your Mental Health Simplified</h1>
                 <p>All your mental problems solution</p>
                 <div className="buttons">
-                    <Link to="/register"><button className="primary-btn">Sign Up</button></Link>
-                    <button className="secondary-btn">Login</button>
+                    <Link to="/sign-up"><button className="primary-btn">Sign Up</button></Link>
+                    <Link to ='/sign-in' className="secondary-btn">Login</Link>
                 </div>
             </div>
         </div>

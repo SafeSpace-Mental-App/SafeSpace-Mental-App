@@ -1,21 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
-import TailwindPratice from "./For TSX/ForTesting";
+
 import "../Styling/Variable.css";
+import "./App.css";
+import AppRoutes from "./For TSX/For Routes/AppRoutes";
 function App() {
   return (
     <>
-      <TailwindPratice />
-      <BrowserRouter></BrowserRouter>
-      <p
-        style={{
-          backgroundColor: "var(--text-secondary)",
-          fontFamily: "var(--font-primary)",
-          fontWeight: "var(--weight-semibold)",
-          fontSize:'var(--text-body-xl)'
-        }}
-      >
-        Hi
-      </p>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
     </>
   );
 }
