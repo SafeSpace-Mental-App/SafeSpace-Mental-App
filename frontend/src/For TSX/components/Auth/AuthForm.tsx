@@ -23,7 +23,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   } = useForm();
 
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false); // 👈 toggle for password visibility
+  const [showPassword, setShowPassword] = useState(false); //  toggle for password visibility
 
   const onSubmit: SubmitHandler<any> = async (data) => {
     try {
@@ -94,6 +94,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
               )}
 
               <InputField
+                key={showPassword ? "text" : "password"}
                 label="Password"
                 type={showPassword ? "text" : "password"} // 👈 toggle visibility
                 name="password"
@@ -111,14 +112,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
                 <p className={styles.errorText}>{errors.password.message}</p>
               )}
 
-              {/* ✅ Show Password toggle */}
+              {/* ✅ Show Password toggle
               <label className={styles.showPasswordLabel}>
                 <input
                   type="checkbox"
                   onChange={() => setShowPassword(!showPassword)}
                 />{" "}
                 Show Password
-              </label>
+              </label> */}
 
               <p>
                 <Link to="/forgot" className={styles.FogetPassword}>
