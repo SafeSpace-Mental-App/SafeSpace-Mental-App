@@ -12,8 +12,8 @@ export default function GetStartedPage() {
                 <h1>Your Mental Health Simplified</h1>
                 <p>All your mental problems solution</p>
                 <div className="buttons">
-                    <Link to="/sign-up"><button className="primary-btn">Sign Up</button></Link>
-                    <Link to ='/sign-in' className="secondary-btn">Login</Link>
+                    <Link to="/signup"><button className="primary-btn">Sign Up</button></Link>
+                    <Link to ='/signin' className="secondary-btn">Login</Link>
                 </div>
             </div>
         </div>
