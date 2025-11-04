@@ -1,0 +1,265 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.Signupconatiner {
+  width: 100%;
+  max-width: 400px; /* keeps layout centered on larger screens */
+  margin: 0 auto;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  /* border: 2px solid black; */
+}
+
+.signuptop {
+  display: flex;
+  width: 100%;
+  left: 0;
+  align-items: center;
+  top: 0;
+}
+.nameRow {
+  display: flex;
+}
+
+.nameRow > div {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.nameRow > div:last-child {
+  margin-left: -5px;
+}
+
+.title {
+  font-family: var(--font-brand);
+  /* font-size: var(--text-heading-lg); */
+  font-size: 25px;
+  margin-left: 25px;
+  color: var(--brand-color);
+  text-align: center;
+}
+.subtitles {
+  width: 100%;
+  display: block;
+  color: var(--text-secondary);
+  font-size: var(--fontsize-lg);
+  font-family: var(--font-primary);
+  justify-content: center;
+  margin: -1rem -0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+.passwordHint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 0.4rem; */
+  color: var(--text-secondary);
+  font-size: var(--fontsize-sm);
+  /* border: 2px solid red; */
+  margin-top: -15px;
+  max-width: 100%;
+}
+
+.PasswordTextHint {
+  color: var(--text-secondary);
+  font-size: var(--fontsize-sm);
+  font-family: var(--font-primary);
+  text-align: justify;
+  margin-left: -15px;
+  line-height: 0.9rem;
+}
+.hintIcon {
+  color: var(--text-primary);
+  margin-top: -15px;
+  margin-right: 20px;
+  margin-left: 18px;
+  font-size: 25px;
+}
+
+.policyContainer {
+  /* border: 2px solid brown; */
+  width: 19rem;
+  padding: 0 1rem;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: var(--fontsize-sm);
+  margin-top: -10px;
+  justify-content: space-between;
+}
+.PolicyBox {
+}
+.policytext {
+  color: var(--text-secondary);
+  font-size: var(--fontsize-sm);
+  font-family: var(--font-primary);
+  text-align: start;
+  margin-left: 0.2rem;
+}
+
+.span {
+  color: var(--brand-color);
+  font-size: var(--fontsize-sm);
+  text-decoration: underline;
+}
+
+.buttomText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.2rem;
+  font-size: var(--fontsize-md);
+}
+
+.buttomText a {
+  color: var(--brand-color);
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+.buttomText > p {
+  color: var(--text-secondary);
+}
+.errorText {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+/* ✅ MEDIA QUERIES FOR SMALL PHONES (up to iPhone 12 Pro Max width) */
+@media (max-width: 430px) {
+  .Signupconatiner {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.8rem;
+    margin: 0 auto;
+    border: none;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .signuptop {
+    justify-content: space-between;
+  }
+
+  .title {
+    font-family: var(--font-brand);
+    /* font-size: var(--text-heading-lg); */
+    font-size: 25px;
+    margin-left: 25px;
+    color: var(--brand-color);
+    text-align: center;
+  }
+  .subtitles {
+    font-size: var(--fontsize-md);
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+    text-align: center;
+    line-height: 1.3rem;
+  }
+
+  /* ✅ Keep first & last name in one row but shrink them */
+  .nameRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .nameRow > div {
+    flex: 1 1 48%;
+    min-width: 0;
+  }
+
+  .policyContainer {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0.8rem 0;
+    font-size: var(--fontsize-xs);
+    line-height: 1.2rem;
+    text-align: left;
+    word-wrap: break-word;
+  }
+  .passwordHint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 0.4rem; */
+    color: var(--text-secondary);
+    font-size: var(--fontsize-sm);
+    /* border: 2px solid red; */
+    margin-top: -15px;
+    max-width: 100%;
+  }
+
+  .PasswordTextHint {
+    color: var(--text-secondary);
+    font-size: var(--fontsize-sm);
+    font-family: var(--font-primary);
+    text-align: justify;
+    margin-left: -15px;
+    line-height: 0.9rem;
+  }
+  .hintIcon {
+    color: var(--text-primary);
+    margin-top: -15px;
+    margin-right: 20px;
+    margin-left: 18px;
+    font-size: 25px;
+  }
+
+  .policyContainer {
+    /* border: 2px solid brown; */
+    width: 19rem;
+    padding: 0 1rem;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: var(--fontsize-sm);
+    margin-top: -10px;
+    justify-content: space-between;
+  }
+  .PolicyBox {
+  }
+  .policytext {
+    color: var(--text-secondary);
+    font-size: var(--fontsize-sm);
+    font-family: var(--font-primary);
+    text-align: start;
+    margin-left: 0.2rem;
+  }
+
+  .span {
+    color: var(--brand-color);
+    font-size: var(--fontsize-sm);
+    text-decoration: underline;
+  }
+
+  .buttomText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0.2rem;
+    font-size: var(--fontsize-md);
+  }
+
+  .buttomText a {
+    color: var(--brand-color);
+    margin-left: 5px;
+    text-decoration: none;
+    font-weight: var(--weight-medium);
+  }
+  .buttomText > p {
+    color: var(--text-secondary);
+  }
+  .errorText {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: -5px;
+    margin-bottom: 10px;
+  }
+}

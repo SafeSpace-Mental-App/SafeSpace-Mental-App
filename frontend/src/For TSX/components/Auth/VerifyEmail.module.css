@@ -1,0 +1,137 @@
+.Signupconatiner {
+  width: 100%;
+  height: 100vh;
+
+  max-width: 400px; /* keeps layout centered on larger screens */
+  margin: 0 auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.headingContainer {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+.textHeading {
+  align-items: center;
+  /* border: 2px solid; */
+  text-align: center;
+}
+.subtitles {
+  width: 100%;
+  display: block;
+  color: var(--text-secondary);
+  font-size: var(--fontsize-md);
+  font-family: var(--font-primary);
+  justify-content: center;
+  margin: -0.5rem -0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  /* border: 2px solid red; */
+}
+
+.codeBox {
+  display: flex;
+  width: 100%;
+  height: auto;
+
+  justify-content: center;
+  align-content: center;
+}
+
+.inputDesign {
+  width: 50px;
+  height: 50px;
+  margin: 2px 3px;
+  border-radius: 30%;
+  border: 1px solid var(--text-secondary) !important;
+  font-size: 30px;
+  outline: none;
+  background-color: pink;
+  text-align: center;
+  color: var(--text-primary);
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.closeIcon:hover {
+  transform: scale(1.1);
+  color: var(--error);
+}
+
+/* .inputDesign:focus {
+  border: 2px solid var(--brand-color);
+} */
+.inputError {
+  border: 2px solid red !important;
+  animation: shake 0.3s ease-in-out;
+}
+
+.inputDesign:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: var(--brand-color) !important;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px var(--bg-secondary) inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+}
+
+.resendBtn {
+  background: none;
+  border: none;
+  color: var(--brand-color);
+  font-weight: var(--weight-medium);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.resendBtn:hover {
+  opacity: 0.8;
+}
+.resendText {
+  width: 100%;
+  display: block;
+  color: var(--text-secondary);
+  font-size: var(--fontsize-md);
+  font-family: var(--font-primary);
+  justify-content: center;
+  margin: -0.5rem -0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+.closeIcon {
+  position: absolute;
+  top: 10rem;
+  right: 40px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.closeIcon:hover {
+  transform: scale(1.1);
+  color: var(--error);
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
+}

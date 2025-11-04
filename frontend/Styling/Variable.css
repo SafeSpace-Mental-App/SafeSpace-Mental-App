@@ -1,16 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
 :root {
   /* colors */
+
   --text-primary: #222222;
   --text-secondary: #777777;
   --white: #ffffff;
-  --brand-color: #da42f3;
-  --secondary-brand-color: #4a1c12;
-  --background-secondary: #f5f7fa;
-  --border-primary: #ae34c2;
+  --brand-color: #3b82f6;
+  --brand-secondary: #173462;
+  --bg-secondary: #f5f7fa;
+  --error: #ff0000;
+  --darkest-blue: #112749;
+  --Neutral:#24231E;
 
   /* Font Families */
   --font-primary: "Roboto", sans-serif;
   --font-brand: "Varela Round", sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
 
   /* Font Weight */
   --weight-light: 300;
@@ -19,12 +26,13 @@
   --weight-semibold: 600;
 
   /* Font Sizes */
-  --text-body-sm: 12px;
-  --text-body-md: 14px;
-  --text-body-lg: 16px;
-  --text-body-xl: 18px;
+  --fontsize-sm: 12px;
+  --fontsize-md: 14px;
+  --fontsize-lg: 16px;
+  --fontsize-xl: 18px;
 
   /* Headings */
   --text-heading-md: 16px;
-  --text-heading-lg: 18px;
+  --text-heading-lg: 30px;
+  --border-radius: 5px;
 }
