@@ -28,7 +28,11 @@
   --onb-ring: rgba(0, 0, 0, 0.08);
 }
 
-* {
+/* * {
+  box-sizing: border-box;
+} */
+
+.onboarding-wrapper {
   box-sizing: border-box;
 }
 
@@ -276,6 +280,7 @@
 
 .primary-btn,
 .secondary-btn {
+  box-sizing: border-box;
   font-family: var(--font-primary);
   font-weight: var(--weight-medium);
   padding: 14px 30px;
@@ -301,6 +306,7 @@
 }
 
 .secondary-btn {
+ 
   background: var(--white);
   color: var(--brand-color);
   border: 2px solid var(--brand-color);
@@ -309,4 +315,7 @@
 .secondary-btn:hover {
   background-color: var(--brand-color);
   color: var(--white);
+}
+.onb-dots{
+  box-sizing: border-box;
 }

@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../Onboarding.css";
+import "../../App.css";
 
 export default function Onboarding() {
   const slides = useMemo(
@@ -34,23 +34,12 @@ export default function Onboarding() {
   const last = index === total - 1;
   const nav = useNavigate();
 
-  // Keyboard navigation
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === "ArrowRight") setIndex((i) => Math.min(i + 1, total - 1));
-      if (e.key === "ArrowLeft") setIndex((i) => Math.max(i - 1, 0));
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [total]);
-
-  // Touch swipe
   const touchStartX = useRef(null);
   const onTouchStart = (e) => (touchStartX.current = e.touches[0].clientX);
   const onTouchEnd = (e) => {
     if (touchStartX.current == null) return;
     const dx = e.changedTouches[0].clientX - touchStartX.current;
-    const threshold = 40; // swipe sensitivity
+    const threshold = 40;
     if (dx < -threshold) setIndex((i) => Math.min(i + 1, total - 1));
     if (dx > threshold) setIndex((i) => Math.max(i - 1, 0));
     touchStartX.current = null;
@@ -60,102 +49,75 @@ export default function Onboarding() {
   const gotoPrev = () => setIndex((i) => Math.max(i - 1, 0));
   const skip = () => setIndex(total - 1);
 
-  // progress value 0..1
   const progress = (index + 1) / total;
-
   const slide = slides[index];
 
   return (
-    <div
-      className="onb-root"
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
-    >
-      {/* Skip (hidden on last screen) */}
-      {!last && (
-        <button
-          className="onb-skip"
-          onClick={skip}
-          aria-label="Skip onboarding"
-        >
-          Skip
-        </button>
-      )}
+    <div className="onboarding-wrapper">
+      <div
+        className="onb-root"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
+        {!last && (
+          <button className="onb-skip" onClick={skip}>
+            Skip
+          </button>
+        )}
 
-      {/* Image (60%) + Text (40%) */}
-      <div className="onb-layout">
-        <div className="onb-image">
-          <img src={slide.img} alt={slide.title} />
+        <div className="onb-layout">
+          <div className="onb-image">
+            <img src={slide.img} alt={slide.title} />
+          </div>
+
+          <div className="onb-text">
+            <h1>{slide.title}</h1>
+            <p>{slide.text}</p>
+
+            <div className="onb-progress">
+              <div
+                className="onb-progress-fill"
+                style={{ width: `${progress * 100}%` }}
+              />
+            </div>
+
+            <div className="onb-cta">
+              {!last ? (
+                <button className="onb-primary" onClick={gotoNext}>
+                  Next
+                </button>
+              ) : (
+                <Link to="/get-started" className="onb-primary onb-link-btn">
+                  Get Started
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
 
-        <div className="onb-text">
-          <h1>{slide.title}</h1>
-          <p>{slide.text}</p>
+        {index > 0 && (
+          <button className="onb-nav onb-left" onClick={gotoPrev}>
+            <svg width="22" height="22" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+        )}
+        {!last && (
+          <button className="onb-nav onb-right" onClick={gotoNext}>
+            <svg width="22" height="22" viewBox="0 0 24 24">
+              <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+            </svg>
+          </button>
+        )}
 
-          {/* Progress bar */}
-          <div
-            className="onb-progress"
-            aria-label="progress"
-            role="progressbar"
-            aria-valuenow={Math.round(progress * 100)}
-            aria-valuemin={0}
-            aria-valuemax={100}
-          >
-            <div
-              className="onb-progress-fill"
-              style={{ width: `${progress * 100}%` }}
+        <div className="onb-dots">
+          {slides.map((_, i) => (
+            <span
+              key={i}
+              className={`onb-dot ${i <= index ? "is-active" : ""}`}
             />
-          </div>
-
-          {/* CTA row */}
-          <div className="onb-cta">
-            {!last ? (
-              <button className="onb-primary" onClick={gotoNext}>
-                Next
-              </button>
-            ) : (
-              <Link to="/get-started" className="onb-primary onb-link-btn">
-                Get Started
-              </Link>
-            )}
-          </div>
+          ))}
         </div>
-      </div>
-
-      {/* Left/Right arrow buttons (hide left on first, hide right on last) */}
-      {index > 0 && (
-        <button
-          className="onb-nav onb-left"
-          onClick={gotoPrev}
-          aria-label="Previous"
-        >
-          {/* left chevron svg */}
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-          </svg>
-        </button>
-      )}
-      {!last && (
-        <button
-          className="onb-nav onb-right"
-          onClick={gotoNext}
-          aria-label="Next"
-        >
-          {/* right chevron svg */}
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-          </svg>
-        </button>
-      )}
-
-      {/* Segmented dots (optional + modern look) */}
-      <div className="onb-dots" aria-hidden="true">
-        {slides.map((_, i) => (
-          <span
-            key={i}
-            className={`onb-dot ${i <= index ? "is-active" : ""}`}
-          />
-        ))}
       </div>
     </div>
   );
