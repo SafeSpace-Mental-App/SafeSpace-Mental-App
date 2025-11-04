@@ -25,30 +25,35 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false); //  toggle for password visibility
 
-  const onSubmit: SubmitHandler<any> = async (data) => {
-    try {
-      if (mode === "signin") {
-        const response = await axiosInstance.post("/signin", {
-          phone: data.phone,
-          password: data.password,
-        });
-        console.log("✅ Login successful:", response.data);
-        navigate("/congratulations");
-      } else {
-        // Forgot password logic
-        const response = await axiosInstance.post("/forgot-password", {
-          email: data.email,
-        });
-        console.log("📩 Reset link sent:", response.data);
-        navigate("/verify-reset");
-      }
-    } catch (error: any) {
-      console.error(
-        `❌ ${mode === "signin" ? "Login" : "Password reset"} failed:`,
-        error.response?.data?.message || error.message
-      );
+const onSubmit: SubmitHandler<any> = async (data) => {
+  try {
+    if (mode === "signin") {
+      //  Correct endpoint for backend
+      const response = await axiosInstance.post("/api/auth/login", {
+        phone: data.phone,
+        password: data.password,
+      });
+      console.log("✅ Login successful:", response.data);
+
+      navigate("/congratulations");
+    } else {
+      //  Forgot password endpoint
+      const response = await axiosInstance.post("/api/auth/forgot-password", {
+        email: data.email,
+      });
+      console.log("📩 Reset link sent:", response.data);
+
+      // Pass email along to the next page
+      navigate("/forgotMessagepage", { state: { email: data.email } });
     }
-  };
+  } catch (error: any) {
+    console.error(
+      `❌ ${mode === "signin" ? "Login" : "Password reset"} failed:`,
+      error.response?.data?.message || error.message
+    );
+  }
+};
+
 
   const password = watch("password");
 
@@ -122,7 +127,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
               </label> */}
 
               <p>
-                <Link to="/forgot" className={styles.FogetPassword}>
+                <Link
+                  to="/forgotMessagepage"
+                  state={{ email: watch("email") || "user@example.com" }}
+                  className={styles.FogetPassword}
+                >
                   Forget password?
                 </Link>
               </p>

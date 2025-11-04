@@ -46,9 +46,10 @@ const Signupform = () => {
 
   const onSubmit: SubmitHandler<any> = async (data) => {
     try {
-      console.log('submission successful', data)
+      console.log("submission successful", data);
       setLoading(true);
-      const response = await axiosInstance.post("/signup", data);
+      const response = await axiosInstance.post("/api/auth/register", data);
+
       console.log("✅ Signup successful:", response.data);
       navigate("/verify-email", {
         state: { email: data.email, username: data.username },
@@ -66,7 +67,12 @@ const Signupform = () => {
     <>
       <div className={styles.Signupconatiner}>
         <header className={styles.signuptop}>
-        <IoIosArrowBack className={styles.backIcon} size={24} />
+          <IoIosArrowBack
+            className={styles.backIcon}
+            size={24}
+            onClick={() => navigate("/get-started")}
+            style={{ cursor: "pointer" }}
+          />
 
           <h1 className={styles.title}> Anonymous Thoughts 🌟</h1>
         </header>

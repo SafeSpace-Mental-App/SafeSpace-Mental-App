@@ -231,38 +231,86 @@ const VerifyEmail = ({ mode }: verifyProps) => {
   }, [seconds, canResend]);
 
   // 🔹 Handle resend logic
+  // const handleResend = async () => {
+  //   if (canResend) {
+  //     console.log("📩 Resending verification code...");
+  //     setSeconds(60);
+  //     setCanResend(false);
+  //     await axiosInstance.post("/resend-code", { email });
+  //   }
+  // };
+
+  // 🔹 Handle Submit (simulate API until backend ready)
+  // const onSubmit = async (data: Record<string, string>) => {
+  //   const code = `${data.code1 || ""}${data.code2 || ""}${data.code3 || ""}${
+  //     data.code4 || ""
+  //   }${data.code5 || ""}`;
+
+  //   console.log("🚀 onSubmit fired!");
+  //   if (code.length < 5) {
+  //     console.warn("⚠️ Incomplete code entered");
+  //     return;
+  //   }
+
+  //   // Simulate API delay
+  //   await new Promise((resolve) => setTimeout(resolve, 500));
+  //   const fakeServerCode = "12345";
+
+  //   if (code === fakeServerCode) {
+  //     console.log("✅ Code matched, navigating...");
+  //     navigate("/verificationSuccess", {
+  //       state: { username: "TestUser" },
+  //     });
+  //   } else {
+  //     console.log("❌ Invalid code!");
+  //     setError(true);
+  //     setTimeout(() => setError(false), 700);
+  //   }
+  // };
+
   const handleResend = async () => {
     if (canResend) {
-      console.log("📩 Resending verification code...");
-      setSeconds(60);
-      setCanResend(false);
-      await axiosInstance.post("/resend-code", { email });
+      try {
+        console.log("📩 Resending verification code...");
+        setSeconds(60);
+        setCanResend(false);
+        await axiosInstance.post("/api/auth/resend-verification-pin", {
+          email,
+        });
+        console.log("✅ Code resent successfully");
+      } catch (error: any) {
+        console.error(
+          "❌ Failed to resend code:",
+          error.response?.data || error.message
+        );
+      }
     }
   };
 
-  // 🔹 Handle Submit (simulate API until backend ready)
   const onSubmit = async (data: Record<string, string>) => {
-    const code = `${data.code1 || ""}${data.code2 || ""}${data.code3 || ""}${
-      data.code4 || ""
-    }${data.code5 || ""}`;
+    const code = `${data.code1}${data.code2}${data.code3}${data.code4}${data.code5}`;
 
-    console.log("🚀 onSubmit fired!");
-    if (code.length < 5) {
-      console.warn("⚠️ Incomplete code entered");
-      return;
-    }
-
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    const fakeServerCode = "12345";
-
-    if (code === fakeServerCode) {
-      console.log("✅ Code matched, navigating...");
-      navigate("/verificationSuccess", {
-        state: { username: "TestUser" },
+    try {
+      const response = await axiosInstance.post("/api/auth/verify", {
+        email, // already obtained from location.state
+        code, // the 5-digit OTP user entered
       });
-    } else {
-      console.log("❌ Invalid code!");
+
+      if (response.data.success) {
+        console.log("✅ Verification successful");
+        navigate("/verificationSuccess", {
+          state: { username: location.state?.username },
+        });
+      } else {
+        console.log("❌ Invalid or expired code");
+        setError(true);
+        setTimeout(() => setError(false), 700);
+      }
+    } catch (error: any) {
+      console.error(
+        "❌ Verification failed:",
+        error.response?.data || error.message
+      );
       setError(true);
       setTimeout(() => setError(false), 700);
     }

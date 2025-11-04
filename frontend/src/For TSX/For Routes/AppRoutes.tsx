@@ -9,6 +9,10 @@ import VerifyEmail from "../components/Auth/VerifyEmail";
 import CongratulationPage from "../components/Auth/CongratulationPage";
 import AuthForm from "../components/Auth/AuthForm";
 
+import GetStartedPage from "../../For JSX/For Pages/GetStartedPage";
+import Onboarding from "../../For JSX/For Pages/Onboarding";
+import ForgotPasswordMeassage from "../components/Auth/ForgotPasswordMeassage";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -17,6 +21,7 @@ const AppRoutes = () => {
       <Route path="/mood" element={<MoodPage />} />
       <Route path="/support" element={<SupportPage />} />
       <Route path="/signup" element={<Signupform />} />
+      <Route path="/forgotMessagepage" element={<ForgotPasswordMeassage />} />
       {/* <Route path="/signin" element={<Signinform />} /> */}
       <Route
         path="/verify-email"
@@ -36,6 +41,10 @@ const AppRoutes = () => {
 
       {/* ✅ Forgot Password */}
       <Route path="/forgot" element={<AuthForm mode="forgot" />} />
+
+      {/* 🌟 Onboarding pages */}
+      <Route path="/get-started" element={<GetStartedPage />} />
+      <Route path="/onboarding" element={<Onboarding />} />
     </Routes>
   );
 };
