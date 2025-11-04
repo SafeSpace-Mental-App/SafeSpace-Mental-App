@@ -2,8 +2,6 @@ import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Onboarding.css";
 
-
-
 export default function Onboarding() {
   const slides = useMemo(
     () => [

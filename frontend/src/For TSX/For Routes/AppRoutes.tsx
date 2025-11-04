@@ -12,10 +12,12 @@ import AuthForm from "../components/Auth/AuthForm";
 import GetStartedPage from "../../For JSX/For Pages/GetStartedPage";
 import Onboarding from "../../For JSX/For Pages/Onboarding";
 import ForgotPasswordMeassage from "../components/Auth/ForgotPasswordMeassage";
+import SplashScreen from "../For pages/SplashSCreen";
 
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<SplashScreen/>}/>
       <Route path="/feed" element={<FeedPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/mood" element={<MoodPage />} />
