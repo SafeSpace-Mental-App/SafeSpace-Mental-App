@@ -8,6 +8,7 @@ import type {
   FieldError,
   FieldErrorsImpl,
   Merge,
+  Path
 } from "react-hook-form";
 
 interface InputFieldProps<T extends FieldValues> {
@@ -17,7 +18,7 @@ interface InputFieldProps<T extends FieldValues> {
   name: keyof T;
   register: UseFormRegister<T>;
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
-  validationRules?: RegisterOptions; //  (for email pattern or custom rules)
+  validationRules?: RegisterOptions;
 }
 
 export default function InputField<T extends FieldValues>({
@@ -34,8 +35,12 @@ export default function InputField<T extends FieldValues>({
 
   const isPassword = type === "password";
 
-  // Merge base + custom rules
-  const rules: RegisterOptions = { required, ...validationRules };
+  // ✅ fix: ensure deps and rules are typed correctly
+  const rules: RegisterOptions = {
+    required,
+    ...validationRules,
+    deps: validationRules?.deps as Path<T> | Path<T>[] | undefined,
+  };
 
   return (
     <div className={styles.inputWrapper}>
@@ -48,7 +53,7 @@ export default function InputField<T extends FieldValues>({
       )}
 
       <input
-        {...register(name as any, rules)}
+        {...register(name as Path<T>, rules)} // ✅ fix: cast to Path<T>
         type={isPassword && showPassword ? "text" : type}
         className={styles.input}
         placeholder=""
@@ -75,8 +80,8 @@ export default function InputField<T extends FieldValues>({
           )}
         </button>
       )}
+
       {/* {error && <p className={styles.errorText}>{error.message}</p>} */}
     </div>
   );
 }
-

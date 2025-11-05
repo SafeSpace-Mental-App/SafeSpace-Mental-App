@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./DateInput.module.css";
-import type { UseFormRegister, FieldValues } from "react-hook-form";
+import type { UseFormRegister, FieldValues, Path } from "react-hook-form";
 
 interface DateInputProps<T extends FieldValues> {
   label: string;
@@ -24,10 +24,10 @@ export default function DateInput<T extends FieldValues>({
         type="date"
         className={styles.input}
         required={required}
-        {...register(name, {
+        {...register(name as Path<T>, {
           required,
           onChange: (e) => setHasValue(e.target.value !== ""),
-        })}
+        })} // ✅ fix: cast name to Path<T>
         onFocus={() => setIsFocused(true)}
         onBlur={(e) => {
           setIsFocused(false);
@@ -35,7 +35,7 @@ export default function DateInput<T extends FieldValues>({
         }}
       />
 
-      {(!hasValue && !isFocused) && (
+      {!hasValue && !isFocused && (
         <label className={styles.floatingLabel}>
           {label} {required && <span className={styles.required}>*</span>}
         </label>

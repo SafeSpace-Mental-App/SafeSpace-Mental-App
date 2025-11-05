@@ -1,4 +1,3 @@
-
 // VerifyEmail.tsx
 import { useForm } from "react-hook-form";
 import axiosInstance from "../../../api/axiosInstance";
@@ -172,7 +171,9 @@ const VerifyEmail = ({ mode }: verifyProps) => {
                 {...register(`code${num}` as const, {
                   required: "Verification code is required",
                 })}
-                ref={(el) => (inputRefs.current[index] = el)}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
                 onChange={(e) => handleInput(index, e)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
               />
