@@ -55,14 +55,14 @@ const VerifyEmail = ({ mode }: verifyProps) => {
       }
     }
   };
-
+// On submit
   const onSubmit = async (data: Record<string, string>) => {
-    const code = `${data.code1}${data.code2}${data.code3}${data.code4}${data.code5}`;
+    const code = `${data.code1}${data.code2}${data.code3}${data.code4}$`;
 
     try {
       const response = await axiosInstance.post("/api/auth/verify", {
         email, // already obtained from location.state
-        code, // the 5-digit OTP user entered
+        code, // the 4-digit OTP user entered
       });
 
       if (response.data.success) {
@@ -153,14 +153,14 @@ const VerifyEmail = ({ mode }: verifyProps) => {
 
           <div className={styles.subtitles}>
             <p>
-              A 5-digit code has been sent to your email{" "}
+              A 4-digit code has been sent to your email{" "}
               <strong>{email || "you provided during signup"}</strong>
             </p>
           </div>
 
           {/* 🔹 Verification Code Inputs */}
           <div className={styles.codeBox}>
-            {[1, 2, 3, 4, 5].map((num, index) => (
+            {[1, 2, 3, 4].map((num, index) => (
               <input
                 key={num}
                 className={`${styles.inputDesign} ${

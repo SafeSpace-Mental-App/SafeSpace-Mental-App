@@ -8,7 +8,7 @@ import type {
   FieldError,
   FieldErrorsImpl,
   Merge,
-  Path
+  Path,
 } from "react-hook-form";
 
 interface InputFieldProps<T extends FieldValues> {
@@ -18,7 +18,7 @@ interface InputFieldProps<T extends FieldValues> {
   name: keyof T;
   register: UseFormRegister<T>;
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
-  validationRules?: RegisterOptions;
+  validationRules?: RegisterOptions<T, Path<T>>;
 }
 
 export default function InputField<T extends FieldValues>({
@@ -27,7 +27,6 @@ export default function InputField<T extends FieldValues>({
   required = false,
   register,
   name,
-  // error,
   validationRules = {},
 }: InputFieldProps<T>) {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,11 +34,10 @@ export default function InputField<T extends FieldValues>({
 
   const isPassword = type === "password";
 
-  // ✅ fix: ensure deps and rules are typed correctly
-  const rules: RegisterOptions = {
+  // ✅ fix: properly type rules to RegisterOptions<T, Path<T>>
+  const rules: RegisterOptions<T, Path<T>> = {
     required,
-    ...validationRules,
-    deps: validationRules?.deps as Path<T> | Path<T>[] | undefined,
+    ...(validationRules as RegisterOptions<T, Path<T>>),
   };
 
   return (
@@ -53,7 +51,7 @@ export default function InputField<T extends FieldValues>({
       )}
 
       <input
-        {...register(name as Path<T>, rules)} // ✅ fix: cast to Path<T>
+        {...register(name as Path<T>, rules)} // ✅ correct type casting
         type={isPassword && showPassword ? "text" : type}
         className={styles.input}
         placeholder=""
@@ -80,8 +78,6 @@ export default function InputField<T extends FieldValues>({
           )}
         </button>
       )}
-
-      {/* {error && <p className={styles.errorText}>{error.message}</p>} */}
     </div>
   );
 }
