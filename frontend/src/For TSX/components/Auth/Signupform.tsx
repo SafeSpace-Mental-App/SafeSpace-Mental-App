@@ -4,7 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Signupform.module.css";
 import InputField from "../ReusableField/InputField";
-import DropdownField from "../ReusableField/Dropdownfield";
+import DropdownField from "../ReusableField/DropdownField";
 import DateInput from "../ReusableField/DateInput";
 import Button from "../ReusableField/Button";
 import TheFooter from "../ReusableField/TheFooter";
@@ -48,36 +48,34 @@ const Signupform = () => {
   //   }
   // };
 
-const onSubmit: SubmitHandler<any> = async (data) => {
-  try {
-    setLoading(true);
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    try {
+      setLoading(true);
 
-    // 🧩 Transform keys to match backend naming
-    const payload = {
-      first_name: data.firstname,
-      last_name: data.lastName,
-      anonymous_name: data.username,
-      email: data.email,
-      password: data.password,
-      phone: data.phone,
-      country: data.country,
-      dob: data.dob,
-    };
+      // 🧩 Transform keys to match backend naming
+      const payload = {
+        first_name: data.firstname,
+        last_name: data.lastName,
+        anonymous_name: data.username,
+        email: data.email,
+        password: data.password,
+        phone: data.phone,
+        country: data.country,
+        dob: data.dob,
+      };
 
-    const response = await axiosInstance.post("/api/auth/register", payload);
+      const response = await axiosInstance.post("/api/auth/register", payload);
 
-    console.log("✅ Signup successful:", response.data);
-    navigate("/verify-email", {
-      state: { email: data.email, username: data.username },
-    });
-  } catch (error: any) {
-    console.error("❌ Signup failed:", error.response?.data || error.message);
-  } finally {
-    setLoading(false);
-  }
-};
-
-
+      console.log("✅ Signup successful:", response.data);
+      navigate("/verify-email", {
+        state: { email: data.email, username: data.username },
+      });
+    } catch (error: any) {
+      console.error("❌ Signup failed:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const password = watch("password");
 
@@ -100,11 +98,26 @@ const onSubmit: SubmitHandler<any> = async (data) => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.nameRow}>
-          <InputField label="First Name" name="firstname" required register={register} />
-          <InputField label="Last Name" name="lastName" required register={register} />
+          <InputField
+            label="First Name"
+            name="firstname"
+            required
+            register={register}
+          />
+          <InputField
+            label="Last Name"
+            name="lastName"
+            required
+            register={register}
+          />
         </div>
 
-        <InputField label="Anonymous username" name="username" required register={register} />
+        <InputField
+          label="Anonymous username"
+          name="username"
+          required
+          register={register}
+        />
 
         <InputField
           label="Email Address"
@@ -123,7 +136,12 @@ const onSubmit: SubmitHandler<any> = async (data) => {
           <p className={styles.errorText}>{getErrorMessage(errors.email)}</p>
         )}
 
-        <DateInput label="Date of Birth" required register={register} name="dob" />
+        <DateInput
+          label="Date of Birth"
+          required
+          register={register}
+          name="dob"
+        />
         <DropdownField
           label="Gender"
           options={["Male", "Female", "Other"]}
