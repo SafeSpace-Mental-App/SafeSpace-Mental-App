@@ -2,7 +2,7 @@
 
 const SearchBar = () => {
   return (
-    <div>SearchBar</div>
+    <div>Search</div>
   )
 }
 
