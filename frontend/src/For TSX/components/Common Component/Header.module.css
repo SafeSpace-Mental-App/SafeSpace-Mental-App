@@ -1,10 +1,15 @@
 .header {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   background-color: #ffffff;
   border-bottom: 1px solid #e5e5e5;
+
+  position: sticky;
+  top: 0;
+  z-index: 7;
 }
 
 .titleSection {
@@ -41,4 +46,24 @@
 
 .addButton:hover {
   background: #0066d6;
+}
+.floatingBtn {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.floatingBtn:hover {
+  background-color: #0056b3;
 }

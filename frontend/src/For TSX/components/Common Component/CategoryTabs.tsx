@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./CategoryTabs.module.css";
 
-const categories = ["All", "Work", "Rant", "Family", "Anxiety", "Self-care"];
+interface CategoryTabsProps {
+  selectedCategory: string;
+  onSelectCategory: (category: string) => void;
+}
 
-const CategoryTabs: React.FC = () => {
-  const [active, setActive] = useState("All");
+const categories = ["All", "Work", "Rant", "Family", 'Anxiety', 'Selfcare'];
 
+const CategoryTabs: React.FC<CategoryTabsProps> = ({
+  selectedCategory,
+  onSelectCategory,
+}) => {
   return (
     <div className={styles.tabsContainer}>
-      {categories.map((cat) => (
+      {categories.map((category) => (
         <button
-          key={cat}
+          key={category}
           className={`${styles.tabButton} ${
-            active === cat ? styles.active : ""
+            selectedCategory === category ? styles.active : ""
           }`}
-          onClick={() => setActive(cat)}
+          onClick={() => onSelectCategory(category)}
         >
-          {cat}
+          {category}
         </button>
       ))}
     </div>

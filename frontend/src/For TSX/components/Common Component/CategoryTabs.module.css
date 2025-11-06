@@ -3,6 +3,10 @@
   overflow-x: auto;
   gap: 0.6rem;
   padding-bottom: 0.3rem;
+  position: sticky;
+  top: 7rem;
+  z-index: 15;
+  /* border: 2px solid green; */
 }
 
 .tabButton {

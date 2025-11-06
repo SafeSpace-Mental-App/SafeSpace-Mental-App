@@ -89,3 +89,22 @@ textarea:focus {
     transform: scale(1);
   }
 }
+
+.categorySelect {
+  width: 50%;
+  margin-top: 0.6rem;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.categorySelect:focus {
+  border-color: #007bff;
+}
+

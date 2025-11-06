@@ -6,6 +6,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .header {
@@ -69,4 +75,106 @@
 
 .actionBtn:hover {
   color: #007bff;
+}
+.menuWrapper {
+  position: relative;
+}
+
+.menuDropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.3rem 0;
+  z-index: 10;
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #e74c3c;
+  font-size: 0.85rem;
+}
+
+.deleteBtn:hover {
+  background: #ffecec;
+}
+.liked {
+  color: var(--brand-color);
+}
+
+.commentSection {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.commentForm {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+
+.commentInput {
+  flex: 1;
+  min-height: 40px;
+  max-height: 120px;
+  resize: none;
+  overflow-y: auto;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  background: #fafafa;
+  transition: border-color 0.2s;
+}
+
+.commentInput:focus {
+  border-color: #007bff;
+  outline: none;
+  background: #fff;
+}
+
+.commentForm button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.commentForm button:hover {
+  background: #0066e0;
+}
+.commentList {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.comment {
+  background: #f3f6fc;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }

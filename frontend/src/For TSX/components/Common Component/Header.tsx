@@ -2,31 +2,27 @@ import React from "react";
 import styles from "./Header.module.css";
 import { FiPlus } from "react-icons/fi";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  title?: string;
+  onAddPost?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ title = "Safe Rant", onAddPost }) => {
   return (
     <header className={styles.header}>
       <div className={styles.titleSection}>
-        <h1 className={styles.title}>Safe Rant</h1>
+        <h1 className={styles.title}>{title}</h1>
         <p className={styles.subtitle}>Express yourself freely</p>
       </div>
-   
+
+      {/* Floating Add Post Button */}
+      {onAddPost && (
+        <button className={styles.floatingBtn} onClick={onAddPost}>
+          <FiPlus size={22} />
+        </button>
+      )}
     </header>
   );
 };
-
-// interface HeaderProps {
-//   title?: string;
-//   onAddPost?: () => void;
-// }
-
-// const Header: React.FC<HeaderProps> = ({ title, onAddPost }) => {
-//   return (
-//     <header className={styles.header}>
-//       <h2>{title}</h2>
-//       <button className={styles.floatingBtn} onClick={onAddPost}>+</button>
-//     </header>
-//   );
-// };
-
 
 export default Header;
