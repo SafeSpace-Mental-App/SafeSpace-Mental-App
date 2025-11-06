@@ -7,20 +7,22 @@ import Button from "../ReusableField/Button";
 import { useEffect, useState, useRef } from "react";
 import { IoMdClose } from "react-icons/io";
 
-interface verifyProps {
-  mode: "verification" | "reset";
-}
+// ❌ Removed the prop-based interface & prop usage
+// interface verifyProps {
+//   mode: "verification" | "reset";
+// }
 
-const VerifyEmail = ({ mode }: verifyProps) => {
+// ✅ We’ll now detect mode dynamically from route state
+const VerifyEmail = () => {
   const [seconds, setSeconds] = useState(60);
   const [canResend, setCanResend] = useState(false);
-  const [error, setError] = useState(false); // 🔹 for red border + shake animation
+  const [error, setError] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email;
+  const mode = location.state?.mode || "verification"; // ✅ Added: detect mode dynamically
 
-  // 🔹 React Hook Form setup
   const { register, handleSubmit, setValue, getValues } = useForm();
 
   // 🔹 Timer countdown
@@ -36,98 +38,81 @@ const VerifyEmail = ({ mode }: verifyProps) => {
   }, [seconds, canResend]);
 
   // 🔹 Handle resend logic
-
   const handleResend = async () => {
     if (canResend) {
       try {
         console.log("📩 Resending verification code...");
         setSeconds(60);
         setCanResend(false);
-        await axiosInstance.post("/api/auth/resend-verification-pin", {
-          email,
-        });
+        await axiosInstance.post("/api/auth/verify-pin", { email });
         console.log("✅ Code resent successfully");
       } catch (error: any) {
-        console.error(
-          "❌ Failed to resend code:",
-          error.response?.data || error.message
-        );
+        console.error("❌ Failed to resend code:", error.response?.data || error.message);
       }
     }
   };
-// On submit
+
+  // On submit
   const onSubmit = async (data: Record<string, string>) => {
     const code = `${data.code1}${data.code2}${data.code3}${data.code4}$`;
 
     try {
-      const response = await axiosInstance.post("/api/auth/verify", {
-        email, // already obtained from location.state
-        code, // the 4-digit OTP user entered
+      const response = await axiosInstance.post("/api/auth/verify-pin", {
+        email,
+        code,
       });
 
       if (response.data.success) {
         console.log("✅ Verification successful");
-        navigate("/verificationSuccess", {
-          state: { username: location.state?.username },
-        });
+
+        // ✅ Added: Conditional navigation based on mode
+        if (mode === "reset") {
+          navigate("/reset-password", { state: { email } });
+        } else {
+          navigate("/verificationSuccess", {
+            state: { username: location.state?.username },
+          });
+        }
       } else {
         console.log("❌ Invalid or expired code");
         setError(true);
         setTimeout(() => setError(false), 700);
       }
     } catch (error: any) {
-      console.error(
-        "❌ Verification failed:",
-        error.response?.data || error.message
-      );
+      console.error("❌ Verification failed:", error.response?.data || error.message);
       setError(true);
       setTimeout(() => setError(false), 700);
     }
   };
 
   // 🔹 Improved OTP input behavior
-  const handleInput = (
-    index: number,
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleInput = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    // Only digits
     if (!/^[0-9]?$/.test(value)) return;
-
     setValue(`code${index + 1}`, value);
 
-    // Move forward only when user types a number
     if (value && index < inputRefs.current.length - 1) {
       inputRefs.current[index + 1]?.focus();
     }
 
-    // Auto-submit when all 5 digits are filled
-    const currentValues = Array.from({ length: 5 }, (_, i) =>
-      getValues(`code${i + 1}`)
-    );
+    const currentValues = Array.from({ length: 4 }, (_, i) => getValues(`code${i + 1}`));
     if (currentValues.every((v) => v?.length === 1)) {
       handleSubmit(onSubmit)();
     }
   };
 
-  const handleKeyDown = (
-    index: number,
-    e: React.KeyboardEvent<HTMLInputElement>
-  ) => {
+  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace") {
       const currentInput = inputRefs.current[index];
       if (currentInput && currentInput.value) {
-        // Clear current field only
         setValue(`code${index + 1}`, "");
         currentInput.value = "";
       } else if (index > 0) {
-        // Move back if current empty
         inputRefs.current[index - 1]?.focus();
       }
     }
 
-    // ✅ Optional navigation with arrow keys
     if (e.key === "ArrowLeft" && index > 0) {
       inputRefs.current[index - 1]?.focus();
     } else if (e.key === "ArrowRight" && index < inputRefs.current.length - 1) {
@@ -139,7 +124,11 @@ const VerifyEmail = ({ mode }: verifyProps) => {
     <>
       <div className={styles.Signupconatiner}>
         <div className={styles.closeIcon}>
-          <IoMdClose size={28} onClick={() => navigate("/signup")} />
+          <IoMdClose
+            size={28}
+            // ✅ Updated: Back navigation depends on mode
+            onClick={() => navigate(mode === "reset" ? "/login" : "/signup")}
+          />
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -163,9 +152,7 @@ const VerifyEmail = ({ mode }: verifyProps) => {
             {[1, 2, 3, 4].map((num, index) => (
               <input
                 key={num}
-                className={`${styles.inputDesign} ${
-                  error ? styles.inputError : ""
-                }`}
+                className={`${styles.inputDesign} ${error ? styles.inputError : ""}`}
                 type="text"
                 maxLength={1}
                 {...register(`code${num}` as const, {
@@ -187,18 +174,12 @@ const VerifyEmail = ({ mode }: verifyProps) => {
             {!canResend ? (
               <>
                 Didn’t get the code?{" "}
-                <span style={{ color: "var(--brand-color)" }}>
-                  Resend in {seconds}s
-                </span>
+                <span style={{ color: "var(--brand-color)" }}>Resend in {seconds}s</span>
               </>
             ) : (
               <div className={styles.resendText}>
                 <span>Didn’t get the code?</span>
-                <button
-                  type="button"
-                  onClick={handleResend}
-                  className={styles.resendBtn}
-                >
+                <button type="button" onClick={handleResend} className={styles.resendBtn}>
                   Resend Code
                 </button>
               </div>

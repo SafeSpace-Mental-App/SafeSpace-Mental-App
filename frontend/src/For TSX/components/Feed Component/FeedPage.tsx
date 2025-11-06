@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Common Component/Navbar";
-import Header from "../components/Common Component/Header";
+import Navbar from "../Common Component/Navbar";
+import Header from "../Common Component/Header";
 import styles from "./FeedPage.module.css";
-import SearchBar from "../components/Common Component/SearchBar";
-import CategoryTabs from "../components/Common Component/CategoryTabs";
-import PostCard from "../components/Feed Component/PostCard";
-import NewPostModal from "../components/Feed Component/NewPostModal";
+import SearchBar from "../Common Component/SearchBar";
+import CategoryTabs from "./CategoryTabs";
+import PostCard from "./PostCard";
+import NewPostModal from "./NewPostModal";
 
 interface Comment {
   id: number;
@@ -72,9 +72,7 @@ const FeedPage: React.FC = () => {
   const handleToggleLike = (id: number) => {
     setPosts((prev) =>
       prev.map((post) =>
-        post.id === id
-          ? { ...post, likes: post.likes === 0 ? 1 : 0 }
-          : post
+        post.id === id ? { ...post, likes: post.likes === 0 ? 1 : 0 } : post
       )
     );
   };
@@ -86,10 +84,7 @@ const FeedPage: React.FC = () => {
         post.id === postId
           ? {
               ...post,
-              comments: [
-                ...post.comments,
-                { id: Date.now(), text },
-              ],
+              comments: [...post.comments, { id: Date.now(), text }],
             }
           : post
       )

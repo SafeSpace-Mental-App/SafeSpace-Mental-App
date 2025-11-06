@@ -6,24 +6,24 @@ export default function Onboarding() {
   const slides = useMemo(
     () => [
       {
-        img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop",
-        title: "Your Safe Place",
-        text: "Track your mood, journal freely, and get gentle nudges that help you feel better—day by day.",
+        img: "https://exciting-blush-berczpvzj5.edgeone.app/611ff2bf775df418ac07ec4f38d9ba9bd0651bca.png",
+        title: "Vent Safely",
+        text: "Share your thoughts anonymously without fear of judgment.",
       },
       {
-        img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop",
-        title: "Real Tools, Real Relief",
-        text: "Breathing guides, grounding exercises, and quick check-ins when you need them most.",
+        img: "https://subsequent-violet-w1ksv6cfbj.edgeone.app/6713bffaf2cce8be773b3660a305314248897552.png",
+        title: "Reflect Daily",
+        text: "Track your moods and keep a private journal for self-reflection",
       },
       {
-        img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop",
-        title: "Private by Default",
-        text: "Your data stays yours. Use an anonymous name anywhere across the app.",
+        img: "https://mental-salmon-hu3fwtaqly.edgeone.app/16a644f5f9da12c2a3b8145436c9a1a74751728f.png",
+        title: "Get Support",
+        text: "Access crisis hotlines or trained listeners when you need it most"
       },
       {
-        img: "https://images.unsplash.com/photo-1515165562835-c3b8c2e5d4a5?q=80&w=1600&auto=format&fit=crop",
-        title: "Ready to Begin?",
-        text: "Create an account in seconds and start your mental wellness journey.",
+        img: "https://miniature-sapphire-iqvqduyzwx.edgeone.app/376ee59d121c1363190c2dc39158351b1fa9958f.png",
+        title: "Join SafeSpace, You’re Safe Here!",
+        text: "Your data is private. Your voice matters. You are not alone",
       },
     ],
     []
@@ -87,9 +87,14 @@ export default function Onboarding() {
                   Next
                 </button>
               ) : (
+                <>
+                
                 <Link to="/get-started" className="onb-primary onb-link-btn">
                   Get Started
                 </Link>
+                
+                </>
+                
               )}
             </div>
           </div>
