@@ -1,23 +1,32 @@
-import { FaArrowLeft, FaEllipsisH } from "react-icons/fa";
+import React from "react";
 import styles from "./Header.module.css";
+import { FiPlus } from "react-icons/fi";
 
-interface HeaderProp {
-  title: string;
-  onBack?: () => void;
-
-}
-const Header = ({ title, onBack }: HeaderProp) => {
+const Header: React.FC = () => {
   return (
-    <>
-      <header className={styles.header}>
-        <button className={styles.iconBtn} onClick={onBack}>
-          <FaArrowLeft className={styles.icon} />
-        </button>
-        <h2 className={styles.title}>{title}</h2>
-        <FaEllipsisH className={styles.icon} />
-      </header>
-    </>
+    <header className={styles.header}>
+      <div className={styles.titleSection}>
+        <h1 className={styles.title}>Safe Rant</h1>
+        <p className={styles.subtitle}>Express yourself freely</p>
+      </div>
+   
+    </header>
   );
 };
+
+// interface HeaderProps {
+//   title?: string;
+//   onAddPost?: () => void;
+// }
+
+// const Header: React.FC<HeaderProps> = ({ title, onAddPost }) => {
+//   return (
+//     <header className={styles.header}>
+//       <h2>{title}</h2>
+//       <button className={styles.floatingBtn} onClick={onAddPost}>+</button>
+//     </header>
+//   );
+// };
+
 
 export default Header;

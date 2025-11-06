@@ -1,0 +1,22 @@
+.searchBar {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+}
+
+.icon {
+  color: #888;
+  margin-right: 0.5rem;
+}
+
+.inPut {
+  flex: 1;
+  border: none !important;
+  outline: none;
+  font-size: 0.9rem;
+  color: #333;
+  background: transparent;
+}
