@@ -5,7 +5,7 @@ const SupportPage = () => {
   return (
     <>
       <div style={{ paddingTop: "60px", paddingBottom:'70px'}}>
-        <Header title="SUPPORT" onBack={() => window.history.back()} />
+        <Header title="SUPPORT"  />
         <h3>SupportPage</h3>
       </div>
       <Navbar />

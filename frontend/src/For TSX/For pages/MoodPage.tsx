@@ -5,7 +5,7 @@ const MoodPage = () => {
   return (
     <>
       <div style={{ paddingTop: "60px", paddingBottom: "70px" }}>
-        <Header title="MOOD" onBack={() => window.history.back()} />
+        <Header title="MOOD"  />
         <h3>MoodPage</h3>
         <Navbar />
       </div>

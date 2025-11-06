@@ -27,9 +27,9 @@ const AppRoutes = () => {
       {/* <Route path="/signin" element={<Signinform />} /> */}
       <Route
         path="/verify-email"
-        element={<VerifyEmail mode="verification" />}
+        element={<VerifyEmail/>}
       />
-      <Route path="/verify-emailreset" element={<VerifyEmail mode="reset" />} />
+     
       <Route
         path="/verificationSuccess"
         element={<CongratulationPage mode="verification" />}

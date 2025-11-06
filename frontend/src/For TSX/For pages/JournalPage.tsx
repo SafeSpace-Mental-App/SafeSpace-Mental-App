@@ -5,7 +5,7 @@ const JournalPage = () => {
   return (
     <>
       <div style={{ paddingTop: "60px", paddingBottom: "70px" }}>
-        <Header title="JOURNAL" onBack={() => window.history.back()} />
+        <Header title="JOURNAL"  />
         <h3>JournalPage</h3>
         <Navbar />
       </div>
