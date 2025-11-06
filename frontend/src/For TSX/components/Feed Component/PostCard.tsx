@@ -27,6 +27,7 @@ interface PostCardProps {
   onDelete?: (id: number) => void;
   onToggleLike?: (id: number) => void;
   onAddComment?: (postId: number, text: string) => void;
+  onDeleteComment?: (postId: number, commentId: number) => void;
 }
 
 const PostCard: React.FC<PostCardProps> = ({
@@ -34,8 +35,10 @@ const PostCard: React.FC<PostCardProps> = ({
   onDelete,
   onToggleLike,
   onAddComment,
+  onDeleteComment,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [activeCommentMenu, setActiveCommentMenu] = useState<number | null>(null);
   const [showComments, setShowComments] = useState(false);
   const [commentText, setCommentText] = useState("");
   const menuRef = useRef<HTMLDivElement>(null);
@@ -44,6 +47,7 @@ const PostCard: React.FC<PostCardProps> = ({
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setShowMenu(false);
+        setActiveCommentMenu(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -57,8 +61,14 @@ const PostCard: React.FC<PostCardProps> = ({
     setCommentText("");
   };
 
+  const handleDeleteComment = (commentId: number) => {
+    onDeleteComment?.(post.id!, commentId);
+    setActiveCommentMenu(null);
+  };
+
   return (
     <div className={styles.card}>
+      {/* Header */}
       <div className={styles.header}>
         <div>
           <h3 className={styles.username}>{post.username}</h3>
@@ -89,9 +99,11 @@ const PostCard: React.FC<PostCardProps> = ({
         </div>
       </div>
 
+      {/* Content */}
       <p className={styles.content}>{post.content}</p>
       <span className={styles.tag}>{post.category}</span>
 
+      {/* Actions */}
       <div className={styles.actions}>
         <button
           className={`${styles.actionBtn} ${post.likes ? styles.liked : ""}`}
@@ -108,7 +120,7 @@ const PostCard: React.FC<PostCardProps> = ({
         </button>
       </div>
 
-      {/* ✅ Comment section */}
+      {/* Comments */}
       {showComments && (
         <div className={styles.commentSection}>
           <form onSubmit={handleSubmitComment} className={styles.commentForm}>
@@ -124,9 +136,33 @@ const PostCard: React.FC<PostCardProps> = ({
 
           <div className={styles.commentList}>
             {post.comments?.map((c) => (
-              <p key={c.id} className={styles.comment}>
-                💬 {c.text}
-              </p>
+              <div key={c.id} className={styles.commentItem}>
+                <p className={styles.commentText}>💬 {c.text}</p>
+
+                <div className={styles.commentMenuWrapper}>
+                  <button
+                    className={styles.commentMoreBtn}
+                    onClick={() =>
+                      setActiveCommentMenu(
+                        activeCommentMenu === c.id ? null : c.id
+                      )
+                    }
+                  >
+                    <FiMoreHorizontal size={14} />
+                  </button>
+
+                  {activeCommentMenu === c.id && (
+                    <div className={styles.commentDropdown}>
+                      <button
+                        className={styles.deleteBtn}
+                        onClick={() => handleDeleteComment(c.id)}
+                      >
+                        <FiTrash2 size={13} /> Delete
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
         </div>

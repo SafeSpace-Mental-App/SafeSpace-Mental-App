@@ -125,7 +125,6 @@
   margin-top: 0.6rem;
 }
 
-
 .commentInput {
   flex: 1;
   min-height: 40px;
@@ -177,4 +176,58 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
+}
+.commentList {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.commentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6px 0;
+  word-break: break-word;
+}
+
+.commentText {
+  flex: 1;
+  margin-right: 8px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.commentMenuWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.commentDropdown {
+  position: absolute;
+  right: 0;
+  top: 18px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 4px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  width: 100px;
+}
+
+.commentDropdown button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  width: 100%;
+  text-align: left;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.commentDropdown button:hover {
+  background: #2a2a2a;
 }
