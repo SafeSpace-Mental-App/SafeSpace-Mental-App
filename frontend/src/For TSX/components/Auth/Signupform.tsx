@@ -68,7 +68,11 @@ const Signupform = () => {
 
       console.log("✅ Signup successful:", response.data);
       navigate("/verify-email", {
-        state: { email: data.email, username: data.username },
+        state: {
+          email: data.email,
+          username: data.username,
+          mode: "verification",
+        },
       });
     } catch (error: any) {
       console.error("❌ Signup failed:", error.response?.data || error.message);
