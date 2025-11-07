@@ -1,5 +1,5 @@
 import Button from "../ReusableField/Button";
-import styles from "./CongtstulationPage.module.css";
+import styles from "./CongratulationPage.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
 interface CongratProps {

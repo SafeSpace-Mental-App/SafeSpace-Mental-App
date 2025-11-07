@@ -38,7 +38,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
     try {
       if (mode === "signin") {
         const response = await axiosInstance.post("/api/auth/login", {
-          phone: data.phone,
+          email: data.email,
           password: data.password,
         });
         console.log("✅ Login successful:", response.data);
@@ -84,21 +84,21 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
         {mode === "signin" ? (
           <>
             <InputField
-              label="Phone Number"
-              type="tel"
-              name="phone"
+              label="Email Address"
+              name="email"
+              type="email"
               register={register}
               required
               validationRules={{
                 pattern: {
-                  value: /^[0-9]{11}$/,
-                  message: "Please enter a valid 11-digit phone number",
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Enter a valid email address",
                 },
               }}
             />
-            {getErrorMessage(errors.phone) && (
+            {getErrorMessage(errors.email) && (
               <p className={styles.errorText}>
-                {getErrorMessage(errors.phone)}
+                {getErrorMessage(errors.email)}
               </p>
             )}
 
