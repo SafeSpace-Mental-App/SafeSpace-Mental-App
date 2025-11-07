@@ -35,7 +35,7 @@ const VerifyEmail = () => {
   const verifyEndpoint =
     mode === "reset"
       ? "/api/auth/verify-pin" // password reset code verification
-      : "/api/auth/verify-user"; // signup email verification
+      : "/api/auth/verify-pin"; // signup email verification
 
   const resendEndpoint =
     mode === "reset"
