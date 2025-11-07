@@ -44,6 +44,8 @@
   font-size: 0.9rem;
   color: #333;
   line-height: 1.4;
+  white-space: pre-wrap; /* // ensure long post content wraps properly */
+  word-wrap: break-word; /* // fix text overflow */
 }
 
 .tag {
@@ -76,6 +78,7 @@
 .actionBtn:hover {
   color: #007bff;
 }
+
 .menuWrapper {
   position: relative;
 }
@@ -90,6 +93,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 0.3rem 0;
   z-index: 10;
+  width: 120px; /* // make dropdown wider for cleaner look */
 }
 
 .deleteBtn {
@@ -108,6 +112,7 @@
 .deleteBtn:hover {
   background: #ffecec;
 }
+
 .liked {
   color: var(--brand-color);
 }
@@ -138,6 +143,8 @@
   line-height: 1.4;
   background: #fafafa;
   transition: border-color 0.2s;
+  white-space: pre-wrap; /* // allow multiline typing */
+  word-wrap: break-word; /* // prevent overflow */
 }
 
 .commentInput:focus {
@@ -159,29 +166,12 @@
 .commentForm button:hover {
   background: #0066e0;
 }
+
 .commentList {
   margin-top: 0.6rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-}
-
-.comment {
-  background: #f3f6fc;
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: #333;
-  line-height: 1.5;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
-}
-.commentList {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
 }
 
 .commentItem {
@@ -190,6 +180,9 @@
   align-items: flex-start;
   padding: 6px 0;
   word-break: break-word;
+  background: #f7f9fc; /* // subtle background for each comment */
+  border-radius: 8px; /* // consistent with input rounding */
+  padding: 0.6rem 0.8rem;
 }
 
 .commentText {
@@ -197,12 +190,21 @@
   margin-right: 8px;
   white-space: pre-wrap;
   word-wrap: break-word;
+  overflow-wrap: break-word; /* // fix long comment overflow */
 }
 
 .commentMenuWrapper {
   position: relative;
   flex-shrink: 0;
 }
+
+.commentMoreBtn {
+  border: none;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  padding: 2px;
+} /* // add: more icon for comment menu */
 
 .commentDropdown {
   position: absolute;
