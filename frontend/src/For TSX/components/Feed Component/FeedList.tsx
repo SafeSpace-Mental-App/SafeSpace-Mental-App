@@ -2,11 +2,19 @@ import React from "react";
 import PostCard from "./PostCard";
 import styles from "./FeedList.module.css";
 
+interface Comment {
+  id: number;
+  text: string;
+}
+
 interface Post {
   id: number;
   username: string;
   content: string;
   time: string;
+  category: string;
+  likes: number;
+  comments: Comment[];
 }
 
 interface FeedListProps {
@@ -25,7 +33,18 @@ const FeedList: React.FC<FeedListProps> = ({ posts }) => {
   return (
     <div className={styles.feedList}>
       {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
+        <PostCard
+          key={post.id}
+          post={{
+            ...post,
+            category: post.category || "General",
+            likes: typeof post.likes === "number" ? post.likes : 0,
+            comments:
+              Array.isArray(post.comments) && post.comments.every((c) => typeof c === "object")
+                ? post.comments
+                : [],
+          }}
+        />
       ))}
     </div>
   );
