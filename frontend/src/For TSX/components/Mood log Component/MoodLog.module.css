@@ -1,0 +1,264 @@
+.moodPage {
+  background-color: var(--white);
+  min-height: 100vh;
+  padding: 70px 16px 80px;
+  font-family: "Inter", sans-serif;
+  color: #222;
+}
+
+/* ===== Mood Check-in Section ===== */
+.moodCheckin {
+  background: var(--light-blue);
+  border-radius: 16px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.moodCheckin h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.moodOptions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.moodBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5fb;
+  border: 1px solid #e0e6ef;
+  border-radius: 12px;
+  padding: 10px 0;
+  font-size: 0.85rem;
+  color: #333;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.moodBtn:hover {
+  background: #e8f0ff;
+}
+
+/* ===== Stats Section ===== */
+.moodStats {
+  background: var(--light-blue);
+  border-radius: 16px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.moodStats h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.statsBox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.statsBox div {
+  text-align: center;
+  flex: 1;
+}
+
+.statsBox h4 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3366ff;
+  margin-bottom: 4px;
+}
+
+.statsBox p {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.tip {
+  background: #f3f7ff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: #3c5cff;
+}
+
+/* ===== Recent Entries ===== */
+.recentEntries {
+  background: var(--light-blue);
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.recentEntries h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.recentEntries ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recentEntries li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.9rem;
+  border-bottom: 1px solid #f1f1f1;
+  background-color: white;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  height: 50px;
+}
+
+.recentEntries li:last-child {
+  border-bottom: none;
+}
+
+.recentEntries span {
+  font-size: 1.3rem;
+}
+
+.recentEntries div {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.1rem;
+  font-weight: 500;
+  font-size: 15px !important ;
+}
+
+.good {
+  background-color: #e3f9e5;
+  color: #1c7c1c;
+}
+
+.okay {
+  background-color: #fff7db;
+  color: #b47d00;
+}
+
+.low {
+  background-color: #fde2e2;
+  color: #b22222;
+}
+
+.viewBtn {
+  margin-top: 12px;
+  width: 100%;
+  background-color: #eaf2ff;
+  color: #3366ff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.viewBtn:hover {
+  background-color: #d9e7ff;
+}
+.emoji {
+  font-size: 30px;
+  border-radius: 50px;
+
+  background-color: #e5e2ff;
+}
+
+.moodentries {
+}
+.moodentries > li {
+  padding: 5px 5px;
+}
+
+/* ===== Active Mood State ===== */
+.activeMood {
+  background-color: #3366ff;
+  color: #fff;
+  border: none;
+  transform: scale(1.05);
+  transition: all 0.1s ease;
+}
+
+.activeMood .emoji {
+  background-color: #fff;
+  color: #3366ff;
+  transform: scale(1.1);
+}
+
+/* ===== Selected Mood Text ===== */
+.selectedMoodText {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Active Mood Interaction ===== */
+/* .activeMood {
+  background-color: #3366ff;
+  color: #fff;
+  border: none;
+  transform: scale(1.05);
+  transition: 0.1s ease;
+}
+
+.activeMood .emoji {
+  background-color: #fff;
+  color: #3366ff;
+} */
+
+.selectedMoodText {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* ===== Responsive tweaks ===== */
+@media (min-width: 480px) {
+  .moodOptions {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

@@ -1,20 +1,24 @@
 .header {
   display: flex;
-
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
   align-items: center;
   padding: 1rem;
   background-color: #ffffff;
-  border-bottom: 1px solid #e5e5e5;
+  /* border-bottom: 1px solid #e5e5e5; */
+  /* border: 2px solid green; */
+  padding-bottom: 10px;
 
   position: sticky;
   top: 0;
   z-index: 7;
+  margin-top: -4rem;
 }
 
 .titleSection {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .title {

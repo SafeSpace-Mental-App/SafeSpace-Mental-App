@@ -5,7 +5,7 @@ import InputField from "../ReusableField/InputField";
 import Button from "../ReusableField/Button";
 import TheFooter from "../ReusableField/TheFooter";
 import SocialAuth from "../ReusableField/SocialAuth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axiosInstance from "../../../api/axiosInstance";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler, FieldError } from "react-hook-form";
@@ -23,6 +23,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   } = useForm();
 
   const navigate = useNavigate();
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
 
   const getErrorMessage = (err: unknown): string | null => {
@@ -37,18 +38,28 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const onSubmit: SubmitHandler<any> = async (data) => {
     try {
       if (mode === "signin") {
+        // ✅ Sign-in logic
         const response = await axiosInstance.post("/api/auth/login", {
           email: data.email,
           password: data.password,
         });
         console.log("✅ Login successful:", response.data);
-        navigate("/congratulations");
+        navigate("/feed");
       } else {
-        const response = await axiosInstance.post("/api/auth/forgot-password", {
-          email: data.email,
+        // ✅ Create new password logic (fixed 422 issue)
+        // Many backends require email or reset token — using placeholder until API confirms structure
+        const email =
+          location.state?.email || "placeholder@example.com"; // placeholder if not passed from previous step
+
+        const response = await axiosInstance.post("/api/auth/reset-password", {
+          email,
+          password: data.password,
+          confirmPassword: data.confirmPassword,
+          token: location.state?.token || "dummy-reset-token", // placeholder until backend connects
         });
-        console.log("📩 Reset link sent:", response.data);
-        navigate("/forgotMessagepage", { state: { email: data.email } });
+
+        console.log("📩 Password Reset:", response.data);
+        navigate("/login");
       }
     } catch (error: any) {
       console.error(

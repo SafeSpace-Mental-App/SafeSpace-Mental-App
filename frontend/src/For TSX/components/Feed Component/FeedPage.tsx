@@ -185,7 +185,7 @@ const FeedPage: React.FC = () => {
 
   return (
     <div className={styles.feedContainer}>
-      <Header title="Safe Rant" onAddPost={() => setIsModalOpen(true)} />
+      <Header title="Safe Rant" subtitles="Express yourself freely" onAddPost={() => setIsModalOpen(true)} />
 
       <div className={styles.searchSection}>
         {/* ✅ Updated search with value + onChange */}
