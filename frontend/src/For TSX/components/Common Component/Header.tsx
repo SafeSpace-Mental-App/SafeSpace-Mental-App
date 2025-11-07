@@ -1,22 +1,27 @@
-import { FaArrowLeft, FaEllipsisH } from "react-icons/fa";
+import React from "react";
 import styles from "./Header.module.css";
+import { FiPlus } from "react-icons/fi";
 
-interface HeaderProp {
-  title: string;
-  onBack?: () => void;
-
+interface HeaderProps {
+  title?: string;
+  onAddPost?: () => void;
 }
-const Header = ({ title, onBack }: HeaderProp) => {
+
+const Header: React.FC<HeaderProps> = ({ title = "Safe Rant", onAddPost }) => {
   return (
-    <>
-      <header className={styles.header}>
-        <button className={styles.iconBtn} onClick={onBack}>
-          <FaArrowLeft className={styles.icon} />
+    <header className={styles.header}>
+      <div className={styles.titleSection}>
+        <h1 className={styles.title}>{title}</h1>
+        <p className={styles.subtitle}>Express yourself freely</p>
+      </div>
+
+      {/* Floating Add Post Button */}
+      {onAddPost && (
+        <button className={styles.floatingBtn} onClick={onAddPost}>
+          <FiPlus size={22} />
         </button>
-        <h2 className={styles.title}>{title}</h2>
-        <FaEllipsisH className={styles.icon} />
-      </header>
-    </>
+      )}
+    </header>
   );
 };
 
