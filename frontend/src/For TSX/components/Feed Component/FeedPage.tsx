@@ -140,6 +140,20 @@ const FeedPage: React.FC = () => {
     saveOutbox(remaining);
   };
 
+  // ADD THIS useEffect — MAKES DELETE BUTTON APPEAR INSTANTLY AFTER LOGIN
+  useEffect(() => {
+    const handleUserLogin = () => {
+      // Force refresh ONLY when user logs in
+      window.location.reload();
+    };
+
+    window.addEventListener("userLoggedIn", handleUserLogin);
+
+    return () => {
+      window.removeEventListener("userLoggedIn", handleUserLogin);
+    };
+  }, []);
+
   // FETCH POSTS + SYNC — NO REDIRECT HERE
   useEffect(() => {
     const cached = localStorage.getItem(LOCAL_KEY);
@@ -451,22 +465,22 @@ const FeedPage: React.FC = () => {
             </button>
           </div>
         )}
-{/* 
+      {/* 
       {error && <p className={styles.errorText}>{error}</p>} */}
 
       {error && (
-  <div className={styles.offlineBar}>
-    <div className={styles.offlinePulse}></div>
-    <span className={styles.offlineText}>
-      Offline Mode • Your posts are saved locally
-    </span>
-    <div className={styles.offlineWave}>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-)}
+        <div className={styles.offlineBar}>
+          <div className={styles.offlinePulse}></div>
+          <span className={styles.offlineText}>
+            Offline Mode • Your posts are saved locally
+          </span>
+          <div className={styles.offlineWave}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      )}
 
       <div className={styles.searchSection}>
         <SearchBar value={searchQuery} onChange={setSearchQuery} />

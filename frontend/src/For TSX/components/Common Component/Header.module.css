@@ -9,13 +9,14 @@
   /* border: 2px solid green; */
   padding-bottom: 10px;
 
+  margin-top: -100px !important;
+
   position: sticky;
   top: 0;
   z-index: 11;
   margin-top: -4rem;
   margin-bottom: -75px;
   height: 70px;
-
 }
 
 .titleSection {
@@ -87,12 +88,13 @@
     /* border-bottom: 1px solid #e5e5e5; */
     /* border: 2px solid green; */
     padding-bottom: 10px;
+    margin-top: -100px !important;
 
     position: sticky;
     top: 0;
     z-index: 11;
     margin-top: -4rem;
-  margin-bottom: -75px;
+    margin-bottom: -75px;
     height: 70px;
   }
 

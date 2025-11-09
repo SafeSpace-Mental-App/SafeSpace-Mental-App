@@ -65,12 +65,20 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
           response.data.user?.id ||
           response.data.user?._id ||
           `user_${Date.now()}`;
+            // FINAL FIX — NO MORE RELOAD LOOP, DELETE BUTTON WORKS
+            let displayName = "Anonymous";
         localStorage.setItem("currentUserId", userId);
-        console.log("Logged in as:", userId);
-        // Force refresh so MoodPage sees new user instantly
-        window.location.reload();
+        localStorage.setItem("username", displayName);
+        localStorage.setItem("email", data.email);
+
+        console.log("Logged in as:", userId, "| Name:", displayName);
+
+        // Navigate to feed
+        navigate("/feed", { replace: true });
+
+        // Tell ALL pages: "HEY! USER JUST LOGGED IN!"
+        window.dispatchEvent(new Event("userLoggedIn"));
         // SAVE ANONYMOUS NAME — THIS FIXES EMAIL DISPLAY
-        let displayName = "Anonymous";
 
         if (response.data?.user?.anonymous_name) {
           displayName = response.data.user.anonymous_name;
