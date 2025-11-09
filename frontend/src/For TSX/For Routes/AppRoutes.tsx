@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import FeedPage from "../For pages/FeedPage";
+import FeedPage from "../components/Feed Component/FeedPage";
 import JournalPage from "../For pages/JournalPage";
-import MoodPage from "../For pages/MoodPage";
+import MoodPage from "../components/Mood log Component/MoodLogPage";
 import SupportPage from "../For pages/SupportPage";
 import Signupform from "../components/Auth/Signupform";
 
@@ -17,19 +17,16 @@ import SplashScreen from "../For pages/SplashSCreen";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<SplashScreen/>}/>
+      <Route path="/" element={<SplashScreen />} />
       <Route path="/feed" element={<FeedPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/mood" element={<MoodPage />} />
-      <Route path="/support" element={<SupportPage />} />
+      <Route path="/myspace" element={<SupportPage />} />
       <Route path="/signup" element={<Signupform />} />
       <Route path="/forgotMessagepage" element={<ForgotPasswordMeassage />} />
       {/* <Route path="/signin" element={<Signinform />} /> */}
-      <Route
-        path="/verify-email"
-        element={<VerifyEmail mode="verification" />}
-      />
-      <Route path="/verify-emailreset" element={<VerifyEmail mode="reset" />} />
+      <Route path="/verify-email" element={<VerifyEmail />} />
+
       <Route
         path="/verificationSuccess"
         element={<CongratulationPage mode="verification" />}

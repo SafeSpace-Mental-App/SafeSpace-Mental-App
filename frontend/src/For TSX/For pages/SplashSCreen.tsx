@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from './SplashScreen.module.css' // optional styling
+import styles from "./SplashScreen.module.css"; // optional styling
 
 export default function SplashScreen() {
   const navigate = useNavigate();
