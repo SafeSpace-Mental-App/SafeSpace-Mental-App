@@ -61,7 +61,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
           alert("Login failed: No token received");
           return;
         }
-
+        const userId =
+          response.data.user?.id ||
+          response.data.user?._id ||
+          `user_${Date.now()}`;
+        localStorage.setItem("currentUserId", userId);
+        console.log("Logged in as:", userId);
+        // Force refresh so MoodPage sees new user instantly
+        window.location.reload();
         // SAVE ANONYMOUS NAME — THIS FIXES EMAIL DISPLAY
         let displayName = "Anonymous";
 
@@ -90,6 +97,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
         );
 
         navigate("/feed");
+        window.location.reload();
       } else {
         // FORGOT PASSWORD FLOW
         const email = location.state?.email || "placeholder@example.com";
