@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import { FiRss, FiBook, FiUser } from "react-icons/fi";
 
 const Navbar = () => {
   return (
@@ -10,7 +11,12 @@ const Navbar = () => {
         }
         to="/feed"
       >
-        Feed
+        <div className={styles.iconVertical}>
+          <span className={styles.smiley}>
+            <FiRss size={24} color="var(--text-secondary)" />
+          </span>
+          Feed
+        </div>
       </NavLink>
       <NavLink
         className={({ isActive }) =>
@@ -18,7 +24,12 @@ const Navbar = () => {
         }
         to="/journal"
       >
-        Journal
+        <div className={styles.iconVertical}>
+          <span className={styles.smiley}>
+            <FiBook size={24} color="var(--text-secondary)" />
+          </span>
+          Journal
+        </div>
       </NavLink>
       <NavLink
         className={({ isActive }) =>
@@ -26,16 +37,23 @@ const Navbar = () => {
         }
         to="/mood"
       >
-        Mood Log
+        <div className={styles.iconVertical}>
+          <span className={styles.smiley}>☺</span>
+          Mood Log
+        </div>
       </NavLink>
       <NavLink
         className={({ isActive }) =>
           isActive ? `${styles.link} ${styles.active} ` : styles.link
         }
-        to="/support"
+        to="/myspace"
       >
-        {" "}
-        Support
+        <div className={styles.iconVertical}>
+          <span className={styles.smiley}>
+            <FiUser size={24} />
+          </span>
+          My space
+        </div>
       </NavLink>
     </nav>
   );

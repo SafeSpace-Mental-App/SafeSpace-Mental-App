@@ -149,7 +149,7 @@ body {
     font-family: var(--font-brand);
     /* font-size: var(--text-heading-lg); */
     font-size: 25px;
-    margin-left: 25px;
+    margin-left: 10px;
     color: var(--brand-color);
     text-align: center;
   }

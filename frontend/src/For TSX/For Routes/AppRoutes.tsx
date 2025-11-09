@@ -21,7 +21,7 @@ const AppRoutes = () => {
       <Route path="/feed" element={<FeedPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/mood" element={<MoodPage />} />
-      <Route path="/support" element={<SupportPage />} />
+      <Route path="/myspace" element={<SupportPage />} />
       <Route path="/signup" element={<Signupform />} />
       <Route path="/forgotMessagepage" element={<ForgotPasswordMeassage />} />
       {/* <Route path="/signin" element={<Signinform />} /> */}

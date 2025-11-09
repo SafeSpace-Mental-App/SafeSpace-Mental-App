@@ -43,19 +43,36 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
           email: data.email,
           password: data.password,
         });
+
         console.log("✅ Login successful:", response.data);
+
+        // 🧠 FIX: Save token + username for FeedPage ownership tracking
+        if (response.data?.token) {
+          localStorage.setItem("token", response.data.token);
+        }
+
+        // Try different structures based on your backend response
+        if (response.data?.user?.username) {
+          localStorage.setItem("username", response.data.user.username);
+        } else if (response.data?.username) {
+          localStorage.setItem("username", response.data.username);
+        } else if (response.data?.user?.email) {
+          // fallback if username not provided
+          localStorage.setItem("username", response.data.user.email);
+        } else {
+          // if none, fallback to email
+          localStorage.setItem("username", data.email);
+        }
+
         navigate("/feed");
       } else {
-        // ✅ Create new password logic (fixed 422 issue)
-        // Many backends require email or reset token — using placeholder until API confirms structure
+        // ✅ Create new password logic
         const email =
-          location.state?.email || "placeholder@example.com"; // placeholder if not passed from previous step
+          location.state?.email || "placeholder@example.com";
 
         const response = await axiosInstance.post("/api/auth/reset-password", {
           email,
-          password: data.password,
-          confirmPassword: data.confirmPassword,
-          token: location.state?.token || "dummy-reset-token", // placeholder until backend connects
+          newpassword: data.password,
         });
 
         console.log("📩 Password Reset:", response.data);
