@@ -246,10 +246,7 @@ const Signupform = () => {
           )}
         </div>
 
-        <Button
-          text={loading ? "Creating Account..." : "Create Your Account"}
-          type="submit"
-        />
+        <Button text={loading ? "Sign in..." : "Sign in"} type="submit" />
       </form>
 
       <TheFooter />

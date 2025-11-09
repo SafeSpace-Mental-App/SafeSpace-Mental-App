@@ -1,21 +1,8 @@
 import React from "react";
 import PostCard from "./PostCard";
 import styles from "./FeedList.module.css";
+import type { Post } from "../../For Types/posttype";
 
-interface Comment {
-  id: number;
-  text: string;
-}
-
-interface Post {
-  id: number;
-  username: string;
-  content: string;
-  time: string;
-  category: string;
-  likes: number;
-  comments: Comment[];
-}
 
 interface FeedListProps {
   posts: Post[];
@@ -40,7 +27,8 @@ const FeedList: React.FC<FeedListProps> = ({ posts }) => {
             category: post.category || "General",
             likes: typeof post.likes === "number" ? post.likes : 0,
             comments:
-              Array.isArray(post.comments) && post.comments.every((c) => typeof c === "object")
+              Array.isArray(post.comments) &&
+              post.comments.every((c) => typeof c === "object")
                 ? post.comments
                 : [],
           }}

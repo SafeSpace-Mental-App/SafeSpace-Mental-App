@@ -1,4 +1,3 @@
-// PostCard.tsx
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./PostCard.module.css";
 import {
@@ -7,43 +6,33 @@ import {
   FiMoreHorizontal,
   FiTrash2,
 } from "react-icons/fi";
-
-interface Comment {
-  id: number;
-  text: string;
-}
-
-interface Post {
-  id: number;
-  username: string;
-  time: string;
-  content: string;
-  category: string;
-  likes: number;
-  comments: Comment[];
-}
+import type { Post } from "../../For Types/posttype";
 
 interface PostCardProps {
   post: Post;
-  onDelete?: (id: number) => void;
-  onToggleLike?: (id: number) => void;
-  onAddComment?: (postId: number, text: string) => void;
-  onDeleteComment?: (postId: number, commentId: number) => void;
+  showDelete?: boolean; // ✅ ensure we accept showDelete from parent
+  onDelete?: (id: string) => void;
+  onToggleLike?: (id: string) => void;
+  onAddComment?: (postId: string, text: string) => void;
+  onDeleteComment?: (postId: string, commentId: string) => void;
 }
 
 const PostCard: React.FC<PostCardProps> = ({
   post,
+  showDelete = false, // ✅ default false if not provided
   onDelete,
   onToggleLike,
   onAddComment,
   onDeleteComment,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const [activeCommentMenu, setActiveCommentMenu] = useState<number | null>(null);
+  const [activeCommentMenu, setActiveCommentMenu] = useState<string | null>(
+    null
+  );
   const [showComments, setShowComments] = useState(false);
   const [commentText, setCommentText] = useState("");
   const menuRef = useRef<HTMLDivElement>(null);
-  const commentMenuRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+  const commentMenuRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const postId = post.id;
 
   useEffect(() => {
@@ -68,17 +57,21 @@ const PostCard: React.FC<PostCardProps> = ({
     setCommentText("");
   };
 
-  const handleDeleteComment = (commentId: number) => {
+  const handleDeleteComment = (commentId: string) => {
     onDeleteComment?.(postId, commentId);
     setActiveCommentMenu(null);
   };
-
+console.log("Post Data:", post);
   return (
     <div className={styles.card}>
-      {/* Header */}
       <div className={styles.header}>
         <div>
-          <h3 className={styles.username}>{post.username}</h3>
+          
+          {/* ✅ Updated: Display anonymous_name instead of email */}
+          <h3 className={styles.username}>
+            {post.anonymous_name || post.username || "Anonymous"}
+          </h3>
+
           <p className={styles.time}>{post.time}</p>
         </div>
 
@@ -90,7 +83,8 @@ const PostCard: React.FC<PostCardProps> = ({
             <FiMoreHorizontal size={18} />
           </button>
 
-          {showMenu && (
+          {/* ✅ Only show delete option if it's the user's own post */}
+          {showMenu && showDelete && (
             <div className={`${styles.menuDropdown} ${styles.fadeIn}`}>
               <button
                 className={styles.deleteBtn}
@@ -99,20 +93,28 @@ const PostCard: React.FC<PostCardProps> = ({
                   setShowMenu(false);
                 }}
               >
-                <FiTrash2 size={14} /> Delete 
+                <FiTrash2 size={14} /> Delete
               </button>
             </div>
           )}
         </div>
       </div>
 
+      {post.title && <h4 className={styles.postTitle}>{post.title}</h4>}
       <p className={styles.content}>{post.content}</p>
       <span className={styles.tag}>{post.category}</span>
 
-      {/* Actions */}
+      {post.visibility && (
+        <span className={styles.visibilityTag}>
+          {post.visibility === "public" ? "⚪️ Public" : "🔒 Private"}
+        </span>
+      )}
+
       <div className={styles.actions}>
         <button
-          className={`${styles.actionBtn} ${post.likes ? styles.liked : ""}`}
+          className={`${styles.actionBtn} ${
+            post.likedByUser ? styles.liked : ""
+          }`}
           onClick={() => onToggleLike?.(postId)}
         >
           <FiHeart size={18} /> <span>{post.likes}</span>
@@ -126,7 +128,6 @@ const PostCard: React.FC<PostCardProps> = ({
         </button>
       </div>
 
-      {/* Comments */}
       {showComments && (
         <div className={styles.commentSection}>
           <form onSubmit={handleSubmitComment} className={styles.commentForm}>
