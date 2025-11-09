@@ -61,12 +61,17 @@ const PostCard: React.FC<PostCardProps> = ({
     onDeleteComment?.(postId, commentId);
     setActiveCommentMenu(null);
   };
-
+console.log("Post Data:", post);
   return (
     <div className={styles.card}>
       <div className={styles.header}>
         <div>
-          <h3 className={styles.username}>{post.username}</h3>
+          
+          {/* ✅ Updated: Display anonymous_name instead of email */}
+          <h3 className={styles.username}>
+            {post.anonymous_name || post.username || "Anonymous"}
+          </h3>
+
           <p className={styles.time}>{post.time}</p>
         </div>
 

@@ -125,7 +125,19 @@ const FeedPage: React.FC = () => {
       try {
         const res = await axiosInstance.get("/api/feeds");
         if (res.data?.feeds && res.data.feeds.length > 0) {
-          setPosts(res.data.feeds);
+          const formattedPosts = res.data.feeds.map((feed: any) => ({
+            id: feed._id,
+            title: feed.title,
+            content: feed.content,
+            category: feed.category,
+            username: feed.user?.email || "Anonymous", // keep fallback if needed
+            anonymous_name: feed.anonymous_name, // 👈 bring it in
+            likes: feed.likes?.length || 0,
+            comments: feed.replies || [],
+            visibility: feed.visibility,
+            createdAt: feed.createdAt,
+          }));
+          setPosts(formattedPosts);
           saveLocalPosts(res.data.feeds);
         } else {
           // Use cached or dummy when server returns empty

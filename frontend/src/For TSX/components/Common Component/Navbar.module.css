@@ -2,6 +2,7 @@ body {
   padding: none;
   border: 0;
 }
+
 .navbar {
   display: flex;
   background-color: var(--white);
@@ -12,15 +13,13 @@ body {
   left: 0;
   position: fixed;
   padding: 15px 0;
-
-
-
 }
+
 .link {
   text-decoration: none;
   color: var(--text-primary);
   font-size: var(--text-body-md);
-  transition: color 0.3;
+  transition: color 0.3s; /* fixed: was 0.3 */
 }
 
 .active {
@@ -28,7 +27,19 @@ body {
   font-weight: var(--weight-semibold);
   font-size: var(--text-body-md);
 }
-.iconVertical{
+
+
+.active .smiley,
+.active .smiley svg {
+  color: var(--brand-color) !important;
+}
+
+.smiley svg {
+  transition: color 0.3s;
+}
+/* END OF FIX */
+
+.iconVertical {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -36,10 +47,11 @@ body {
   align-items: center;
 }
 
-.smiley{
+.smiley {
   font-size: 40px;
   color: var(--text-secondary);
 }
-.spaceimg{
+
+.spaceimg {
   font-size: 10px;
 }

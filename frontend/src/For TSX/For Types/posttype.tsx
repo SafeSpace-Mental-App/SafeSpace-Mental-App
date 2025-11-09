@@ -1,25 +1,24 @@
 // src/For TSX/For Types/posttype.tsx
 
-// ✅ Unified comment type
 export interface Comment {
-  id: string; // always string to avoid conflicts
+  id: string;
   username: string;
   text: string;
 }
 
-// ✅ Unified post type
 export interface Post {
-  id: string; // always string
+  id: string;
   title: string;
   content: string;
   category: string;
   username: string;
   likes: number;
   comments: Comment[];
-  visibility?: string; // optional because old data might not have it
-  createdAt?: string; // ✅ added to fix "createdAt does not exist" errors
+  visibility?: string;
+  createdAt?: string;
   time?: string;
-
-  // ✅ added this optional property to fix "likedByUser does not exist"
   likedByUser?: boolean;
+
+  // ✅ add this to support backend field
+  anonymous_name?: string;
 }

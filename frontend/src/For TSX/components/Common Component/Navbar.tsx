@@ -13,7 +13,7 @@ const Navbar = () => {
       >
         <div className={styles.iconVertical}>
           <span className={styles.smiley}>
-            <FiRss size={24} color="var(--text-secondary)" />
+            <FiRss size={24}  />
           </span>
           Feed
         </div>
@@ -26,7 +26,7 @@ const Navbar = () => {
       >
         <div className={styles.iconVertical}>
           <span className={styles.smiley}>
-            <FiBook size={24} color="var(--text-secondary)" />
+            <FiBook size={24}  />
           </span>
           Journal
         </div>

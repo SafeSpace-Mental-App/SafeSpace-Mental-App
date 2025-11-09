@@ -12,15 +12,15 @@ const NewPostModal: React.FC<NewPostModalProps> = ({
   onClose,
   onPost,
 }) => {
-  const [title, setTitle] = useState<string>(""); // ✅ new: title
+  const [title, setTitle] = useState<string>(""); //  new: title
   const [content, setContent] = useState<string>("");
   const [category, setCategory] = useState<string>("All");
-  const [visibility, setVisibility] = useState<string>("public"); // ✅ new: visibility
+  const [visibility, setVisibility] = useState<string>("public"); //  new: visibility
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!content.trim()) return;
-    onPost(content, category, title, visibility); // ✅ pass new fields
+    onPost(content, category, title, visibility); //  pass new fields
     setTitle("");
     setContent("");
     setCategory("All");
@@ -35,7 +35,7 @@ const NewPostModal: React.FC<NewPostModalProps> = ({
       <div className={styles.modalContainer}>
         <h3>Create a new post</h3>
         <form onSubmit={handleSubmit}>
-          {/* ✅ Title Input */}
+          {/*  Title Input */}
           <input
             type="text"
             placeholder="Enter a title..."

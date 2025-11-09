@@ -25,6 +25,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getErrorMessage = (err: unknown): string | null => {
     if (!err) return null;
@@ -37,6 +38,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
 
   const onSubmit: SubmitHandler<any> = async (data) => {
     try {
+      setLoading(true);
       if (mode === "signin") {
         // ✅ Sign-in logic
         const response = await axiosInstance.post("/api/auth/login", {
@@ -67,8 +69,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
         navigate("/feed");
       } else {
         // ✅ Create new password logic
-        const email =
-          location.state?.email || "placeholder@example.com";
+        const email = location.state?.email || "placeholder@example.com";
 
         const response = await axiosInstance.post("/api/auth/reset-password", {
           email,
@@ -161,7 +162,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
               </Link>
             </p>
 
-            <Button text="Sign in" type="submit" />
+            <Button
+              text={loading ? "Signing in  ..." : "Sign in"}
+              type="submit"
+            />
             <div className={styles.buttomText}>
               <p>
                 Don’t have an Account? <Link to="/signup">Sign Up</Link>
