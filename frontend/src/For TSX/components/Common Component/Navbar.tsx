@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
-import { FiRss, FiBook, FiUser } from "react-icons/fi";
+import { FiHome, FiBook, FiUser } from "react-icons/fi";
 
 const Navbar = () => {
   return (
@@ -13,7 +13,7 @@ const Navbar = () => {
       >
         <div className={styles.iconVertical}>
           <span className={styles.smiley}>
-            <FiRss size={24}  />
+            <FiHome size={24}  />
           </span>
           Feed
         </div>
