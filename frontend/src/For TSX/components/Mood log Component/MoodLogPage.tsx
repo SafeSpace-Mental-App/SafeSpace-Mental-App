@@ -421,7 +421,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../Common Component/Navbar";
 import Header from "../Common Component/Header";
 import style from "../Mood log Component/MoodLog.module.css";
-import {  FiTrendingUp, FiCalendar } from "react-icons/fi";
+import { FiTrendingUp, FiCalendar } from "react-icons/fi";
 
 interface MoodEntry {
   emoji: string;
@@ -479,7 +479,7 @@ const MoodPage = () => {
       setShowCustomInput(true);
       return;
     }
-
+    setShowCustomInput(false);
     setSelectedMood(label);
     setShowNoteInput(true);
     const today = toLocalYMD(new Date());
