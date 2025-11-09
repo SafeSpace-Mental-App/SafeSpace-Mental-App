@@ -34,6 +34,13 @@ const PostCard: React.FC<PostCardProps> = ({
   const menuRef = useRef<HTMLDivElement>(null);
   const commentMenuRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const postId = post.id;
+  const getCurrentUsername = () => {
+    const stored = localStorage.getItem("username");
+    const userEmail = localStorage.getItem("email");
+    if (stored && stored.trim()) return stored;
+    if (userEmail && userEmail.includes("@")) return userEmail.split("@")[0];
+    return "Anonymous";
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -61,12 +68,11 @@ const PostCard: React.FC<PostCardProps> = ({
     onDeleteComment?.(postId, commentId);
     setActiveCommentMenu(null);
   };
-console.log("Post Data:", post);
+  console.log("Post Data:", post);
   return (
     <div className={styles.card}>
       <div className={styles.header}>
         <div>
-          
           {/* ✅ Updated: Display anonymous_name instead of email */}
           <h3 className={styles.username}>
             {post.anonymous_name || post.username || "Anonymous"}
@@ -164,18 +170,19 @@ console.log("Post Data:", post);
                     <FiMoreHorizontal size={14} />
                   </button>
 
-                  {activeCommentMenu === c.id && (
-                    <div
-                      className={`${styles.commentDropdown} ${styles.fadeIn}`}
-                    >
-                      <button
-                        className={styles.deleteBtn}
-                        onClick={() => handleDeleteComment(c.id)}
+                  {activeCommentMenu === c.id &&
+                    c.username === getCurrentUsername() && (
+                      <div
+                        className={`${styles.commentDropdown} ${styles.fadeIn}`}
                       >
-                        <FiTrash2 size={13} /> Delete
-                      </button>
-                    </div>
-                  )}
+                        <button
+                          className={styles.deleteBtn}
+                          onClick={() => handleDeleteComment(c.id)}
+                        >
+                          <FiTrash2 size={13} /> Delete
+                        </button>
+                      </div>
+                    )}
                 </div>
               </div>
             ))}

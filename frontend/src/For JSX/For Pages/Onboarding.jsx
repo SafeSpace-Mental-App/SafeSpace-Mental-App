@@ -18,7 +18,7 @@ export default function Onboarding() {
       {
         img: "https://mental-salmon-hu3fwtaqly.edgeone.app/16a644f5f9da12c2a3b8145436c9a1a74751728f.png",
         title: "Get Support",
-        text: "Access crisis hotlines or trained listeners when you need it most"
+        text: "Access crisis hotlines or trained listeners when you need it most",
       },
       {
         img: "https://miniature-sapphire-iqvqduyzwx.edgeone.app/376ee59d121c1363190c2dc39158351b1fa9958f.png",
@@ -60,7 +60,13 @@ export default function Onboarding() {
         onTouchEnd={onTouchEnd}
       >
         {!last && (
-          <button className="onb-skip" onClick={skip}>
+          <button
+            className="onb-skip"
+            onClick={() => {
+              localStorage.setItem("hasSeenOnboarding", "true");
+              nav("/feed");
+            }}
+          >
             Skip
           </button>
         )}
@@ -88,13 +94,16 @@ export default function Onboarding() {
                 </button>
               ) : (
                 <>
-                
-                <Link to="/get-started" className="onb-primary onb-link-btn">
-                  Get Started
-                </Link>
-                
+                  <button
+                    onClick={() => {
+                      localStorage.setItem("hasSeenOnboarding", "true");
+                      nav("/feed");
+                    }}
+                    className="onb-primary"
+                  >
+                    Get Started
+                  </button>
                 </>
-                
               )}
             </div>
           </div>

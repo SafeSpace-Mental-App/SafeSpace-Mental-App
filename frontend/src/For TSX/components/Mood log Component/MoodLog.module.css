@@ -2,6 +2,7 @@
   background-color: var(--white);
   min-height: 100vh;
   padding: 70px 16px 80px;
+
   font-family: "Inter", sans-serif;
   color: #222;
 }
@@ -13,6 +14,8 @@
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
   padding: 16px;
   margin-bottom: 16px;
+  /* border: 2px solid; */
+  margin-top: 90px;
 }
 
 .moodCheckin h2 {
@@ -138,7 +141,7 @@
 .statMoodcontainer {
   height: auto;
   font-size: small;
-  margin-top: 40px;
+
   position: relative;
 }
 
@@ -229,7 +232,7 @@
   font-size: 0.1rem;
   font-weight: 500;
   font-size: 15px !important ;
-  margin-top: -40px;
+  /* margin-top: 0px; */
 }
 
 .good {
@@ -348,7 +351,7 @@
   width: 100%;
   margin-top: -30px;
   margin-bottom: 20px;
-  margin-left: -190px;
+  margin-left: -170px;
   bottom: -10px;
   font-size: 16px;
   font-weight: 600;
@@ -429,7 +432,7 @@
 
 .saveNoteBtn {
   align-self: flex-end;
-  background-color: var(--accent, #6bc8ff);
+  background-color: var(--accent, #175b83);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -487,6 +490,81 @@
   background: #43a047;
 }
 
+.aiInsight {
+  background: linear-gradient(135deg, #667eea 0%, #000000 100%);
+  color: white;
+  padding: 16px;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 20px 0;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.privacyNote {
+  font-size: 0.72rem;
+  color: #888;
+  text-align: center;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.guestBanner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); */
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  color: #d977069d;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+  z-index: 9999;
+  border-bottom: 3px solid #ffd900c9;
+  box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3);
+  backdrop-filter: blur(10px);
+  padding-top: env(safe-area-inset-top, 12px);
+}
+/* MOOD TAG COLORS — YOUR VISION, PERFECTED */
+.tag.verylow,
+.tag[class*="verylow"] {
+  background-color: #ffffff !important;
+  color: #dc2626;
+  border: none !important;
+}
+
+.tag.low,
+.tag[class*="low"] {
+  background-color: #ffffff !important;
+  color: #ea580c;
+  border: none !important;
+}
+
+.tag.okay,
+.tag[class*="okay"] {
+  background-color: #ffffff !important;
+  color: #db2777;
+  border: none !important;
+}
+
+.tag.good,
+.tag[class*="good"] {
+  background-color: #ffffff !important;
+  color: #16a34a;
+  border: none !important;
+}
+
+.tag.great,
+.tag[class*="great"] {
+  /* background-color: #bbf7d0; */
+  color: #15803d;
+  border: 1px solid #4ade80;
+  font-weight: 700;
+}
 /* ===== Responsive tweaks ===== */
 @media (min-width: 480px) {
   .moodOptions {
@@ -632,7 +710,7 @@
   .statMoodcontainer {
     height: auto;
     font-size: small;
-    margin-top: 40px;
+
     position: relative;
   }
 
@@ -842,7 +920,7 @@
     width: 100%;
     margin-top: -30px;
     margin-bottom: 20px;
-    margin-left: -190px;
+    margin-left: -170px;
     bottom: -10px;
     font-size: 16px;
     font-weight: 600;
@@ -980,4 +1058,40 @@
   .saveCustomBtn:hover {
     background: #43a047;
   }
+}
+/* MOOD TAG COLORS — YOUR VISION, PERFECTED */
+.tag.verylow,
+.tag[class*="verylow"] {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.tag.low,
+.tag[class*="low"] {
+  background-color: #fed7aa;
+  color: #ea580c;
+  border: 1px solid #fdba74;
+}
+
+.tag.okay,
+.tag[class*="okay"] {
+  background-color: #fce7f3;
+  color: #db2777;
+  border: 1px solid #f9a8d4;
+}
+
+.tag.good,
+.tag[class*="good"] {
+  background-color: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #86efac;
+}
+
+.tag.great,
+.tag[class*="great"] {
+  background-color: #bbf7d0;
+  color: #15803d;
+  border: 1px solid #4ade80;
+  font-weight: 700;
 }

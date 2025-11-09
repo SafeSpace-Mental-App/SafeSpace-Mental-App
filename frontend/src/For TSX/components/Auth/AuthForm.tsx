@@ -39,36 +39,75 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const onSubmit: SubmitHandler<any> = async (data) => {
     try {
       setLoading(true);
+
       if (mode === "signin") {
-        // ✅ Sign-in logic
         const response = await axiosInstance.post("/api/auth/login", {
           email: data.email,
           password: data.password,
         });
 
-        console.log("✅ Login successful:", response.data);
+        console.log("Login successful:", response.data);
 
-        // 🧠 FIX: Save token + username for FeedPage ownership tracking
+        // CLEAR OLD DATA FIRST
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
+
+        // SAVE TOKEN — THIS FIXES 401
         if (response.data?.token) {
           localStorage.setItem("token", response.data.token);
+        } else {
+          console.error("No token in login response!");
+          alert("Login failed: No token received");
+          return;
+        }
+        const userId =
+          response.data.user?.id ||
+          response.data.user?._id ||
+          `user_${Date.now()}`;
+            // FINAL FIX — NO MORE RELOAD LOOP, DELETE BUTTON WORKS
+            let displayName = "Anonymous";
+        localStorage.setItem("currentUserId", userId);
+        localStorage.setItem("username", displayName);
+        localStorage.setItem("email", data.email);
+
+        console.log("Logged in as:", userId, "| Name:", displayName);
+
+        // Navigate to feed
+        navigate("/feed", { replace: true });
+
+        // Tell ALL pages: "HEY! USER JUST LOGGED IN!"
+        window.dispatchEvent(new Event("userLoggedIn"));
+        // SAVE ANONYMOUS NAME — THIS FIXES EMAIL DISPLAY
+
+        if (response.data?.user?.anonymous_name) {
+          displayName = response.data.user.anonymous_name;
+        } else if (response.data?.anonymous_name) {
+          displayName = response.data.anonymous_name;
+        } else if (response.data?.user?.username) {
+          displayName = response.data.user.username;
+        } else if (response.data?.username) {
+          displayName = response.data.username;
+        } else if (response.data?.user?.email) {
+          // LAST RESORT: use email prefix only
+          displayName = response.data.user.email.split("@")[0];
+        } else if (data.email) {
+          displayName = data.email.split("@")[0];
         }
 
-        // Try different structures based on your backend response
-        if (response.data?.user?.username) {
-          localStorage.setItem("username", response.data.user.username);
-        } else if (response.data?.username) {
-          localStorage.setItem("username", response.data.username);
-        } else if (response.data?.user?.email) {
-          // fallback if username not provided
-          localStorage.setItem("username", response.data.user.email);
-        } else {
-          // if none, fallback to email
-          localStorage.setItem("username", data.email);
-        }
+        localStorage.setItem("username", displayName);
+        localStorage.setItem("email", data.email); // optional, for fallback
+
+        console.log("Saved username:", displayName);
+        console.log(
+          "Saved token:",
+          response.data.token.substring(0, 20) + "..."
+        );
 
         navigate("/feed");
+        window.location.reload();
       } else {
-        // ✅ Create new password logic
+        // FORGOT PASSWORD FLOW
         const email = location.state?.email || "placeholder@example.com";
 
         const response = await axiosInstance.post("/api/auth/reset-password", {
@@ -76,14 +115,20 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
           newpassword: data.password,
         });
 
-        console.log("📩 Password Reset:", response.data);
+        console.log("Password Reset:", response.data);
+        alert("Password updated successfully!");
         navigate("/login");
       }
     } catch (error: any) {
       console.error(
-        `❌ ${mode === "signin" ? "Login" : "Password reset"} failed:`,
+        `${mode === "signin" ? "Login" : "Password reset"} failed:`,
         error.response?.data?.message || error.message
       );
+      alert(
+        error.response?.data?.message || "Something went wrong. Try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,7 +145,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
 
       <div>
         <h1 className={styles.title}>
-          {mode === "signin" ? "Welcome back! 😊" : "Create a New Password"}
+          {mode === "signin" ? "Welcome back!" : "Create a New Password"}
         </h1>
         <p className={styles.subtitles}>
           {mode === "signin"
@@ -163,8 +208,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
             </p>
 
             <Button
-              text={loading ? "Signing in  ..." : "Sign in"}
+              text={loading ? "Signing in..." : "Sign in"}
               type="submit"
+              disabled={loading}
             />
             <div className={styles.buttomText}>
               <p>
@@ -215,7 +261,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
               Show Password
             </label>
 
-            <Button text="Create New Password" type="submit" />
+            <Button
+              text="Create New Password"
+              type="submit"
+              disabled={loading}
+            />
           </>
         )}
 
