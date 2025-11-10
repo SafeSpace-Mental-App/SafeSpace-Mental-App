@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import FeedPage from "../components/Feed Component/FeedPage";
-import JournalPage from "../For pages/JournalPage";
+// import JournalPage from "../For pages/JournalPage";
 import MoodPage from "../components/Mood log Component/MoodLogPage";
 import SupportPage from "../For pages/SupportPage";
 import Signupform from "../components/Auth/Signupform";
@@ -10,6 +10,7 @@ import CongratulationPage from "../components/Auth/CongratulationPage";
 import AuthForm from "../components/Auth/AuthForm";
 
 import GetStartedPage from "../../For JSX/For Pages/GetStartedPage";
+import Journal from "../../For JSX/For Pages/Journal";
 import Onboarding from "../../For JSX/For Pages/Onboarding";
 import ForgotPasswordMeassage from "../components/Auth/ForgotPasswordMeassage";
 import SplashScreen from "../For pages/SplashSCreen";
@@ -21,7 +22,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<SplashScreen />} />
       <Route path="/feed" element={<FeedPage />} />
-      <Route path="/journal" element={<JournalPage />} />
+      <Route path="/journal" element={<Journal />} />
       <Route path="/mood" element={<MoodPage />} />
       <Route path="/myspace" element={<SupportPage />} />
       <Route path="/signup" element={<Signupform />} />

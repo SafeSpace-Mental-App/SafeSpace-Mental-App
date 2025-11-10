@@ -1,0 +1,128 @@
+/* Journal page styling - mobile-first, responsive, and theme-variable aware */
+
+.journal-container {
+  --bg: var(--background-secondary, #f7f8fb);
+  --card: var(--white, #fff);
+  --text: var(--text-primary, #0f172a);
+  --muted: var(--text-secondary, #64748b);
+  --ring: rgba(15, 23, 42, 0.06);
+  --brand: var(--brand-color, #7c3aed);
+  --brand2: var(--brand-secondary, #db2777);
+
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px clamp(12px, 4vw, 28px) 84px; /* bottom space for sticky FAB & navbar */
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Tiles (stats) */
+.tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 8px 0 14px;
+}
+.tile {
+  background: var(--card);
+  border: 1px solid var(--ring);
+  border-radius: 14px;
+  padding: 14px 16px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.05);
+}
+.tile-value {
+  font-size: clamp(20px, 5.6vw, 32px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+.tile-label {
+  margin-top: 6px;
+  font-size: clamp(12px, 3.4vw, 14px);
+  color: var(--muted);
+}
+
+/* Toolbar (search + actions) */
+.toolbar {
+  margin: 6px 0 10px;
+}
+.searchbar {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+}
+.searchbar input {
+  min-height: 44px; /* touch target */
+}
+.new-entry-btn {
+  white-space: nowrap;
+}
+
+/* Cards grid (JournalCard list) */
+.cards {
+  display: grid;
+  gap: 12px;
+}
+
+/* Empty/loading states */
+.state {
+  background: var(--card);
+  border: 1px dashed var(--ring);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+  margin: 10px 0;
+}
+
+/* Sticky FAB for mobile (quick New Entry) */
+.fab-new-entry {
+  position: fixed;
+  right: 16px;
+  bottom: 84px; /* stay above Navbar */
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(90deg, var(--brand), var(--brand2));
+  box-shadow: 0 14px 30px rgba(124, 58, 237, 0.35);
+  -webkit-tap-highlight-color: transparent;
+}
+.fab-new-entry:hover { filter: brightness(1.05); }
+
+/* RESPONSIVE BREAKPOINTS */
+@media (min-width: 640px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  .journal-container {
+    padding: 24px 28px 100px;
+  }
+  .tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .searchbar {
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+  }
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .fab-new-entry {
+    bottom: 100px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fab-new-entry { transition: none; }
+}
