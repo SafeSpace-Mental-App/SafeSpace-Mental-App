@@ -6,22 +6,26 @@ export default function Onboarding() {
   const slides = useMemo(
     () => [
       {
-        img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762750984/611ff2bf775df418ac07ec4f38d9ba9bd0651bca_izydj8.png",
+        // img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762750984/611ff2bf775df418ac07ec4f38d9ba9bd0651bca_izydj8.png",
+        img: "../../../public/images/3.png",
         title: "Vent Safely",
         text: "Share your thoughts anonymously without fear of judgment.",
       },
       {
-        img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751045/6713bffaf2cce8be773b3660a305314248897552_dok17t.png",
+        // img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751045/6713bffaf2cce8be773b3660a305314248897552_dok17t.png",
+        img: "../../../public/images/1.png",
         title: "Reflect Daily",
         text: "Track your moods and keep a private journal for self-reflection",
       },
       {
-        img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751089/16a644f5f9da12c2a3b8145436c9a1a74751728f_e2ryxm.png",
+        // img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751089/16a644f5f9da12c2a3b8145436c9a1a74751728f_e2ryxm.png",
+        img: "../../../public/images/4.png",
         title: "Get Support",
         text: "Access crisis hotlines or trained listeners when you need it most",
       },
       {
-        img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751129/376ee59d121c1363190c2dc39158351b1fa9958f_vn4sto.png",
+        // img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751129/376ee59d121c1363190c2dc39158351b1fa9958f_vn4sto.png",
+        img: "../../../public/images/2.png",
         title: "Join SafeSpace, You’re Safe Here!",
         text: "Your data is private. Your voice matters. You are not alone",
       },
@@ -86,12 +90,12 @@ export default function Onboarding() {
             <h1>{slide.title}</h1>
             <p>{slide.text}</p>
 
-            <div className="onb-progress">
+            {/* <div className="onb-progress">
               <div
                 className="onb-progress-fill"
                 style={{ width: `${progress * 100}%` }}
               />
-            </div>
+            </div> */}
 
             <div className="onb-cta">
               {!last ? (
