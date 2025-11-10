@@ -6,22 +6,22 @@ export default function Onboarding() {
   const slides = useMemo(
     () => [
       {
-        img: "https://exciting-blush-berczpvzj5.edgeone.app/611ff2bf775df418ac07ec4f38d9ba9bd0651bca.png",
+        img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762750984/611ff2bf775df418ac07ec4f38d9ba9bd0651bca_izydj8.png",
         title: "Vent Safely",
         text: "Share your thoughts anonymously without fear of judgment.",
       },
       {
-        img: "https://subsequent-violet-w1ksv6cfbj.edgeone.app/6713bffaf2cce8be773b3660a305314248897552.png",
+        img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751045/6713bffaf2cce8be773b3660a305314248897552_dok17t.png",
         title: "Reflect Daily",
         text: "Track your moods and keep a private journal for self-reflection",
       },
       {
-        img: "https://mental-salmon-hu3fwtaqly.edgeone.app/16a644f5f9da12c2a3b8145436c9a1a74751728f.png",
+        img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751089/16a644f5f9da12c2a3b8145436c9a1a74751728f_e2ryxm.png",
         title: "Get Support",
         text: "Access crisis hotlines or trained listeners when you need it most",
       },
       {
-        img: "https://miniature-sapphire-iqvqduyzwx.edgeone.app/376ee59d121c1363190c2dc39158351b1fa9958f.png",
+        img: "https://res.cloudinary.com/dwkptw91p/image/upload/v1762751129/376ee59d121c1363190c2dc39158351b1fa9958f_vn4sto.png",
         title: "Join SafeSpace, You’re Safe Here!",
         text: "Your data is private. Your voice matters. You are not alone",
       },
@@ -73,7 +73,13 @@ export default function Onboarding() {
 
         <div className="onb-layout">
           <div className="onb-image">
-            <img src={slide.img} alt={slide.title} />
+            <img
+              src={slide.img}
+              alt={slide.title}
+              loading="eager"
+              decoding="async"
+              draggable="false"
+            />
           </div>
 
           <div className="onb-text">
