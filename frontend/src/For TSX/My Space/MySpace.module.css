@@ -46,6 +46,7 @@
   font-size: 16px;
   color: #374151;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  max-width: 350px;
 }
 
 /* General section styling */
@@ -124,10 +125,53 @@
   margin-top: 10px;
   transition: 0.3s;
 }
+/* MySpace.module.css  (add or replace the existing .loginBtn) */
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* space between icon & text */
+  color: var(--brand-color); /* deep green text */
+  background: transparent;
+  border: 1.5px solid #e6e6e68a; /* soft green glow */
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Hover – subtle lift + glow */
+.loginBtn:hover {
+  background: rgba(94, 255, 0, 0.08); /* faint green tint */
+  /* border-color: #71b5cfa6; */
+  color: var(--darkest-blue); /* darker green */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(120, 228, 255, 0.2);
+}
+
+/* Active – press effect */
+.loginBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: focus ring for accessibility */
+.loginBtn:focus-visible {
+  outline: 2px solid #5eff00;
+  outline-offset: 2px;
+}
 
 .logoutBtn:hover {
   background: #fef2f2;
 }
+/* .loginBtn:hover {
+  background: #fef2f2;
+} */
 
 .energyBox {
   width: 90%;
@@ -206,45 +250,13 @@
     width: 100px;
     object-fit: cover;
     height: 80px;
-    margin-bottom: -60px;
-    margin-top: -50px;
-  }
-  .greeting {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 16px;
-    margin-top: 10px;
-  }
-
-  .greeting h2 {
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  .username {
-    color: #2563eb;
-  }
-
-  .greeting p {
-    font-size: 14px;
-    color: #555;
-    margin-top: 4px;
-  }
-
-  .tipBox {
-    width: 100%;
-    background: #eff6ff;
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 16px;
-    font-size: 16px;
-    color: #374151;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    max-width: 350px;
+    font-family: var(--font-primary);
   }
 
   /* General section styling */
   .section {
-    width: 100%;
+    width: 80%;
     background: #e8f3ff;
     border: 1px solid #f1f1f1;
     border-radius: 16px;
@@ -253,14 +265,16 @@
     text-align: center;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     padding: 0 30px;
-    max-width: 400px;
+    max-width: 350px !;
   }
 
   .section h3 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #333;
     margin-bottom: 10px;
+    font-weight: lighter;
+    font-family: var(--font-primary);
   }
 
   .section p {
@@ -317,6 +331,7 @@
     cursor: pointer;
     margin-top: 10px;
     transition: 0.3s;
+    margin-bottom: 90px;
   }
 
   .logoutBtn:hover {
@@ -330,6 +345,7 @@
     padding: 1rem;
     text-align: center;
     margin-bottom: 1.5rem;
+    max-width: 340px;
   }
 
   .energyBox h3 {
@@ -343,7 +359,7 @@
 
   .energyBox p {
     color: #334;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 0.8rem;
   }
 
@@ -373,6 +389,7 @@
     border-radius: 16px;
     transition: all 0.2s ease;
     margin-top: 20px;
+    margin-bottom: 90px;
   }
 
   .logoutBtn:hover {
@@ -382,6 +399,26 @@
   }
 
   .logoutIcon {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .logoutBtn:hover {
+    background: rgba(94, 255, 0, 0.08); /* faint green tint */
+    /* border-color: #71b5cfa6; */
+
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(120, 228, 255, 0.2);
+  }
+
+  /* Active – press effect */
+  .logoutBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Optional: focus ring for accessibility */
+  .logoutBtn:focus-visible {
+    /* outline: 2px solid #5eff00; */
+    outline-offset: 2px;
   }
 }

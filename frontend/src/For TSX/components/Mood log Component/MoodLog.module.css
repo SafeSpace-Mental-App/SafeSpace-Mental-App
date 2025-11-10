@@ -51,7 +51,8 @@
 }
 
 .moodBtn:hover {
-  background: #e8f0ff;
+  /* background: #e8f0ff; */
+  transform: 1s ease in;
 }
 
 .selectedMoodText {
@@ -352,7 +353,7 @@
   width: 100%;
   margin-top: -30px;
   margin-bottom: 20px;
-  margin-left: -170px;
+  margin-left: -150px;
   bottom: -10px;
   font-size: 16px;
   font-weight: 600;
@@ -565,6 +566,11 @@
   color: #15803d;
   border: none !important;
   font-weight: 700;
+}
+
+.headerEdit {
+  padding-top: 40px;
+  margin-left: -10px;
 }
 /* ===== Responsive tweaks ===== */
 @media (min-width: 480px) {
@@ -921,7 +927,7 @@
     width: 100%;
     margin-top: -30px;
     margin-bottom: 20px;
-    margin-left: -170px;
+    margin-left: -150px;
     bottom: -10px;
     font-size: 16px;
     font-weight: 600;
@@ -1095,4 +1101,8 @@
   color: #15803d;
   border: 1px solid #4ade80;
   font-weight: 700;
+}
+.headerEdit {
+  padding-top: 40px;
+  margin-left: -10px;
 }

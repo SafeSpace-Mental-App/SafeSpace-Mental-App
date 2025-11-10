@@ -161,6 +161,7 @@ const MoodPage = () => {
         <Header
           title="Mood Log"
           subtitles="Track your emotional journey day by day"
+          className={style.headerEdit}
         />
 
         {!showFullHistory ? (

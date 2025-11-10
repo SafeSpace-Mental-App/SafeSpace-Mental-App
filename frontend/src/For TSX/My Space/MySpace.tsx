@@ -1,10 +1,8 @@
-
-
 import Navbar from "../components/Common Component/Navbar";
 
 import styles from "./MySpace.module.css";
 import { useNavigate } from "react-router-dom";
-import { FiSun, FiHeart, FiLogOut } from "react-icons/fi";
+import { FiSun, FiHeart, FiLogOut, FiLogIn } from "react-icons/fi";
 import { useEffect, useState } from "react";
 
 const MySpace = () => {
@@ -76,10 +74,20 @@ const MySpace = () => {
         </button>
       </section>
 
-      <button onClick={handleLogout} className={styles.logoutBtn}>
-        <FiLogOut className={styles.logoutIcon} />
-        Sign Out
-      </button>
+      {localStorage.getItem("token") ? (
+        <button onClick={handleLogout} className={styles.logoutBtn}>
+          <FiLogOut className={styles.logoutIcon} />
+          Sign Out
+        </button>
+      ) : (
+        <button
+          onClick={() => navigate("/signin")}
+          className={styles.loginBtn} // reuse same style or make a new one
+        >
+          <FiLogIn className={styles.logoutIcon} />
+          Sign In
+        </button>
+      )}
       <Navbar />
     </div>
   );

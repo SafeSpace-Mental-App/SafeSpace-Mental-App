@@ -3,15 +3,28 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+
   "homepage": "https://SafeSpace-Mental-App.github.io/SafeSpace-Mental-App",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+
     "lint": "eslint .",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "preview": "vite preview"
-  },
+    
+    
+  
+
+ 
+
+  "build": "tsc -b && vite build",
+  "preview": "vite preview",
+
+  "deploy": "netlify deploy --dir dist --prod",
+  "deploy:preview": "netlifydir dist",
+  "unlock": "netlify sites:unlock safespace-mentalapp",
+  "ship": "netlify sites:unlock safespace-mentalapp && netlify deploy --dir dist --prod"
+},
+
   "dependencies": {
     "axios": "^1.13.1",
     "react": "^19.1.1",
