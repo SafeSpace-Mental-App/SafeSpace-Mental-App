@@ -70,8 +70,9 @@ body {
     left: 0;
     position: fixed;
     padding: 15px 0;
-    margin-left: -20px;
-    padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px)) !important;  
+    height: 40px;
+
+    padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px)) !important;
   }
 
   .link {
