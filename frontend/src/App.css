@@ -86,7 +86,13 @@
 }
 
 .onb-text {
-  background: var(--onb-card);
+  background: #020024;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
   border-top: 1px solid var(--onb-ring);
   padding: 24px 20px 28px;
   display: flex;
@@ -102,13 +108,14 @@
   font-weight: var(--onb-w-semibold);
   font-size: clamp(var(--onb-h-lg), 4.2vw, 32px);
   line-height: 1.15;
-  color: var(--onb-text);
+  color: white;
 }
 .onb-text p {
   margin: 0;
-  color: var(--onb-muted);
+  color: white;
   font-size: clamp(var(--onb-body-md), 2.6vw, var(--onb-body-xl));
   max-width: 46ch;
+  text-shadow: black;
 }
 
 .onb-progress {
@@ -306,7 +313,6 @@
 }
 
 .secondary-btn {
- 
   background: var(--white);
   color: var(--brand-color);
   border: 2px solid var(--brand-color);
@@ -316,6 +322,6 @@
   background-color: var(--brand-color);
   color: var(--white);
 }
-.onb-dots{
+.onb-dots {
   box-sizing: border-box;
 }
