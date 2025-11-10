@@ -1,0 +1,387 @@
+.mySpace {
+  min-height: 100vh;
+  background-color: #f8faff;
+  color: #333;
+
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imgTop {
+  width: 100px;
+  object-fit: cover;
+  height: 200px;
+  margin-bottom: -60px;
+  margin-top: -50px;
+}
+.greeting {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 16px;
+  margin-top: 10px;
+}
+
+.greeting h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.username {
+  color: #2563eb;
+}
+
+.greeting p {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.tipBox {
+  width: 100%;
+  background: #eff6ff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #374151;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* General section styling */
+.section {
+  width: 100%;
+  background: #e8f3ff;
+  border: 1px solid #f1f1f1;
+  border-radius: 16px;
+  padding: 16px 300px;
+  margin-bottom: 18px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 0 30px;
+  max-width: 400px;
+}
+
+.section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.section p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* Mood emoji row */
+.moodRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26px;
+  margin-bottom: 12px;
+  user-select: none;
+  padding: 0 30px;
+  max-width: 400px;
+}
+
+.moodEmoji {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.moodEmoji:active {
+  transform: scale(1.2);
+}
+
+/* Buttons */
+.actionBtn {
+  width: 100%;
+  background-color: #2563eb;
+  color: #fff;
+  padding: 10px 0;
+  border: none;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.actionBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.logoutBtn {
+  color: #dc2626;
+  border: 1px solid #dc2626;
+  padding: 10px 24px;
+  border-radius: 12px;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.logoutBtn:hover {
+  background: #fef2f2;
+}
+
+.energyBox {
+  width: 90%;
+  background: #e8f3ff;
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.energyBox h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  color: #1d3ec2;
+  margin-bottom: 0.4rem;
+}
+
+.energyBox p {
+  color: #334;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.actionBtn {
+  background: #4a7cf7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1.5px solid #e2e8f0;
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+}
+
+.logoutBtn:hover {
+  background: #f8fafc;
+  border-color: #df0000;
+  color: #fa0000;
+}
+
+.logoutIcon {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 400px) {
+  .mySpace {
+    min-height: 100vh;
+    background-color: #f8faff;
+    color: #333;
+
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .imgTop {
+    width: 100px;
+    object-fit: cover;
+    height: 80px;
+    margin-bottom: -60px;
+    margin-top: -50px;
+  }
+  .greeting {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16px;
+    margin-top: 10px;
+  }
+
+  .greeting h2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .username {
+    color: #2563eb;
+  }
+
+  .greeting p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 4px;
+  }
+
+  .tipBox {
+    width: 100%;
+    background: #eff6ff;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: #374151;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* General section styling */
+  .section {
+    width: 100%;
+    background: #e8f3ff;
+    border: 1px solid #f1f1f1;
+    border-radius: 16px;
+    padding: 16px 300px;
+    margin-bottom: 18px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 0 30px;
+    max-width: 400px;
+  }
+
+  .section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .section p {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+
+  /* Mood emoji row */
+  .moodRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 26px;
+    margin-bottom: 12px;
+    user-select: none;
+    padding: 0 30px;
+    max-width: 400px;
+  }
+
+  .moodEmoji {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .moodEmoji:active {
+    transform: scale(1.2);
+  }
+
+  /* Buttons */
+  .actionBtn {
+    width: 100%;
+    background-color: #2563eb;
+    color: #fff;
+    padding: 10px 0;
+    border: none;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .actionBtn:hover {
+    background-color: #1d4ed8;
+  }
+
+  .logoutBtn {
+    color: #dc2626;
+    border: 1px solid #dc2626;
+    padding: 10px 24px;
+    border-radius: 12px;
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+  }
+
+  .logoutBtn:hover {
+    background: #fef2f2;
+  }
+
+  .energyBox {
+    width: 90%;
+    background: #e8f3ff;
+    border-radius: 16px;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .energyBox h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    color: #1d3ec2;
+    margin-bottom: 0.4rem;
+  }
+
+  .energyBox p {
+    color: #334;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .actionBtn {
+    background: #4a7cf7;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  .logoutBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 1.5px solid #e2e8f0;
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 16px;
+    transition: all 0.2s ease;
+    margin-top: 20px;
+  }
+
+  .logoutBtn:hover {
+    background: #f8fafc;
+    border-color: #df0000;
+    color: #fa0000;
+  }
+
+  .logoutIcon {
+    font-size: 1.1rem;
+  }
+}

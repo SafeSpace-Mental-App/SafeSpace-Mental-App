@@ -21,7 +21,7 @@ const FeedPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showGuestBanner, setShowGuestBanner] = useState(true);
+  // const [showGuestBanner, setShowGuestBanner] = useState(true);
 
   // DUMMY POSTS (for offline)
   const dummyPosts: Post[] = [
@@ -140,6 +140,9 @@ const FeedPage: React.FC = () => {
     saveOutbox(remaining);
   };
 
+
+
+  
   // ADD THIS useEffect — MAKES DELETE BUTTON APPEAR INSTANTLY AFTER LOGIN
   useEffect(() => {
     const handleUserLogin = () => {
@@ -153,7 +156,14 @@ const FeedPage: React.FC = () => {
       window.removeEventListener("userLoggedIn", handleUserLogin);
     };
   }, []);
-
+useEffect(() => {
+  // RE-ATTACH TOKEN ON EVERY MOUNT — THIS FIXES OFFLINE MODE BUG
+  const token = localStorage.getItem("token");
+  if (token && token !== "null") {
+    axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else {
+    delete axiosInstance.defaults.headers.common["Authorization"];
+  }})
   // FETCH POSTS + SYNC — NO REDIRECT HERE
   useEffect(() => {
     const cached = localStorage.getItem(LOCAL_KEY);
@@ -177,6 +187,7 @@ const FeedPage: React.FC = () => {
     }
 
     const fetchAndSync = async () => {
+      
       try {
         const res = await axiosInstance.get("/api/feeds");
         if (res.data?.feeds?.length > 0) {
@@ -231,12 +242,12 @@ const FeedPage: React.FC = () => {
 
   // GUEST BANNER TIMER — ONLY FOR GUESTS
   // GUEST BANNER: ALWAYS VISIBLE FOR GUESTS — NO TIMER, NO SCROLL HIDE
-  useEffect(() => {
-    const isGuest =
-      !localStorage.getItem("token") ||
-      localStorage.getItem("token") === "null";
-    setShowGuestBanner(isGuest);
-  }, []);
+  // useEffect(() => {
+  //   const isGuest =
+  //     !localStorage.getItem("token") ||
+  //     localStorage.getItem("token") === "null";
+  //   setShowGuestBanner(isGuest);
+  // }, []);
 
   // CREATE POST — REDIRECT ONLY ON ACTION
   const handleAddPost = async (
@@ -320,14 +331,20 @@ const FeedPage: React.FC = () => {
   };
 
   // DELETE POST — SAFE
-  const handleDeletePost = async (id: string) => {
-    const currentUser = getCurrentUsername();
-    const target = posts.find((p) => p.id === id);
-    if (!target || target.username !== currentUser) {
-      alert("You can only delete your own posts.");
-      return;
-    }
+ const handleDeletePost = async (id: string) => {
+  const currentUser = getCurrentUsername();
+  const target = posts.find((p) => p.id === id);
 
+  // FIXED: Compare using anonymous_name (what user sees) OR fallback
+  const isOwner = 
+    target?.anonymous_name === currentUser ||
+    target?.username === currentUser ||
+    target?.username === localStorage.getItem("email");
+
+  if (!target || !isOwner) {
+    alert("You can only delete your own posts.");
+    return;
+  }
     setPosts((prev) => prev.filter((p) => p.id !== id));
 
     if (id.startsWith("tmp-")) {
@@ -454,7 +471,7 @@ const FeedPage: React.FC = () => {
       {/* GUEST BANNER — SHOWS ONLY FOR GUESTS */}
       {(!localStorage.getItem("token") ||
         localStorage.getItem("token") === "null") &&
-        showGuestBanner && (
+         (
           <div className={styles.guestBanner}>
             <p>Ready to share your story?</p>
             <button
