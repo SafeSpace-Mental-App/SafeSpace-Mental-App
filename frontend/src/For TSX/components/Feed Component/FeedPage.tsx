@@ -456,6 +456,7 @@ useEffect(() => {
   return (
     <div className={styles.feedContainer}>
       <Header
+      className={styles.headerEdit}
         title="Safe Rant"
         subtitles="Express yourself freely"
         onAddPost={() => {

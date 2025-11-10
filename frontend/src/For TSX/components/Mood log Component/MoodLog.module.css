@@ -567,6 +567,11 @@
   border: none !important;
   font-weight: 700;
 }
+
+.headerEdit {
+  padding-top: 40px;
+  margin-left: -10px;
+}
 /* ===== Responsive tweaks ===== */
 @media (min-width: 480px) {
   .moodOptions {
@@ -1096,4 +1101,8 @@
   color: #15803d;
   border: 1px solid #4ade80;
   font-weight: 700;
+}
+.headerEdit {
+  padding-top: 40px;
+  margin-left: -10px;
 }

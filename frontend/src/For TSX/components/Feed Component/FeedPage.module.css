@@ -5,8 +5,6 @@
   min-height: 100vh;
   position: relative;
   padding-top: 140px;
-
-  
 }
 
 /* Smooth vertical scroll & consistent spacing */
@@ -164,8 +162,6 @@
   animation: slideDown 0.5s ease-out;
   border-bottom: 3px solid rgba(255, 255, 255, 0.2);
   padding-top: env(safe-area-inset-top, 10px);
-
-
 }
 
 .offlinePulse {
@@ -178,7 +174,7 @@
 
 .offlineText {
   letter-spacing: 0.5px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .offlineWave {
@@ -189,14 +185,20 @@
 .offlineWave > div {
   width: 4px;
   height: 12px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 2px;
   animation: wave 1.5s ease-in-out infinite;
 }
 
-.offlineWave > div:nth-child(1) { animation-delay: 0s; }
-.offlineWave > div:nth-child(2) { animation-delay: 0.2s; }
-.offlineWave > div:nth-child(3) { animation-delay: 0.4s; }
+.offlineWave > div:nth-child(1) {
+  animation-delay: 0s;
+}
+.offlineWave > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.offlineWave > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 @keyframes slideDown {
   from {
@@ -210,13 +212,29 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.4; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 @keyframes wave {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.headerEdit {
+  margin-top: -20px;
+  margin-left: -20px;
 }
 
 /* Slide-in animation */
@@ -241,56 +259,64 @@
     font-size: 0.95rem;
   }
   .offlineBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
-  color: white;
-  padding: 10px 16px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  text-align: center;
-  z-index: 999999;
-  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  backdrop-filter: blur(10px);
-  animation: slideDown 0.5s ease-out;
-  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 10px 16px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-align: center;
+    z-index: 999999;
+    box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    backdrop-filter: blur(10px);
+    animation: slideDown 0.5s ease-out;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+  }
 
+  .offlinePulse {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .offlineText {
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .offlineWave {
+    display: flex;
+    gap: 4px;
+  }
+
+  .offlineWave > div {
+    width: 4px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    animation: wave 1.5s ease-in-out infinite;
+  }
+
+  .offlineWave > div:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .offlineWave > div:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .offlineWave > div:nth-child(3) {
+    animation-delay: 0.4s;
+  }
 }
-
-.offlinePulse {
-  width: 10px;
-  height: 10px;
-  background: #fff;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-.offlineText {
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
-
-.offlineWave {
-  display: flex;
-  gap: 4px;
-}
-
-.offlineWave > div {
-  width: 4px;
-  height: 12px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 2px;
-  animation: wave 1.5s ease-in-out infinite;
-}
-
-.offlineWave > div:nth-child(1) { animation-delay: 0s; }
-.offlineWave > div:nth-child(2) { animation-delay: 0.2s; }
-.offlineWave > div:nth-child(3) { animation-delay: 0.4s; }
-
+.headerEdit {
+  margin-top: -20px;
+  margin-left: -20px;
 }
