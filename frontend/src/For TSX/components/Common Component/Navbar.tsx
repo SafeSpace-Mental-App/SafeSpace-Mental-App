@@ -46,7 +46,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive ? `${styles.link} ${styles.active} ` : styles.link
         }
-        to="/myspace"
+        to="/my-space"
       >
         <div className={styles.iconVertical}>
           <span className={styles.smiley}>

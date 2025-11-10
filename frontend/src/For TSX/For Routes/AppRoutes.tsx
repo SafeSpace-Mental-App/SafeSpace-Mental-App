@@ -13,6 +13,8 @@ import GetStartedPage from "../../For JSX/For Pages/GetStartedPage";
 import Onboarding from "../../For JSX/For Pages/Onboarding";
 import ForgotPasswordMeassage from "../components/Auth/ForgotPasswordMeassage";
 import SplashScreen from "../For pages/SplashSCreen";
+// import Onboarding2 from "../../Dummy Folder/Onboarding2";
+import MySpace from "../My Space/MySpace";
 
 const AppRoutes = () => {
   return (
@@ -24,7 +26,7 @@ const AppRoutes = () => {
       <Route path="/myspace" element={<SupportPage />} />
       <Route path="/signup" element={<Signupform />} />
       <Route path="/forgotMessagepage" element={<ForgotPasswordMeassage />} />
-      {/* <Route path="/signin" element={<Signinform />} /> */}
+
       <Route path="/verify-email" element={<VerifyEmail />} />
 
       <Route
@@ -44,6 +46,9 @@ const AppRoutes = () => {
       {/* 🌟 Onboarding pages */}
       <Route path="/get-started" element={<GetStartedPage />} />
       <Route path="/onboarding" element={<Onboarding />} />
+      {/* <Route path="/onboarding2" element={<Onboarding2 />} />
+       */}
+      <Route path="/my-space" element={<MySpace />} />
     </Routes>
   );
 };
