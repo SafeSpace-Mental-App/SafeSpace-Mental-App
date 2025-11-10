@@ -232,6 +232,10 @@
     transform: translateY(-6px);
   }
 }
+.headerEdit {
+  margin-top: -20px;
+  margin-left: -20px;
+}
 
 /* Slide-in animation */
 @keyframes slideDown {
@@ -311,4 +315,8 @@
   .offlineWave > div:nth-child(3) {
     animation-delay: 0.4s;
   }
+}
+.headerEdit {
+  margin-top: -20px;
+  margin-left: -20px;
 }
