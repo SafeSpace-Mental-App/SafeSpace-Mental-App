@@ -37,7 +37,7 @@
 .loadMoreWrapper {
   display: flex;
   justify-content: center;
-  padding: 2rem 0 3rem;
+  padding: 2rem 0 2rem;
   background: linear-gradient(to bottom, transparent 0%, var(--white) 30%);
 }
 
@@ -45,7 +45,7 @@
   background: linear-gradient(135deg, #6e8efb 0%, #a777e2 100%);
   color: white;
   border: none;
-  padding: 0.9rem 2.8rem;
+  padding: 0.9rem 2rem;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 50px;
