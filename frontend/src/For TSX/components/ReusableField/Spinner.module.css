@@ -1,0 +1,24 @@
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* or 100vh for full screen */
+}
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4f46e5; /* main color */
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  animation: spin 0.8s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

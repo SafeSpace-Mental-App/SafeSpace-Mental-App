@@ -1,0 +1,235 @@
+
+
+ .card {
+    width: 290px;
+    height: auto;
+    margin-top: 30px;
+    box-sizing: border-box;
+    margin-left: 20px;
+    /* border: 2px solid green; */
+    /* padding: 10px; */
+  }
+  .moreAndTime {
+    display: flex;
+    height: 20px;
+    width: 290px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    /* border: 2px solid; */
+  }
+
+  .time {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 10px;
+  }
+  .title {
+    /* border: 2px solid; */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 7px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+   
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .content {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: -10px;
+    font-size: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: justify;
+   
+    height: auto;
+    /* border: 2px solid red; */
+  }
+  .moreButtonContainer {
+    position: absolute;
+    /* border: 2px solid; */
+    margin-top: 9px;
+    margin-left: 170px !important;
+  }
+
+  .moreButton {
+    background-color: white;
+    border: none;
+  }
+  .moreButton:hover {
+    background-color: rgba(199, 191, 191, 0.137);
+  }
+  .moreButtonDelete {
+    background-color: white;
+    border: none;
+    color: red;
+    font-size: 12px;
+  }
+  .moreButtonDelete:hover {
+    background-color: rgba(0, 0, 0, 0.082);
+    border-radius: 10px;
+  }
+  .moreButtonEdit {
+    background-color: white;
+    border: none;
+    color: rgb(0, 0, 0);
+    margin-left: 10px;
+    font-size: 12px;
+  }
+  .moreButtonEdit:hover {
+    background-color: rgba(0, 0, 0, 0.082);
+    border-radius: 10px;
+  }
+@media (min-width: 375px) {
+  .card {
+    width: 290px;
+    height: auto;
+    margin-top: 30px;
+    box-sizing: border-box;
+    margin-left: 20px;
+    /* border: 2px solid green; */
+    /* padding: 10px; */
+  }
+  .moreAndTime {
+    display: flex;
+    height: 20px;
+    width: 290px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    /* border: 2px solid; */
+  }
+
+  .time {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 10px;
+  }
+  .title {
+    /* border: 2px solid; */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 7px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+   
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .content {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: -10px;
+    font-size: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: justify;
+   
+    height: auto;
+    /* border: 2px solid red; */
+  }
+  .moreButtonContainer {
+    position: absolute;
+    /* border: 2px solid; */
+    margin-top: 9px;
+    margin-left: 170px !important;
+  }
+
+  .moreButton {
+    background-color: white;
+    border: none;
+  }
+  .moreButton:hover {
+    background-color: rgba(199, 191, 191, 0.137);
+  }
+  .moreButtonDelete {
+    background-color: white;
+    border: none;
+    color: red;
+    font-size: 12px;
+  }
+  .moreButtonDelete:hover {
+    background-color: rgba(0, 0, 0, 0.082);
+    border-radius: 10px;
+  }
+  .moreButtonEdit {
+    background-color: white;
+    border: none;
+    color: rgb(0, 0, 0);
+    margin-left: 10px;
+    font-size: 12px;
+  }
+  .moreButtonEdit:hover {
+    background-color: rgba(0, 0, 0, 0.082);
+    border-radius: 10px;
+  }
+}
+@media (min-width: 600px) {
+  .card {
+    width: 600px !important;
+    height: auto;
+    margin-top: 30px;
+    /* box-sizing: border-box; */
+    /* border: 2px solid yellow; */
+    margin-left: 20px;
+    /* padding: 10px; */
+  }
+  .moreAndTime {
+    display: flex;
+    height: 20px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    /* border: 2px solid; */
+  }
+  .time {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+  }
+
+  .moreButtonContainer {
+    /* border: 2px solid; */
+    position: absolute;
+    margin-top: 9px;
+    margin-left: 450px !important;
+  }
+
+  .moreButtonDelete {
+    background-color: white;
+    border: none;
+    color: red;
+  }
+  .moreButtonDelete:hover {
+    background-color: rgba(0, 0, 0, 0.082);
+    border-radius: 10px;
+  }
+  .moreButtonEdit {
+    background-color: white;
+    border: none;
+    color: rgb(0, 0, 0);
+    margin-left: 10px;
+  }
+  .moreButtonEdit:hover {
+    background-color: rgba(0, 0, 0, 0.082);
+    border-radius: 10px;
+  }
+
+  .title {
+    /* border: 2px solid; */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: -5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    
+    width: 100% !important;
+  }
+
+  .content {
+    /* border: 2px solid red; */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: -10px;
+    font-size: 14px;
+    text-align: justify;
+    width: 100% !important;
+  }
+}

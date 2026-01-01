@@ -4,7 +4,12 @@ import styles from "./NewPostModal.module.css";
 interface NewPostModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onPost: (content: string, category: string, title?: string, visibility?: string) => void; // ✅ added title & visibility (optional)
+  onPost: (
+    content: string,
+    category: string,
+    title?: string,
+    visibility?: string
+  ) => void; // ✅ added title & visibility (optional)
 }
 
 const NewPostModal: React.FC<NewPostModalProps> = ({

@@ -7,10 +7,11 @@ import {
   FiTrash2,
 } from "react-icons/fi";
 import type { Post } from "../../For Types/posttype";
+import { useUser } from "../../My Space/For Hooks/useUser";
 
 interface PostCardProps {
   post: Post;
-  showDelete?: boolean; // ✅ ensure we accept showDelete from parent
+  showDelete?: boolean;
   onDelete?: (id: string) => void;
   onToggleLike?: (id: string) => void;
   onAddComment?: (postId: string, text: string) => void;
@@ -19,7 +20,7 @@ interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({
   post,
-  showDelete = false, // ✅ default false if not provided
+  showDelete = false,
   onDelete,
   onToggleLike,
   onAddComment,
@@ -40,6 +41,34 @@ const PostCard: React.FC<PostCardProps> = ({
     if (stored && stored.trim()) return stored;
     if (userEmail && userEmail.includes("@")) return userEmail.split("@")[0];
     return "Anonymous";
+  };
+  const [, setNow] = useState(Date.now());
+
+  const { user: currentUser } = useUser();
+  // const [avatarPreview] = useState<string | null>(user.avatar);
+  // For TIMER
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNow(Date.now());
+    }, 60000); // every 1 minute
+
+    return () => clearInterval(interval);
+  }, []);
+
+  //TIME FORMAT
+  const formatRelativeTime = (timestamp: number): string => {
+    // if (typeof timestamp !== "number") return "";
+    // if (!timestamp || isNaN(timestamp)) return "";
+    const diff = Date.now() - timestamp;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (seconds < 60) return "just now";
+    if (minutes < 60) return `${minutes}m`;
+    if (hours < 24) return `${hours}h`;
+    return `${days}d`;
   };
 
   useEffect(() => {
@@ -69,16 +98,41 @@ const PostCard: React.FC<PostCardProps> = ({
     setActiveCommentMenu(null);
   };
   console.log("Post Data:", post);
+
+  //
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <div>
-          {/* ✅ Updated: Display anonymous_name instead of email */}
+        <div className={styles.headerTwo}>
+          {/* <img
+            src={post.user.avatar || "/images/default-avatar.png"}
+            alt="Profile"
+            className={styles.avatar}
+          /> */}
+
+          {/* <img
+            src={
+              post.userId === currentUser.id
+                ? currentUser.avatar ?? "/default-avatar.png"
+                : "/default-avatar.png"
+            }
+            alt={post.username}
+            className={styles.avatar}
+          /> */}
+          <img
+            src={post.user?.avatar ?? currentUser.avatar ?? "/images/anon1.png"}
+            alt={post.username}
+            className={styles.avatar}
+          />
+
           <h3 className={styles.username}>
             {post.anonymous_name || post.username || "Anonymous"}
           </h3>
 
-          <p className={styles.time}>{post.time}</p>
+          {/* <p className={styles.time}>{getPostTimeLabel(post.time)}</p> */}
+          <p className={styles.time}>
+            • {formatRelativeTime(new Date(post.createdAt).getTime())}
+          </p>
         </div>
 
         <div ref={menuRef} className={styles.menuWrapper}>

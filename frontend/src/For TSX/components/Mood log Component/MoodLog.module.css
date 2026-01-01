@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
 .moodPage {
   background-color: var(--white);
   min-height: 100vh;
@@ -128,24 +130,101 @@
   color: #666;
 }
 
-.statsRow {
+/* Monthly mood overview */
+.monthlyOverview {
+  /* border: 3px solid red; */
+  display: block;
+  height: auto;
+}
+.moodentriesMonthly {
+  display: block;
+  /* border: 2px solid green; */
+  height: 200px;
+}
+.monthCard {
   display: flex;
-  font-size: small;
+  flex-direction: column;
+  /* border: 2px solid rgb(187, 240, 64); */
+  height: 118px !important;
+  width: 306px;
+  /* background-color: red !important; */
+  padding: 20px !important;
 }
 
 .monthHeader {
-  /* border: 2px solid; */
-  margin-top: -60px;
-  display: flex;
+  margin-top: 10px !important;
+  position: relative;
+  margin-left: -190px !important ;
+  font-weight: 400;
   height: 10px;
+  color: #000000;
+  font-size: 18px;
+
+  /* border: 2px solid green; */
 }
 .statMoodcontainer {
-  height: auto;
-  font-size: small;
-
+}
+.subMood {
+  /* border: 2px solid green; */
   position: relative;
+  margin-left: 15px !important ;
+  margin-top: -5px !important;
+  font-family: var(--font-brand);
+  color: #112749;
+  font-weight: 500;
+  display: inline-block;
 }
 
+.statsRow {
+  display: flex;
+  /* margin: 0 auto; */
+  /* border: 2px solid; */
+  margin-left: -10px !important;
+  margin-top: -30px;
+  position: relative;
+  padding: 20px;
+  width: 300px;
+  /* height: 100px; */
+}
+.avg {
+  width: 500px !important;
+  background-color: #d7e6fd;
+  padding: 5px 5px;
+  border-radius: 20px;
+  /* border: 2px solid; */
+  height: 70px;
+  width: 160px;
+}
+.avgNumber {
+  position: relative;
+  top: 20px;
+  width: 128px !important;
+  font-size: 24px !important;
+  font-weight: 500;
+  margin-left: 50px;
+  /* margin-top: 900px !important; */
+  /* border: 2px solid; */
+  font-family: "Varela Round", sans-serif;
+  letter-spacing: -0.5px;
+  line-height: 14px;
+}
+
+.avgdays {
+  background-color: #d7e6fd;
+  padding: 5px 5px;
+  font-size: 15px;
+  width: 100px;
+  border-radius: 20px;
+  height: 70px;
+  width: 160px;
+  font-family: "Varela Round", sans-serif;
+}
+.avgText {
+  margin-top: 20px;
+  margin-left: 15px;
+  font-size: 13px;
+  font-weight: 400;
+}
 .tip {
   background: #f3f7ff;
   border-radius: 12px;
@@ -161,9 +240,27 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   padding: 16px;
   margin-bottom: 16px;
+  /* margin-top: 90px; */
+  /* border: 2px solid; */
+}
+.recentEntriesTwo {
+  background: var(--light-blue);
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  margin-bottom: 16px;
+  margin-top: 90px;
 }
 
 .recentEntries h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  color: #000000;
+  margin-left: 10px;
+}
+.recentEntriesTwo h3 {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 12px;
@@ -177,8 +274,20 @@
   font-weight: light;
   margin-left: 15px;
 }
+.recentEntriesTwo h5 {
+  margin-top: -10px;
+  color: #666;
+  font-weight: light;
+  margin-left: 15px;
+}
 
 .recentEntries ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 40px !important;
+}
+.recentEntriesTwo ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -196,12 +305,29 @@
   border-radius: 16px;
   height: 40px;
 }
+.recentEntriesTwo li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.2rem;
+  border-bottom: 1px solid #f1f1f1;
+  background-color: white;
+  margin-bottom: 4px;
+  border-radius: 16px;
+  height: 40px;
+}
 
 .recentEntries li:last-child {
   border-bottom: none;
 }
+.recentEntriesTwo li:last-child {
+  border-bottom: none;
+}
 
 .recentEntries span {
+  font-size: 1.3rem;
+}
+.recentEntriesTwo span {
   font-size: 1.3rem;
 }
 
@@ -209,7 +335,16 @@
   flex: 1;
   margin-left: 10px;
 }
-
+.recentEntriesTwo div {
+  flex: 1;
+  margin-left: 10px;
+}
+.entryDate {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 2px;
+  display: block;
+}
 .date {
   font-size: 0.85rem;
   color: #666;
@@ -240,17 +375,24 @@
 .good {
   background-color: #e3f9e5;
   color: #1c7c1c;
+  margin-top: 3px !important;
 }
-
-.okay {
-  background-color: #fff7db;
-  color: #b47d00;
+.verylow {
+  background-color: #ffffff !important;
+  color: #ff0000 !important;
+  border: none !important;
   margin-top: 3px !important;
 }
 
+/* .okay {
+  background-color: #fff7db;
+  color: #b47d00;
+  margin-top: 3px !important;
+} */
+
 .low {
   background-color: #fde2e2;
-  color: #b22222;
+  color: #ea580c;
   margin-top: 3px !important;
 }
 
@@ -266,8 +408,24 @@
   cursor: pointer;
   transition: 0.2s;
 }
+.viewBtn2 {
+  display: block;
+  margin-top: 200px;
+  width: 100%;
+  background-color: #eaf2ff;
+  color: #3366ff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
 .viewBtn:hover {
+  background-color: #d9e7ff;
+}
+.viewBtn2:hover {
   background-color: #d9e7ff;
 }
 .emoji {
@@ -278,6 +436,7 @@
 }
 
 .moodentries {
+  /* background-color: #1a5dc2; */
 }
 .moodentries > li {
   padding: 5px 5px;
@@ -347,17 +506,6 @@
   animation: slideUp 0.4s ease forwards;
 }
 
-.subMood {
-  display: block;
-  position: absolute;
-  width: 100%;
-  margin-top: -30px;
-  margin-bottom: 20px;
-  margin-left: -150px;
-  bottom: -10px;
-  font-size: 16px;
-  font-weight: 600;
-}
 @keyframes slideUp {
   from {
     transform: translateY(100%);
@@ -535,8 +683,9 @@
 .tag.verylow,
 .tag[class*="verylow"] {
   background-color: #ffffff !important;
-  color: #dc2626;
+  color: #ff0000 !important;
   border: none !important;
+  margin-top: 3px !important;
 }
 
 .tag.low,
@@ -566,14 +715,16 @@
   color: #15803d;
   border: none !important;
   font-weight: 700;
+  margin-top: 3px !important;
 }
 
 .headerEdit {
   padding-top: 40px;
   margin-left: -10px;
 }
+
 /* ===== Responsive tweaks ===== */
-@media (min-width: 480px) {
+@media (min-width: 768px) {
   .moodOptions {
     grid-template-columns: repeat(6, 1fr);
   }
@@ -703,22 +854,23 @@
     color: #666;
   }
 
-  .statsRow {
-    display: flex;
-    font-size: small;
-  }
-
   .monthHeader {
     /* border: 2px solid; */
     margin-top: -60px;
     display: flex;
     height: 10px;
   }
+  .statsRow {
+    display: flex;
+    font-size: small;
+    border: 2px solid;
+  }
   .statMoodcontainer {
+    border: 2px solid red;
     height: auto;
     font-size: small;
-
-    position: relative;
+    /* 
+    position: relative; */
   }
 
   .tip {

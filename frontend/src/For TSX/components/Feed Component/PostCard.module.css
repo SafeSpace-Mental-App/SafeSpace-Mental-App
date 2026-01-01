@@ -19,18 +19,32 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+.avatar{
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: -10px;
 
+}
+
+
+.headerTwo{
+  display: flex;
+}
 .username {
   font-size: 0.95rem;
   font-weight: 600;
   color: #222;
   margin: 0;
+  margin-left: 5px;
 }
 
 .time {
   font-size: 0.75rem;
   color: #888;
   margin-top: 0.1rem;
+  margin-left: 10px;
 }
 .postTitle {
   font-size: 20px;
