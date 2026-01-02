@@ -1,6 +1,7 @@
 import styles from "./LandingPage.module.css";
 
 type props = {
+  className? : string;
   backgroundImage: string;
   title: string;
   text: string;
@@ -22,6 +23,7 @@ type props = {
 };
 
 const LandingPage = ({
+  className,
   backgroundImage,
   title,
   text,
@@ -40,7 +42,7 @@ const LandingPage = ({
         onClick={onClick}
       >
         <div className={styles.wordsContainer}>
-          <div className={styles.wordsContainerTwo}>
+          <div className= { `${styles.wordsContainerTwo} ${className} `}>
             <p className={styles.heading}>{title}</p>
 
             <p className={styles.words}>{text}</p>

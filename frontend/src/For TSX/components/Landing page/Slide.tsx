@@ -20,7 +20,7 @@ const Slide = () => {
       title: "Get Support",
       text: "Access crisis hotlines or trained listeners when you need it most",
     },
-  ]; 
+  ];
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const handleNextSlide = () => {
