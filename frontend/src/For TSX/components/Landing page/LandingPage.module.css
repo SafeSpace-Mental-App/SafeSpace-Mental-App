@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.container {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: 115%;
+  background-position: center -20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #3b82f6;
+  transition: background-image 0.6s ease-in-out;
+}
+
+.wordsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  margin-top: 110%;
+  color: rgb(51, 255, 0);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(59, 130, 246, 1) 39%,
+    rgba(59, 130, 246, 1) 79%,
+    #3b82f6
+  );
+}
+
+.wordsContainerTwo {
+  height: auto;
+  margin-top: 20%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: white;
+  /* border: 3px solid; */
+}
+.heading {
+  font-size: 2em;
+  font-family: "Varela Round", sans-serif;
+}
+.words {
+  font-size: 14px;
+  width: 280px;
+  /* font-family: "Lexend", sans-serif; */
+  font-weight: 100;
+  font-family: "Poppins";
+
+  /* border: 2px solid; */
+}
+.GetStarted {
+  display: flex;
+  justify-content: flex-end;
+  /* border: 2px solid red; */
+  width: 92%;
+  font-weight: 100;
+  font-family: "Poppins";
+  font-size: 1rem;
+  margin-top: 30px;
+  color: rgb(255, 255, 255);
+  border: none;
+  background: none;
+}
+
+/* BUTTON  */
+
+.ButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid; */
+}
+.createButton {
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  color: black;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+.createButton:hover {
+  background-color: #f2f2f2;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: #11111163;
+}
+.SigninButton {
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  background: none;
+  transition: background-color 0.2s ease;
+}
+.SigninButton:hover {
+  background-color: rgba(197, 190, 190, 0.274);
+}
+/* INDICATOR  */
+.indicator {
+  position: relative;
+  display: flex;
+
+  gap: 13px;
+  width: 200px;
+  margin-left: 1%;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  /* opacity: 0.6; */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  /* transition: opacity 0.6s ease; */
+}
+.activeDot {
+  width: 35px;
+  border-radius: 10px;
+}

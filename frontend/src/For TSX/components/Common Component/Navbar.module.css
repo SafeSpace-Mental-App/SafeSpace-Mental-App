@@ -46,9 +46,8 @@ body {
   align-items: center;
 }
 
-.smiley {
-  font-size: 40px;
-  color: var(--text-secondary);
+.smiley2 {
+  width: 40px;
 }
 
 .spaceimg {
@@ -70,9 +69,11 @@ body {
     left: 0;
     position: fixed;
     padding: 15px 0;
-    height: 40px;
 
-    padding-bottom: calc(17px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: 60px;
+    height: 40px;
+    /* 
+    padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px)) !important; */
   }
 
   .link {

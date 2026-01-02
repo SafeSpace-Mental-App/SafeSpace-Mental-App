@@ -100,13 +100,14 @@
   font-weight: var(--onb-w-semibold);
   font-size: clamp(20px, 5.5vw, 32px);
   line-height: 1.15;
-  color: var(--onb-text);
+  color: white;
 }
 .onb-text p {
   margin: 0;
   color: var(--onb-muted);
   font-size: clamp(14px, 3.8vw, 18px);
   max-width: 46ch;
+  text-shadow: black;
 }
 
 /* Progress */

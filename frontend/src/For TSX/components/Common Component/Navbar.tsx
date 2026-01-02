@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
-import { FiHome, FiBook, FiUser } from "react-icons/fi";
+import { FiSmile } from "react-icons/fi";
+import { RiQuillPenLine } from "react-icons/ri";
+import { FaHome } from "react-icons/fa";
 
 const Navbar = () => {
   return (
@@ -13,7 +15,7 @@ const Navbar = () => {
       >
         <div className={styles.iconVertical}>
           <span className={styles.smiley}>
-            <FiHome size={24}  />
+            <FaHome size={24} />
           </span>
           Feed
         </div>
@@ -26,7 +28,7 @@ const Navbar = () => {
       >
         <div className={styles.iconVertical}>
           <span className={styles.smiley}>
-            <FiBook size={24}  />
+            <RiQuillPenLine size={24} />
           </span>
           Journal
         </div>
@@ -38,7 +40,10 @@ const Navbar = () => {
         to="/mood"
       >
         <div className={styles.iconVertical}>
-          <span className={styles.smiley}>☺</span>
+          <span className={styles.smiley}>
+            {" "}
+            <FiSmile size={24} />{" "}
+          </span>
           Mood Log
         </div>
       </NavLink>
@@ -50,7 +55,14 @@ const Navbar = () => {
       >
         <div className={styles.iconVertical}>
           <span className={styles.smiley}>
-            <FiUser size={24} />
+            {/* <FiUser size={24} /> */}
+
+            <img
+              src="/images/Mask2.png"
+              alt="Mask"
+              sizes="24"
+              className={styles.smiley2}
+            />
           </span>
           My space
         </div>
