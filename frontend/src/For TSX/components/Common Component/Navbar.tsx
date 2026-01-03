@@ -53,7 +53,7 @@ const Navbar = () => {
         }
         to="/my-space"
       >
-        <div className={styles.iconVertical}>
+        <div className={styles.iconVerticalSpecial}>
           <span className={styles.smiley}>
             {/* <FiUser size={24} /> */}
 

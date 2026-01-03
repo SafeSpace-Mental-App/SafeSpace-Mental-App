@@ -45,74 +45,16 @@ body {
   text-align: center;
   align-items: center;
 }
+.iconVerticalSpecial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  margin-top: -0.2rem !important;
+}
 
 .smiley2 {
   width: 40px;
-}
-
-.spaceimg {
-  font-size: 10px;
-}
-@media (max-width: 480px) {
-  body {
-    padding: 20px;
-    border: 0;
-  }
-
-  .navbar {
-    display: flex;
-    background-color: var(--white);
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    padding: 15px 0;
-
-    padding-bottom: 60px;
-    height: 40px;
-    /* 
-    padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px)) !important; */
-  }
-
-  .link {
-    text-decoration: none;
-    color: var(--text-primary);
-    font-size: var(--text-body-md);
-    transition: color 0.3s; /* fixed: was 0.3 */
-  }
-
-  .active {
-    color: var(--brand-color);
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-body-md);
-  }
-
-  .active .smiley,
-  .active .smiley svg {
-    color: var(--brand-color) !important;
-  }
-
-  .smiley svg {
-    transition: color 0.3s;
-  }
-  /* END OF FIX */
-
-  .iconVertical {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
-  }
-
-  .smiley {
-    font-size: 40px;
-    color: var(--text-secondary);
-  }
-
-  .spaceimg {
-    font-size: 10px;
-  }
+  margin-bottom: -0.4rem;
 }
