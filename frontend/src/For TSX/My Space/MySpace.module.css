@@ -2,72 +2,30 @@
   min-height: 100vh;
   background-color: #f8faff;
   color: #333;
-
-  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   /* border: 4px solid red; */
 }
 .imgTopContainer {
-  height: 100px;        /* fixed height */
-  width: 100%;          /* optional, full width */
-  border: 2px solid transparent;
-  overflow: hidden;   
+  height: 5rem;
+  width: 100%;
+  /* border: 2px solid transparent; */
+  overflow: hidden;
+  /* border: 2px solid; */
 }
 
 .imgTop {
-  width: 150px;          /* fill container width */
-  height: 100%;         /* fill container height */
-  object-fit: cover;    /* crop/scale to fit */
-  display: block;   
-  margin: 0 auto;    /* removes inline spacing */
-}
-
-.greeting {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 16px;
-  margin-top: 10px;
-}
-
-.greeting h2 {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.username {
-  color: #2563eb;
-}
-
-.greeting p {
-  font-size: 14px;
-  color: #555;
-  margin-top: 4px;
-}
-
-/* Top splash image */
-/* .imgTop {
-  width: 100%;
-  max-height: 200px;
+  width: 150px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-} */
-
-/* Avatar section container */
-.avatarSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  display: block;
+  margin: 0 auto;
 }
-
 /* Avatar image */
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   object-fit: cover;
   /* border: 3px solid var(--brand-color);  */
@@ -86,7 +44,7 @@
   padding: 10px 18px;
   background: var(--brand-color);
   color: #fff;
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 500;
   border-radius: 6px;
   cursor: pointer;
@@ -103,16 +61,50 @@
   transform: translateY(0);
 }
 
+.greeting {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  /* border: 2px solid; */
+}
+
+.greeting h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.username {
+  color: #2563eb;
+}
+
+.greeting p {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* Avatar section container */
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
 .tipBox {
   width: 100%;
   background: #eff6ff;
   border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 16px;
-  font-size: 16px;
+  padding: 0.6rem 0;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
   color: #374151;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  max-width: 350px;
+  /* border: 2px solid; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* General section styling */
@@ -121,25 +113,18 @@
   background: #e8f3ff;
   border: 1px solid #f1f1f1;
   border-radius: 16px;
-  padding: 16px 300px;
-  margin-bottom: 18px;
+
+  margin-bottom: 1.1rem;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  padding: 0 30px;
-  max-width: 400px;
+
+  /* border: 2px solid; */
 }
 
 .section h3 {
   font-size: 15px;
   font-weight: 600;
   color: #333;
-  margin-bottom: 10px;
-}
-
-.section p {
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 12px;
 }
 
 /* Mood emoji row */
@@ -147,11 +132,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 26px;
-  margin-bottom: 12px;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
   user-select: none;
-  padding: 0 30px;
-  max-width: 400px;
+  padding: 0 2rem;
+  /* border: 2px solid; */
 }
 
 .moodEmoji {
@@ -166,14 +151,15 @@
 /* Buttons */
 .actionBtn {
   width: 100%;
-  background-color: #2563eb;
+  background-color: #4a7cf7;
   color: #fff;
-  padding: 10px 0;
+  padding: 1rem 0;
   border: none;
   border-radius: 12px;
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s;
+  margin-bottom: 0.7rem;
 }
 
 .actionBtn:hover {
@@ -263,229 +249,39 @@
   margin-bottom: 0.8rem;
 }
 
-.actionBtn {
-  background: #4a7cf7;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-}
-
 .logoutBtn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  color: #dc2626;
+  border: 1px solid transparent;
+  padding: 10px 24px;
+  border-radius: 12px;
   background: transparent;
-  border: 1.5px solid #e2e8f0;
-  color: #64748b;
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 12px 20px;
-  border-radius: 16px;
-  transition: all 0.2s ease;
-  margin-top: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2 all ease;
+  margin-bottom: 8rem;
 }
 
+/* .logoutBtn:hover {
+  background: #f8fafc;
+  border-color: #ff0000;
+
+} */
 .logoutBtn:hover {
   background: #f8fafc;
-  border-color: #df0000;
-  color: #fa0000;
+  border-color: #ff0000;
+  color: #ff0000;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+  transform: translateY(-2px) scale(1.05);
 }
-
 .logoutIcon {
   font-size: 1.1rem;
 }
+.logoutBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-@media (max-width: 400px) {
-  .mySpace {
-    min-height: 100vh;
-    background-color: #f8faff;
-    color: #333;
-
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .imgTop {
-    width: 100px;
-    object-fit: cover;
-    height: 80px;
-    max-width: 350px;
-    font-family: var(--font-primary);
-    padding-bottom: 20px;
-  }
-
-  /* General section styling */
-  .section {
-    width: 80%;
-    background: #e8f3ff;
-    border: 1px solid #f1f1f1;
-    border-radius: 16px;
-    padding: 16px 230px;
-    margin-bottom: 18px;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    padding: 0 30px;
-    max-width: 350px !;
-  }
-
-  .section h3 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 10px;
-    font-weight: lighter;
-    font-family: var(--font-primary);
-  }
-
-  .section p {
-    font-size: 13px;
-    color: #6b7280;
-    margin-bottom: 12px;
-  }
-
-  /* Mood emoji row */
-  .moodRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 26px;
-    margin-bottom: 12px;
-    user-select: none;
-    padding: 0 30px;
-    max-width: 400px;
-  }
-
-  .moodEmoji {
-    transition: transform 0.2s ease;
-    cursor: pointer;
-  }
-
-  .moodEmoji:active {
-    transform: scale(1.2);
-  }
-
-  /* Buttons */
-  .actionBtn {
-    width: 100%;
-    background-color: #2563eb;
-    color: #fff;
-    padding: 10px 0;
-    border: none;
-    border-radius: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .actionBtn:hover {
-    background-color: #1d4ed8;
-  }
-
-  .logoutBtn {
-    color: #dc2626;
-    border: 1px solid #dc2626;
-    padding: 10px 24px;
-    border-radius: 12px;
-    background: transparent;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s;
-    margin-bottom: 90px;
-  }
-
-  .logoutBtn:hover {
-    background: #fef2f2;
-  }
-
-  .energyBox {
-    width: 90%;
-    background: #e8f3ff;
-    border-radius: 16px;
-    padding: 1rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    max-width: 340px;
-  }
-
-  .energyBox h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem;
-    color: #1d3ec2;
-    margin-bottom: 0.4rem;
-  }
-
-  .energyBox p {
-    color: #334;
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .actionBtn {
-    background: #4a7cf7;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem;
-  }
-
-  .logoutBtn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: transparent;
-    border: 1.5px solid #e2e8f0;
-    color: #64748b;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 12px 20px;
-    border-radius: 16px;
-    transition: all 0.2s ease;
-    margin-top: 20px;
-    margin-bottom: 90px;
-  }
-
-  .logoutBtn:hover {
-    background: #f8fafc;
-    border-color: #df0000;
-    color: #fa0000;
-  }
-
-  .logoutIcon {
-    font-size: 1rem;
-  }
-
-  .logoutBtn:hover {
-    background: rgba(94, 255, 0, 0.08); /* faint green tint */
-    /* border-color: #71b5cfa6; */
-
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(120, 228, 255, 0.2);
-  }
-
-  /* Active – press effect */
-  .logoutBtn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Optional: focus ring for accessibility */
-  .logoutBtn:focus-visible {
-    /* outline: 2px solid #5eff00; */
-    outline-offset: 2px;
-  }
+.logoutBtn:focus-visible {
+  outline-offset: 2px;
 }

@@ -7,21 +7,25 @@ const PENDING_LIKES_KEY = "pendingLikes";
 const OFFLINE_QUEUE_KEY = "offlineQueue";
 const OUTBOX_KEY = "outboxPosts";
 
+// Add this type
+type HttpMethod = "get" | "post" | "put" | "delete";
+
 export const useOfflineHandling = () => {
   const [pendingLikes, setPendingLikes] = useLocalStorage<Set<string>>(
     PENDING_LIKES_KEY,
     new Set()
   );
 
+  // Use HttpMethod instead of string
   const [offlineQueue, setOfflineQueue] = useLocalStorage<
-    { method: string; url: string; data?: any }[]
+    { method: HttpMethod; url: string; data?: any }[]
   >(OFFLINE_QUEUE_KEY, []);
 
   const [outbox, setOutbox] = useLocalStorage<Post[]>(OUTBOX_KEY, []);
 
   const savePendingLike = useCallback(
     (id: string) => setPendingLikes((p) => new Set([...p, id])),
-    []
+    [setPendingLikes] // fix here incase in future
   );
 
   const removePendingLike = useCallback(
@@ -31,13 +35,13 @@ export const useOfflineHandling = () => {
         next.delete(id);
         return next;
       }),
-    []
+    [setPendingLikes]
   );
 
   const saveOfflineAction = useCallback(
-    (action: { method: string; url: string; data?: any }) =>
+    (action: { method: HttpMethod; url: string; data?: any }) =>
       setOfflineQueue((q) => [...q, action]),
-    []
+    [setOfflineQueue]
   );
 
   const processOfflineQueue = useCallback(async () => {
@@ -58,7 +62,7 @@ export const useOfflineHandling = () => {
     }
 
     setOfflineQueue(remaining);
-  }, [offlineQueue]);
+  }, [offlineQueue, setOfflineQueue]);
 
   const syncOutbox = useCallback(
     async (setPosts: React.Dispatch<React.SetStateAction<Post[]>>) => {
@@ -94,13 +98,12 @@ export const useOfflineHandling = () => {
                   username: r.anonymous_name || "Anonymous",
                   text: r.text,
                 })),
-                time: new Date(saved.createdAt).getTime()
+                time: new Date(saved.createdAt).getTime(),
               },
               ...filtered,
             ];
           });
 
-          // Clean up pending like
           if (pendingLikes.has(realId)) {
             removePendingLike(realId);
           }
@@ -111,7 +114,7 @@ export const useOfflineHandling = () => {
       }
       setOutbox(remaining);
     },
-    [outbox, pendingLikes, removePendingLike]
+    [outbox, pendingLikes, removePendingLike, setOutbox]
   );
 
   return {

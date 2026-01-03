@@ -104,21 +104,7 @@ const PostCard: React.FC<PostCardProps> = ({
     <div className={styles.card}>
       <div className={styles.header}>
         <div className={styles.headerTwo}>
-          {/* <img
-            src={post.user.avatar || "/images/default-avatar.png"}
-            alt="Profile"
-            className={styles.avatar}
-          /> */}
-
-          {/* <img
-            src={
-              post.userId === currentUser.id
-                ? currentUser.avatar ?? "/default-avatar.png"
-                : "/default-avatar.png"
-            }
-            alt={post.username}
-            className={styles.avatar}
-          /> */}
+         
           <img
             src={post.user?.avatar ?? currentUser.avatar ?? "/images/anon1.png"}
             alt={post.username}

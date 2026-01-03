@@ -526,7 +526,7 @@ const MoodPage = () => {
     moodEntries,
     setMoodEntries,
     currentUserId,
-    USER_MOOD_KEY,
+    // USER_MOOD_KEY,
     toLocalYMD,
   } = useMoodStorage();
 
@@ -547,7 +547,7 @@ const MoodPage = () => {
     moodEntries,
     setMoodEntries,
     toLocalYMD,
-    USER_MOOD_KEY,
+    // USER_MOOD_KEY,
     moods
   );
 
