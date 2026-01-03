@@ -1,0 +1,80 @@
+[33md719c6a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/tsx-components[m[33m, [m[1;31morigin/feature/tsx-components[m[33m)[m Merge branch 'feature/tsx-components' of https://github.com/SafeSpace-Mental-App/SafeSpace-Mental-App into feature/tsx-components
+[33m5412e9b[m navbar fix
+[33m4f1773e[m Merge branch 'main' into feature/tsx-components
+[33ma0d6d29[m updated MySpace components
+[33m1815e95[m updated feed and jornal page header
+[33mc1bac6f[m updated my space and mood log page
+[33m4f4b806[m fetch remote main
+[33m9c8e6dc[m[33m ([m[1;32mremotes/origin/jsx[m[33m)[m Merge pull request #17 from SafeSpace-Mental-App/feature/tsx-components
+[33m90160fb[m created my space and updated feed page
+[33m1069f80[m Merge pull request #16 from SafeSpace-Mental-App/feature/tsx-components
+[33mcb41bd2[m fixed delete button
+[33m436ca00[m fix Authform login and Adjusted Catergorytab
+[33mc8f205e[m updated header and moodLogPage
+[33mbbde724[m added guestmode, updated mood log
+[33ma894744[m fix newpostmodal textarea
+[33mc2aecfa[m Merge branch 'main' of https://github.com/SafeSpace-Mental-App/SafeSpace-Mental-App # Please enter a commit message to explain why this merge is necessary, # especially if it merges an updated upstream into a topic branch. # # Lines starting with '#' will be ignored, and an empty message aborts # the commit.
+[33mc7eba6f[m Merge pull request #15 from SafeSpace-Mental-App/feature/tsx-components
+[33m35c2249[m Fixed home icon
+[33m4e81157[m Merge pull request #14 from SafeSpace-Mental-App/feature/tsx-components
+[33m0988057[m updated feedpage and signuppage css
+[33mee245a6[m updated feed page, NavBar and moodlog
+[33m3ee8f9a[m updated Authform, FeedPage, and Added MoodLogPage
+[33mef2d568[m Merge pull request #13 from SafeSpace-Mental-App/feature/tsx-components
+[33m87d5924[m updated verify-user to verify-pin to make the register and login work
+[33m5d6e719[m Merge pull request #12 from SafeSpace-Mental-App/feature/tsx-components
+[33m74b0b28[m fix feedlist comments
+[33mbb7cdc3[m fixed search bar and fixed delete comment
+[33mf60b4b9[m updated verify-pin to work
+[33m6cf00dc[m fix routes conflict
+[33m64e4c7b[m updated forgot password message page to take in email and updated the links in the the onboarding page in JSX folder
+[33m22d2452[m fix comment wrapping
+[33m31dab58[m Created feed page components
+[33m72aea75[m created feedList, postcard, newpostmodel, search bar
+[33mc3c0d59[m Merge pull request #11 from SafeSpace-Mental-App/feature/tsx-components
+[33m8baa9cd[m Fix case sensitivity for DropdownField.module.css
+[33m344f70e[m Merge pull request #10 from SafeSpace-Mental-App/feature/tsx-components
+[33m6687ca4[m update search component
+[33md8b5d1b[m Merge pull request #9 from SafeSpace-Mental-App/feature/tsx-components
+[33m3f061be[m Merge pull request #8 from SafeSpace-Mental-App/main
+[33m8f6e816[m Temp rename Dropdownfield to DropdownField
+[33m41d13fd[m Fix case mismatch for DropdownField.tsx
+[33m5b48393[m Merge pull request #7 from SafeSpace-Mental-App/feature/tsx-components
+[33m0fdace7[m delete backend folder
+[33mb95a24d[m Created CategoryTabs, PostCard and SearchBar
+[33m9b006e0[m Transform keys to match backend naming
+[33mee1fcab[m commiting the app.css again
+[33m5367fc9[m changed onboarding.css to App.css
+[33m43b16e7[m Replace Onboarding.css with App.css in GetStartedPage
+[33m1d14355[m Merge pull request #6 from SafeSpace-Mental-App/feature/tsx-components
+[33m7c71315[m removed conflicting css
+[33m152f843[m Updated the splash screen and the variables
+[33m516c4b2[m updated backend endport in each page and merged main with feature/tsx-components
+[33m2f79bfc[m updated the link navigation names
+[33m4d8e74e[m removed tailwind config, updated App routes and Updated the Onboarding and GetStartedPage Links
+[33m1e51190[m made the google and apple icon responsive for signup
+[33m7dfa058[m removed container border
+[33m15c41b6[m fix showPassword
+[33mec1e8e1[m added show password to authform
+[33mc67c264[m improved verication page to handle error and stimulaed fake otp verification
+[33mc70b905[m improved verification page and made AuthForm more dynamic
+[33m1a6d6c6[m created signup, sign in verification and congratulation page
+[33m7de4c0c[m Updated GetStarted page
+[33m96e3c80[m Added route and Created SignupPage
+[33m5b3e4e3[m Added Landing page and GetStarted
+[33mdf22017[m removed unused component
+[33m6b03d35[m update css variable
+[33mfb65773[m Merge pull request #5 from SafeSpace-Mental-App/feature/tsx-components
+[33mcd3ee14[m Added Variable.css and removed tailwind
+[33m505be9f[m Merge pull request #4 from SafeSpace-Mental-App/feature/tsx-components
+[33m8931779[m Remove node_modules from tracking
+[33ma8d991f[m Merge pull request #3 from SafeSpace-Mental-App/feature/tsx-components
+[33mdf23db0[m Update .gitignore for both frontend and backend folders
+[33mec41cc0[m Added .gitignore in both frontend and backend folder
+[33m3ba9c55[m Revise README to include app details and features
+[33m8815a5a[m Merge pull request #2 from SafeSpace-Mental-App/feature/tsx-components
+[33ma91ca33[m Add .gitkeep to preserve empty folders
+[33m82b5da0[m Merge pull request #1 from SafeSpace-Mental-App/feature/tsx-components
+[33mf4ae254[m chore(frontend): add Tailwind setup, configure JSX+TSX structure, and update main entry files
+[33ma025d36[m Initial project setup: frontend (React TSX + JSX) and backend (Express)
+[33me5884b5[m Initial commit

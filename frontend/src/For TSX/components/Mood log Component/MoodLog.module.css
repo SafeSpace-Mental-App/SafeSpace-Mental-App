@@ -16,7 +16,7 @@
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
   padding: 16px;
   margin-bottom: 16px;
-  /* border: 2px solid; */
+  border: 2px solid;
   margin-top: 90px;
 }
 
@@ -130,100 +130,64 @@
   color: #666;
 }
 
-/* Monthly mood overview */
+/*====== Monthly mood overview======= */
 .monthlyOverview {
   /* border: 3px solid red; */
   display: block;
   height: auto;
 }
 .moodentriesMonthly {
-  display: block;
   /* border: 2px solid green; */
-  height: 200px;
+  height: auto;
 }
-.monthCard {
-  display: flex;
-  flex-direction: column;
-  /* border: 2px solid rgb(187, 240, 64); */
-  height: 118px !important;
-  width: 306px;
-  /* background-color: red !important; */
-  padding: 20px !important;
+.monthCardNew {
+  /* border: 1px solid red; */
+  margin-bottom: 14px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 1px 1px 9px rgba(15, 15, 15, 0.199);
 }
 
-.monthHeader {
-  margin-top: 10px !important;
-  position: relative;
-  margin-left: -190px !important ;
+.monthHeaderNew {
+  font-weight: bold;
+}
+.subMoodHeaderNew {
+}
+
+.statMoodcontainerNew {
+  /* border: 2px solid rgb(38, 0, 255); */
+  display: flex;
+  gap: 1rem;
+}
+
+.avgNew {
+  background-color: rgba(215, 230, 253, 1);
+  border-radius: 12px;
+  padding: 0.1rem 1rem;
+  width: 50%;
+  /* border: 2px solid red; */
+}
+.avgNumberNew {
   font-weight: 400;
-  height: 10px;
-  color: #000000;
-  font-size: 18px;
-
-  /* border: 2px solid green; */
-}
-.statMoodcontainer {
-}
-.subMood {
-  /* border: 2px solid green; */
-  position: relative;
-  margin-left: 15px !important ;
-  margin-top: -5px !important;
-  font-family: var(--font-brand);
-  color: #112749;
-  font-weight: 500;
-  display: inline-block;
-}
-
-.statsRow {
-  display: flex;
-  /* margin: 0 auto; */
+  font-size: 1.7rem;
   /* border: 2px solid; */
-  margin-left: -10px !important;
-  margin-top: -30px;
-  position: relative;
-  padding: 20px;
-  width: 300px;
-  /* height: 100px; */
-}
-.avg {
-  width: 500px !important;
-  background-color: #d7e6fd;
-  padding: 5px 5px;
-  border-radius: 20px;
-  /* border: 2px solid; */
-  height: 70px;
-  width: 160px;
-}
-.avgNumber {
-  position: relative;
-  top: 20px;
-  width: 128px !important;
-  font-size: 24px !important;
-  font-weight: 500;
-  margin-left: 50px;
-  /* margin-top: 900px !important; */
-  /* border: 2px solid; */
-  font-family: "Varela Round", sans-serif;
-  letter-spacing: -0.5px;
-  line-height: 14px;
-}
-
-.avgdays {
-  background-color: #d7e6fd;
-  padding: 5px 5px;
-  font-size: 15px;
-  width: 100px;
-  border-radius: 20px;
-  height: 70px;
-  width: 160px;
-  font-family: "Varela Round", sans-serif;
+  margin-top: 10%;
 }
 .avgText {
-  margin-top: 20px;
-  margin-left: 15px;
-  font-size: 13px;
+  /* border: 2px solid green; */
+  margin-top: -17%;
   font-weight: 400;
+}
+
+.avgDaysNew {
+  background-color: rgba(215, 230, 253, 1);
+  border-radius: 12px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 50%;
+}
+.avgDaysNumberNew {
 }
 .tip {
   background: #f3f7ff;
@@ -305,7 +269,7 @@
   border-radius: 16px;
   height: 40px;
 }
-.recentEntriesTwo li {
+.historyItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -320,7 +284,7 @@
 .recentEntries li:last-child {
   border-bottom: none;
 }
-.recentEntriesTwo li:last-child {
+.historyItem:last-child {
   border-bottom: none;
 }
 
@@ -861,7 +825,7 @@
     height: 10px;
   }
   .statsRow {
-    display: flex;
+    /* display: flex; */
     font-size: small;
     border: 2px solid;
   }

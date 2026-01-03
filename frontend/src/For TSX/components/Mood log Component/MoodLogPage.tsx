@@ -539,11 +539,10 @@ const MoodPage = () => {
     setNote,
     setCustomEmoji,
     setShowNoteInput,
-    
+
     handleMoodSelect,
     handleCustomEmojiSave,
     handleNoteChange,
-   
   } = useMoodActions(
     moodEntries,
     setMoodEntries,
@@ -822,14 +821,6 @@ const MoodPage = () => {
                       >
                         {entry.label}
                       </span>
-
-                      {/* DELETE BUTTON HERE */}
-                      {/*   <button
-    className={style.deleteBtn}
-    onClick={() => deleteMood(entry.id)}
-  >
-    ❌
-  </button>  */}
                     </li>
                   ))}
               </ul>
@@ -868,32 +859,27 @@ const MoodPage = () => {
                           : "No data";
 
                       return (
-                        <li key={month.month} className={style.monthCard}>
-                          <div className={style.monthHeader}>
-                            <h5>{month.month}</h5>
+                        <li key={month.month} className={style.monthCardNew}>
+                          <div className={style.monthHeaderNew}>
+                            <p>{month.month}</p>
                           </div>
-                          <div className={style.statMoodcontainer}>
-                            <p className={style.subMood}>
-                              Mostly {dominantMood}
+                          <div className={style.subMoodHeaderNew}>
+                            Mostly {dominantMood}
+                          </div>
+                          <div className={style.statMoodcontainerNew}>
+                            <p className={style.avgNew}>
+                              <p className={style.avgNumberNew}>
+                                {month.average}
+                              </p>
+                              <p className={style.avgText}>Average Mood</p>
                             </p>
-                            <div className={style.statsRow}>
-                              <div className={style.avg}>
-                                <span className={style.avgNumber}>
-                                  {" "}
-                                  {month.average}{" "}
-                                </span>
-                                <p className={style.avgText}>Average Mood</p>
-                              </div>
-                              <br />
-                              <div className={style.avgdays}>
-                                <span className={style.avgNumber}>
-                                  {" "}
-                                  {daysInMonth}{" "}
-                                </span>
 
-                                <p className={style.avgText}>Days Tracked</p>
-                              </div>
-                            </div>
+                            <p className={style.avgDaysNew}>
+                              <p className={style.avgNumberNew}>
+                                {daysInMonth}
+                              </p>
+                              <p className={style.avgText}>Days Tracked</p>
+                            </p>
                           </div>
                         </li>
                       );
@@ -913,9 +899,8 @@ const MoodPage = () => {
             </section>
           </>
         )}
-
       </div>
-        <Navbar />
+      <Navbar />
     </>
   );
 };
