@@ -9,47 +9,48 @@
   align-items: center;
   justify-content: center;
   z-index: 999;
+  /* border: 2px solid yellow; */
 }
 .journalContainer {
   /* border: 2px solid red; */
   position: fixed;
-  top: 200px;
-  left: 0;
-  width: 370px;
-  /* border: 1px solid; */
+  width: 90%;
   background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  margin-left: 30px;
+
   border-radius: 10px;
+  padding: 0.5rem;
 }
 .closeandDraft {
   display: flex;
   justify-content: space-between;
-  /* border: 2px solid red; */
-  width: 350px;
+  /* border: 2px solid rgb(0, 255, 34); */
+  width: 100%;
 }
 .closebutton {
   border: none;
   color: rgb(0, 0, 0);
   background: none;
-  font-size: 25px;
+  font-size: 1rem;
+  padding-left: 0.5rem;
 }
 
 .draft {
-  font-size: 20px;
+  font-size: 1rem;
   color: var(--brand-color);
+  padding-right: 1.2rem;
 }
 .titleInput {
-  padding: 10px;
+ 
   border-radius: 10px;
-  width: 320px;
-  margin-left: 2px;
-  border: 1px solid rgba(10, 10, 14, 0.342) !important;
-  margin-bottom: 10px;
+ border: 1px solid rgba(10, 10, 14, 0.342) !important;
+ width: 100%;
+ padding-top: 0.3rem;
+ padding-bottom: 0.3rem;
+ 
+
 }
 
 .titleInput:focus {
@@ -58,7 +59,8 @@
 
 .textarea {
   height: 150px;
-  padding: 20px 5px;
+  padding: 20px 0.2rem;
+  width: 100%;
 }
 .saveContainer {
   display: flex;
@@ -67,7 +69,7 @@
   width: 100%;
 }
 .save {
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--brand-color);
   background: none; /* use your theme color */
   border: none;

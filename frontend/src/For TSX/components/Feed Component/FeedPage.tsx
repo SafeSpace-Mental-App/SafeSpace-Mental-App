@@ -9,7 +9,7 @@ import CategoryTabs from "./CategoryTabs";
 import PostCard from "./PostCard";
 import NewPostModal from "./NewPostModal";
 import Spinner from "../ReusableField/Spinner";
-
+import { FiPlus } from "react-icons/fi";
 
 // ─────────────────────────────────────────────
 // Import custom hooks
@@ -27,6 +27,7 @@ const FeedPage: React.FC = () => {
 
   const { posts, setPosts, loading, error } = useFeed();
   const { currentUsername, checkAuth } = useAuth();
+  const [displayButton, setDisplayButton] = useState(true);
 
   const {
     handleAddPost,
@@ -53,6 +54,17 @@ const FeedPage: React.FC = () => {
       </p>
     );
   }
+  const handleOpenModal = () => {
+    checkAuth(() => {
+      setIsModalOpen(true);
+      setDisplayButton(false);
+    });
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setDisplayButton(true);
+  };
 
   return (
     <div className={styles.feedContainer}>
@@ -61,8 +73,13 @@ const FeedPage: React.FC = () => {
         className={styles.headerEdit}
         title="Safe Rant"
         subtitles="Express yourself freely"
-        onAddPost={() => checkAuth(() => setIsModalOpen(true))}
       />
+
+      {displayButton && (
+        <button className={styles.floatingBtn} onClick={handleOpenModal}>
+          <FiPlus size={22} />
+        </button>
+      )}
 
       {/* Guest Banner */}
       {(!localStorage.getItem("token") ||
@@ -135,7 +152,7 @@ const FeedPage: React.FC = () => {
       {/* New Post Modal */}
       <NewPostModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleCloseModal}
         onPost={handleAddPost}
       />
     </div>
