@@ -11,19 +11,41 @@ import AuthForm from "../components/Auth/AuthForm";
 
 import ForgotPasswordMeassage from "../components/Auth/ForgotPasswordMeassage";
 import SplashScreen from "../For pages/SplashSCreen";
-// import Onboarding2 from "../../Dummy Folder/Onboarding2";
 import MySpace from "../My Space/MySpace";
 import Slide from "../components/Landing page/Slide";
 import GetStartedPage from "../components/Landing page/GetStartedPage";
-
-// import LandingPage from "../components/Landing page/LandingPage";
-// import Onboarding2 from "../../Dummy Folder/Onboarding2";
+import ProtectedRoute from "./ProtectedRoute";
+import { useState, useEffect } from "react";
 
 const AppRoutes = () => {
+  const [showSplash, setShowSplash] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+  if (showSplash) return <SplashScreen />;
   return (
     <Routes>
-      <Route path="/" element={<SplashScreen />} />
-      <Route path="/feed" element={<FeedPage />} />
+      {/* 🌟 Onboarding pages  */}
+      <Route path="/" element={<Slide />}></Route>
+
+      {/* GetStartedPage */}
+      <Route path="/getstarted" element={<GetStartedPage />}></Route>
+
+      {/* FEED PAGE */}
+      <Route
+        path="/feed"
+        element={
+          <ProtectedRoute>
+            <FeedPage />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* JOURNAL PAGE */}
       <Route path="/journal" element={<JournalPage />} />
       {/* Mood */}
       <Route path="/mood" element={<MoodPage />} />
@@ -47,15 +69,8 @@ const AppRoutes = () => {
       {/* ✅ Forgot Password */}
       <Route path="/forgot" element={<AuthForm mode="forgot" />} />
 
-      {/* <Route path="/onboarding2" element={<Onboarding2 />} />
-       */}
+     
       <Route path="/my-space" element={<MySpace />} />
-
-      {/* 🌟 Onboarding pages  */}
-      <Route path="/onboarding" element={<Slide />}></Route>
-
-      {/* GetStartedPage */}
-      <Route path="/getstarted" element={<GetStartedPage />}></Route>
     </Routes>
   );
 };

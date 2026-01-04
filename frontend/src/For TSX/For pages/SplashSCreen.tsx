@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "./SplashScreen.module.css"; // optional styling
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+import styles from "./SplashScreen.module.css"; 
 
 export default function SplashScreen() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/onboarding"); // go to onboarding after 1s
-    }, 1000); // 1 second
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     navigate("/onboarding");
+  //   }, 1000); 
 
-    return () => clearTimeout(timer);
-  }, [navigate]);
+  //   return () => clearTimeout(timer);
+  // }, [navigate]);
 
   return (
     <div className={styles.splashContainer}>
